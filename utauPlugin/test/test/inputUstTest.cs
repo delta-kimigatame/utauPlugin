@@ -12,21 +12,21 @@ namespace inputUstTest
         public void testInitialize()
         {
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test119.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
             utauPlugin.Input();
 
         }
         [TestMethod]
         public void SetUstVersion()
         {
-            utauPlugin.SetVersion("3.0");
-            Assert.IsTrue(utauPlugin.GetVersion() == 3.0f);
+            utauPlugin.Version="3.0";
+            Assert.IsTrue(utauPlugin.Version == "3.0");
         }
         [TestMethod]
         public void SetUstVoiceDir()
         {
-            utauPlugin.SetVoiceDir("C:\\Program Files (x86)\\UTAU\voice\\utau");
-            Assert.IsTrue(utauPlugin.GetVoiceDir() == "C:\\Program Files (x86)\\UTAU\voice\\utau");
+            utauPlugin.VoiceDir="C:\\Program Files (x86)\\UTAU\voice\\utau";
+            Assert.IsTrue(utauPlugin.VoiceDir == "C:\\Program Files (x86)\\UTAU\voice\\utau");
         }
         //[TestMethod]
         //public void TestIsHeader()
@@ -40,20 +40,20 @@ namespace inputUstTest
         [TestMethod]
         public void TestUstVersion()
         {
-            Assert.IsTrue(utauPlugin.GetVersion() == 1.19f);
+            Assert.IsTrue(utauPlugin.Version == "1.19");
         }
         [TestMethod]
         public void TestUstVersionV120()
         {
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test120.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test120.tmp";
             utauPlugin.Input();
-            Assert.IsTrue(utauPlugin.GetVersion() == 1.2f);
+            Assert.IsTrue(utauPlugin.Version == "1.20");
         }
         [TestMethod]
         public void TestTempo()
         {
-            Assert.IsTrue(utauPlugin.GetTempo() == 150.0f);
+            Assert.IsTrue(utauPlugin.Tempo == 150.0f);
         }
         [TestMethod]
         public void TestNotePrev()
@@ -151,7 +151,7 @@ namespace inputUstTest
         public void TestNote2V120()
         {
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test120.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test120.tmp";
             utauPlugin.Input();
             Assert.IsTrue(utauPlugin.note[2].GetNum() == "0003");
             Assert.IsTrue(utauPlugin.note[2].GetLength() == 240);
@@ -198,7 +198,7 @@ namespace inputUstTest
         public void TestNote2V111()
         {
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test111.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test111.tmp";
             utauPlugin.Input();
             Assert.IsTrue(utauPlugin.note[2].GetNum() == "0003");
             Assert.IsTrue(utauPlugin.note[2].GetLength() == 240);
@@ -245,7 +245,7 @@ namespace inputUstTest
         public void TestNote2V101()
         {
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test101.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test101.tmp";
             utauPlugin.Input();
             Assert.IsTrue(utauPlugin.note[2].GetNum() == "0003");
             Assert.IsTrue(utauPlugin.note[2].GetLength() == 240);
@@ -295,7 +295,7 @@ namespace inputUstTest
             //atパラメーターはない
             //PBStartもない
             utauPlugin = new UtauPlugin();
-            utauPlugin.SetFilePath("..\\..\\..\\test\\inputData\\test100.tmp");
+            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test100.tmp";
             utauPlugin.Input();
             Assert.IsTrue(utauPlugin.note[2].GetNum() == "0003");
             Assert.IsTrue(utauPlugin.note[2].GetLength() == 240);

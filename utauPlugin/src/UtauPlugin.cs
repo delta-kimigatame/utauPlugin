@@ -8,23 +8,24 @@ namespace utauPlugin
 {
     public class UtauPlugin:Ust
     {
-        private string filePath;
-        private float version;
-        private string projectName;
-        private string voiceDir;
-        private string cacheDir;
-        private string outputFile;
-        private float tempo;
-        private string tool1Path;
-        private string tool2Path;
-        private string flags;
-        private Boolean mode2;
-        private Boolean utf8;
-        public List<Note> note;
+        //private string filePath;
+        //private string version;
+        //private string projectName;
+        //private string voiceDir;
+        //private string cacheDir;
+        //private string outputFile;
+        //private float tempo;
+        //private string tool1Path;
+        //private string tool2Path;
+        //private string flags;
+        //private Boolean mode2;
+        //private Boolean utf8;
+        //public List<Note> note;
 
         private String[] ustData;
         private List<String> writeData;
         private int i;
+        
 
         public UtauPlugin() { }
         public UtauPlugin(string filePath) : base(filePath) { }
@@ -32,7 +33,7 @@ namespace utauPlugin
         public void Input()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            ustData = File.ReadAllLines(GetFilePath(), Encoding.GetEncoding("Shift_JIS"));
+            ustData = File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS"));
             AnalyzeHeader();
             note = new List<Note>();
             AnalyzeNotes();
@@ -47,47 +48,47 @@ namespace utauPlugin
             {
                 if (ustData[i].Contains("UstVersion="))
                 {
-                    SetVersion(ustData[i].Replace("UstVersion=",""));
+                    Version=ustData[i].Replace("UstVersion=","");
                 }
                 else if(ustData[i].Contains("UST Version "))
                 {
-                    SetVersion(ustData[i].Replace("UST Version ", ""));
+                    Version = ustData[i].Replace("UST Version ", "");
                 }
                 else if (ustData[i].Contains("Tempo="))
                 {
-                    SetTempo(ustData[i].Replace("Tempo=", ""));
+                    Tempo=float.Parse(ustData[i].Replace("Tempo=", ""));
                 }
                 else if (ustData[i].Contains("Project="))
                 {
-                    SetProjectName(ustData[i].Replace("Project=", ""));
+                    ProjectName=ustData[i].Replace("Project=", "");
                 }
                 else if (ustData[i].Contains("VoiceDir="))
                 {
-                    SetVoiceDir(ustData[i].Replace("VoiceDir=", ""));
+                    VoiceDir=ustData[i].Replace("VoiceDir=", "");
                 }
                 else if (ustData[i].Contains("OutFile="))
                 {
-                    SetOutputFile(ustData[i].Replace("OutFile=", ""));
+                    OutputFile=ustData[i].Replace("OutFile=", "");
                 }
                 else if (ustData[i].Contains("CacheDir="))
                 {
-                    SetCacheDir(ustData[i].Replace("CacheDir=", ""));
+                    CacheDir=ustData[i].Replace("CacheDir=", "");
                 }
                 else if (ustData[i].Contains("Tool1="))
                 {
-                    SetTool1Path(ustData[i].Replace("Tool1=", ""));
+                    Tool1Path=ustData[i].Replace("Tool1=", "");
                 }
                 else if (ustData[i].Contains("Tool2="))
                 {
-                    SetTool2Path(ustData[i].Replace("Tool2=", ""));
+                    Tool2Path=ustData[i].Replace("Tool2=", "");
                 }
                 else if (ustData[i].Contains("Flags="))
                 {
-                    SetFlags(ustData[i].Replace("Flags=", ""));
+                    Flags=ustData[i].Replace("Flags=", "");
                 }
                 else if (ustData[i].Contains("Mode2="))
                 {
-                    SetMode2(ustData[i].Replace("Mode2=", ""));
+                    Mode2=Boolean.Parse(ustData[i].Replace("Mode2=", ""));
                 }
                 i++;
             }
@@ -95,7 +96,7 @@ namespace utauPlugin
         }
         private void AnalyzeNotes()
         {
-            float nowTempo = GetTempo();
+            float nowTempo = Tempo;
             while (ustData.Length > i)
             {
                 if (IsNote(ustData[i])){
@@ -320,8 +321,8 @@ namespace utauPlugin
                 //Mod
                 if (note.HasMod() && (note.GetNum() == "INSERT" || note.ModIsChanged()))
                 {
-                    if (GetVersion() <= 1.19) { writeData.Add("Moduration=" + note.GetMod().ToString()); }
-                    if (GetVersion() >= 1.19) { writeData.Add("Modulation=" + note.GetMod().ToString()); }
+                    if (Version == "1.0" || Version == "1.01" || Version == "1.11" || Version == "1.19") { writeData.Add("Moduration=" + note.GetMod().ToString()); }
+                    if (Version == "1.19"|| Version == "1.20") { writeData.Add("Modulation=" + note.GetMod().ToString()); }
 
                 }
                 //Flags
@@ -332,9 +333,9 @@ namespace utauPlugin
                 //pitches
                 if (note.HasPitches() && (note.GetNum() == "INSERT" || note.PitchesIsChanged()))
                 {
-                    if (GetVersion() <= 1.01 || GetVersion() == 1.19) { writeData.Add("Piches=" + string.Join(",", note.GetPitches())); }
-                    if (GetVersion() >= 1.11 && GetVersion() <= 1.19) { writeData.Add("Pitches=" + string.Join(",", note.GetPitches())); }
-                    if (GetVersion() >= 1.01) { writeData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
+                    if (Version == "1.0" || Version == "1.01" || Version == "1.19") { writeData.Add("Piches=" + string.Join(",", note.GetPitches())); }
+                    if (Version == "1.11" || Version == "1.19") { writeData.Add("Pitches=" + string.Join(",", note.GetPitches())); }
+                    if (Version == "1.01"|| Version == "1.11" || Version == "1.19"|| Version == "1.20") { writeData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
                 }
                 //pbstart
                 if (note.HasPbStart() && (note.GetNum() == "INSERT" || note.PbStartIsChanged()))
@@ -403,7 +404,7 @@ namespace utauPlugin
                     writeData.Add("$region_end=" + note.GetRegionEnd());
                 }
             }
-            File.WriteAllLines(GetFilePath(), writeData, Encoding.GetEncoding("Shift_JIS"));
+            File.WriteAllLines(FilePath, writeData, Encoding.GetEncoding("Shift_JIS"));
         }
     }
 }
