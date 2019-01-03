@@ -145,7 +145,7 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 |:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
 |[#0000]|セクションNo.|string|InitNum|-|SetNum|GetNum|-|
 |Length=|ノートの長さ|int|InitLength|-|SetLength|GetLength|LengthIsChanged|
-|Lyric=|ノートの長さ|string|InitLyric|-|SetLyric|GetLyric|LyricIsChanged|
+|Lyric=|入力された歌詞|string|InitLyric|-|SetLyric|GetLyric|LyricIsChanged|
 |Tempo=|テンポ|float|InitTempo|-|SetTempo|GetTempo|TempoIsChanged|
 |PreUtterance=|先行発声値|float|InitPre|-|SetPre|GetPre|PreIsChanged|
 |VoiceOverlap=|オーバーラップ値|float|InitOve|HasOve|SetOve|GetOve|OveIsChanged|
