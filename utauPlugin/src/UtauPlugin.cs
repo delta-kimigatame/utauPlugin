@@ -45,7 +45,7 @@ namespace utauPlugin
             }
             catch (Exception ex)
             {
-                File.WriteAllText(".\\utauPluginInputLog.txt", ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                File.WriteAllText(".\\utauPluginInputLog.txt", ex.Message+"\n"+ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
                 Environment.Exit(0);
             }
         }
@@ -62,6 +62,7 @@ namespace utauPlugin
                 ustData.Add(line);
                 pos += line.Length;
             }
+            file.Close();
             StreamReader file2 = new StreamReader(FilePath, Encoding.GetEncoding("Shift_JIS"));
             file2.BaseStream.Seek(pos, SeekOrigin.Begin);
             if(!IsHeader(line = file2.ReadLine()))
@@ -72,6 +73,7 @@ namespace utauPlugin
             {
                 ustData.Add(line);
             }
+            file2.Close();
 
         }
 
@@ -451,7 +453,7 @@ namespace utauPlugin
             }
             catch (Exception ex)
             {
-                File.WriteAllText(".\\utauPluginOutputLog.txt", ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                File.WriteAllText(".\\utauPluginOutputLog.txt", ex.Message + "\n"+ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
                 Environment.Exit(0);
             }
         }
