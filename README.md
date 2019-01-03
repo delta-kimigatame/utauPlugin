@@ -10,6 +10,7 @@ Shift-Jis以外の2バイト文字がヘッダに含まれていると落ちま�
 本家がutf-8になりそうなので，当面様子見の予定です．
 
 ## 導入方法
+画像付きチュートリアルはコチラ(https://ch.nicovideo.jp/delta_kimigatame/blomaga/ar1716787)
 1. Clone or downloadからzipをダウンロードし，適当な場所に解凍する．
 1. [ファイル]-[新規作成]-[プロジェクト]より.Net Frameworkのプロジェクトを作成する．
 1. [ファイル]-[追加]-[既存のプロジェクト]より，utauPlugin-master\utauPlugin\utauPlugin.slnを開く．
