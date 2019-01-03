@@ -100,21 +100,20 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 
 他のパラメータについても同様にSetとGetができます．
 
-|パラメータ|type|Set|Get|
-|:-------|:-------|:-------|:-------|
-|tempファイルのフルパス|String|SetFilePath|GetFilePath|
-|プラグインのバージョン|float|SetVersion|GetVersion|
-|プロジェクト名|String|SetProjectName|GetProjectName|
-|音源ライブラリのフルパス|String|SetVoiceDir|GetVoiceDir|
-|キャッシュファイルのフルパス|String|SetCacheDir|GetCacheDir|
-|USTのテンポ|Float|SetTempo|GetTempo|
-|ツール1(append)のフルパス|String|SetTool1Path|GetTool1Path|
-|ツール2(resamp)のフルパス|String|SetTool2Path|GetTool2Path|
-|UST全体のフラグ|String|SetFlags|GetFlags|
-|Mode2使用の有無|Boolean|SetMode2|GetMode2|
-|utf8形式かのチェック(現在使用していません)|Boolean|Setutf8|GetUtf8|
+|パラメータ|説明|
+|:-------|:-------|
+|String FilePath|tempファイルのフルパス|
+|float Version|プラグインのバージョン|
+|String ProjectName|プロジェクト名|
+|String VoiceDir|音源ライブラリのフルパス|
+|String CacheDir|キャッシュファイルのフルパス|
+|Float Tempo|USTのテンポ|
+|String Tool1Path|ツール1(append)のフルパス|
+|String Tool2Path|ツール2(resamp)のフルパス|
+|String Flags|UST全体のフラグ|
+|Boolean Mode2|Mode2使用の有無|
+|Boolean utf8|utf8形式かのチェック(現在使用していません)|
 
-ust読み込み時の動作を考慮して，float,Booleanでデータ保持しているものはStringでもSetできます．
 
 ### Note
 #### Note()
