@@ -214,8 +214,8 @@ ust読み込み時の動作を考慮して，float,Booleanでデータ保持し�
 
 |メソッド|説明|
 |:-------|:-------|
-|void SetP(float p,int point)'point'個目(0スタート)のエンベロープのpを変更します．|
-|void SetV(int p,int point)'point'個目(0スタート)のエンベロープのvを変更します．|
+|void SetP(float p,int point)|'point'個目(0スタート)のエンベロープのpを変更します．|
+|void SetV(int p,int point)|'point'個目(0スタート)のエンベロープのvを変更します．|
 |List<float> GetP()|エンベロープのpを取得|
 |List<int> GetV()|エンベロープのvを取得|
     
