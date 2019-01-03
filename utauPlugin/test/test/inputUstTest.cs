@@ -351,5 +351,12 @@ namespace inputUstTest
             utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\locale.tmp";
             utauPlugin.Input();
         }
+        [TestMethod]
+        public void Error20190103()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\20190103Error.txt";
+            utauPlugin.Input();
+        }
     }
 }

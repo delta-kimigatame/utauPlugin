@@ -6,8 +6,8 @@ namespace utauPlugin
     
     public class Vibrato
     {
-        private int length;
-        private int cycle;
+        private float length;
+        private float cycle;
         private float depth;
         private float fadeInTime;
         private float fadeOutTime;
@@ -34,8 +34,8 @@ namespace utauPlugin
         public void Set(string value)
         {
             string[] tmp = value.Split(',');
-            length = int.Parse(tmp[0]);
-            cycle = int.Parse(tmp[1]);
+            length = float.Parse(tmp[0]);
+            cycle = float.Parse(tmp[1]);
             depth = float.Parse(tmp[2]);
             fadeInTime = float.Parse(tmp[3]);
             fadeOutTime = float.Parse(tmp[4]);
@@ -49,7 +49,7 @@ namespace utauPlugin
             return string.Join(",", length.ToString(), cycle.ToString(), depth.ToString(), fadeInTime.ToString(), fadeOutTime.ToString(), phase.ToString(), height.ToString(),"0");
         }
 
-        public void SetLength(int length)
+        public void SetLength(float length)
         {
             this.length = length;
             isChanged = true;
@@ -61,8 +61,8 @@ namespace utauPlugin
             isChanged = true;
         }
 
-        public int GetLength() => length;
-        public void SetCycle(int cycle)
+        public float GetLength() => length;
+        public void SetCycle(float cycle)
         {
             this.cycle = cycle;
             isChanged = true;
@@ -74,14 +74,14 @@ namespace utauPlugin
             isChanged = true;
         }
 
-        public int GetCycle() => cycle;
-        public void SetDepth(int depth)
+        public float GetCycle() => cycle;
+        public void SetDepth(float depth)
         {
             this.depth = depth;
             isChanged = true;
         }
 
-        public void SetDepth(float depth)
+        public void SetDepth(int depth)
         {
             this.depth = depth;
             isChanged = true;
