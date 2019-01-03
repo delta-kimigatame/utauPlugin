@@ -1,8 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using utauPlugin;
 using System;
-using System.Globalization;
-using System.Threading;
 namespace inputUstTest
 {
     [TestClass]
@@ -342,14 +340,6 @@ namespace inputUstTest
             //Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 4.0f);
             //Assert.IsTrue(utauPlugin.note[2].GetAtFileName() == "‚¤.wav");
             //Assert.IsTrue(utauPlugin.note[2].GetAtAlias() == "‚¤");
-        }
-        [TestMethod]
-        public void TestLocale()
-        {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-TW");
-            utauPlugin = new UtauPlugin();
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\locale.tmp";
-            utauPlugin.Input();
         }
     }
 }

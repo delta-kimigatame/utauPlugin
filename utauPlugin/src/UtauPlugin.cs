@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Globalization;
 
 namespace utauPlugin
 {
@@ -23,7 +22,7 @@ namespace utauPlugin
         //private Boolean utf8;
         //public List<Note> note;
 
-        private List<String> ustData;
+        private String[] ustData;
         private List<String> writeData;
         private int i;
         
@@ -33,38 +32,11 @@ namespace utauPlugin
 
         public void Input()
         {
-            Console.WriteLine(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName);
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            //ustData.AddRange(File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS")));
-            GetUstData();
+            ustData = File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS"));
             AnalyzeHeader();
             note = new List<Note>();
             AnalyzeNotes();
-        }
-
-        private void GetUstData()
-        {
-            string line;
-            long pos=0;
-            ustData = new List<string>();
-            StreamReader file = new StreamReader(FilePath, Encoding.GetEncoding(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName));
-            
-            while (IsHeader(line = file.ReadLine()))
-            {
-                ustData.Add(line);
-                pos += line.Length;
-            }
-            StreamReader file2 = new StreamReader(FilePath, Encoding.GetEncoding("Shift_JIS"));
-            file2.BaseStream.Seek(pos, SeekOrigin.Begin);
-            if(!IsHeader(line = file2.ReadLine()))
-            {
-                ustData.Add(line);
-            }
-            while ((line = file2.ReadLine()) != null)
-            {
-                ustData.Add(line);
-            }
-
         }
 
         private Boolean IsHeader(string value) => !(Regex.IsMatch(value, @"\[#([0-9]+|PREV|NEXT)\]$"));
@@ -125,7 +97,7 @@ namespace utauPlugin
         private void AnalyzeNotes()
         {
             float nowTempo = Tempo;
-            while (ustData.Count > i)
+            while (ustData.Length > i)
             {
                 if (IsNote(ustData[i])){
                     note.Add(new Note());
