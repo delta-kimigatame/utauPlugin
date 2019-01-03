@@ -6,7 +6,8 @@ visual studioでの使用を想定しています．
 UTAU公式サイト(http://utau2008.web.fc2.com/)
 UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 
-Shift-Jis以外の2バイト文字がヘッダに含まれていると落ちます．
+~~Shift-Jis以外の2バイト文字がヘッダに含まれていると落ちます．~~
+多分外国の2バイト環境でも動きます．
 本家がutf-8になりそうなので，当面様子見の予定です．
 
 ## 導入方法
