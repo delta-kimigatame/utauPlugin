@@ -6,6 +6,9 @@ visual studioでの使用を想定しています．
 UTAU公式サイト(http://utau2008.web.fc2.com/)
 UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 
+Shift-Jis以外の2バイト文字がヘッダに含まれていると落ちます．
+本家がutf-8になりそうなので，当面様子見の予定です．
+
 ## 導入方法
 1. Clone or downloadからzipをダウンロードし，適当な場所に解凍する．
 1. [ファイル]-[新規作成]-[プロジェクト]より.Net Frameworkのプロジェクトを作成する．
@@ -198,3 +201,38 @@ ust読み込み時の動作を考慮して，float,Booleanでデータ保持し�
 |void SetPbw(int pbw, int point)|'point'個目(0スタート)のPBW値を'pbw'に変更します．|
 |void SetPby(int pby, int point)|'point'個目(0スタート)のPBY値を'pby'に変更します．|
 |void SetPbm(string pbm, int point)|'point'個目(0スタート)のPBY値を'pbm'に変更します．|
+    
+### NoteNum
+必要な操作は全て`Note`からできるため説明略
+
+### Mode2Pitch
+必要な操作は全て`Note`からできるため説明略
+
+### Envelope
+`Note`から直接できない操作のみ説明
+`Note.envelope`が`Envelope型`なので，'Note.envelope.GetP()'のような使い方を想定しています．
+
+|メソッド|説明|
+|:-------|:-------|
+|void SetP(float p,int point)|'point'個目(0スタート)のエンベロープのpを変更します．|
+|void SetV(int p,int point)|'point'個目(0スタート)のエンベロープのvを変更します．|
+|List<float> GetP()|エンベロープのpを取得|
+|List<int> GetV()|エンベロープのvを取得|
+    
+
+### Vibrato
+`Note`から直接できない操作のみ説明
+`Note.vibrato`が`Vibrato型`なので，'Note.vibrato.GetLength()'のような使い方を想定しています．
+以下の通り各パラメータのSetとGetができます．
+
+|パラメータ|type|Set|Get|説明|
+|:-------|:-------|:-------|:-------|:-------|
+|Length|int|SetLength|GetLength|ノート長に対するビブラート長|
+|Cycle|int|SetCycle|GetCycle|ビブラートの周期|
+|Depth|float|SetDepth|GetDepth|ビブラートの深さ|
+|FadeInTime|float|SetFadeInTime|GetFadeInTime|ビブラート長に対するフェードインの割合|
+|FadeoutTime|float|SetFadeoutTime|GetFadeoutTime|ビブラート長に対するフェードアウトの割合|
+|Phase|float|SetPhase|GetPhase|ビブラートの初期位相のずれ|
+|Height|float|SetHeight|GetHeight|ビブラートの音程オフセット|
+
+
