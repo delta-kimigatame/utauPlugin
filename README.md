@@ -228,8 +228,8 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 
 |パラメータ|type|Set|Get|説明|
 |:-------|:-------|:-------|:-------|:-------|
-|Length|int|SetLength|GetLength|ノート長に対するビブラート長|
-|Cycle|int|SetCycle|GetCycle|ビブラートの周期|
+|Length|float|SetLength|GetLength|ノート長に対するビブラート長|
+|Cycle|float|SetCycle|GetCycle|ビブラートの周期|
 |Depth|float|SetDepth|GetDepth|ビブラートの深さ|
 |FadeInTime|float|SetFadeInTime|GetFadeInTime|ビブラート長に対するフェードインの割合|
 |FadeoutTime|float|SetFadeoutTime|GetFadeoutTime|ビブラート長に対するフェードアウトの割合|
