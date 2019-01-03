@@ -33,13 +33,21 @@ namespace utauPlugin
 
         public void Input()
         {
-            Console.WriteLine(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName);
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            //ustData.AddRange(File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS")));
-            GetUstData();
-            AnalyzeHeader();
-            note = new List<Note>();
-            AnalyzeNotes();
+            try
+            {
+                Console.WriteLine(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName);
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                //ustData.AddRange(File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS")));
+                GetUstData();
+                AnalyzeHeader();
+                note = new List<Note>();
+                AnalyzeNotes();
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(".\\utauPluginInputLog.txt", ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                Environment.Exit(0);
+            }
         }
 
         private void GetUstData()
@@ -280,17 +288,17 @@ namespace utauPlugin
                 i++;
             }
         }
-        public void Output()
+
+        private void OutputHelper()
         {
-            writeData = new List<String>();
             foreach (Note note in this.note)
             {
                 //number
-                if(note.GetNum() == "PREV" || note.GetNum() == "NEXT")
+                if (note.GetNum() == "PREV" || note.GetNum() == "NEXT")
                 {
                     continue;
                 }
-                else if(note.GetNum() == "DELETE")
+                else if (note.GetNum() == "DELETE")
                 {
                     writeData.Add("[#" + note.GetNum() + "]");
                     continue;
@@ -300,7 +308,7 @@ namespace utauPlugin
                     writeData.Add("[#" + note.GetNum() + "]");
                 }
                 //Length
-                if(note.GetNum() == "INSERT" || note.LengthIsChanged())
+                if (note.GetNum() == "INSERT" || note.LengthIsChanged())
                 {
                     writeData.Add("Length=" + note.GetLength().ToString());
                 }
@@ -324,7 +332,7 @@ namespace utauPlugin
                 {
                     if (note.PreHasValue()) { writeData.Add("PreUtterance=" + note.GetPre().ToString()); }
                     else { writeData.Add("PreUtterance="); }
-                    
+
                 }
                 //Ove
                 if (note.HasOve() && (note.GetNum() == "INSERT" || note.OveIsChanged()))
@@ -350,7 +358,7 @@ namespace utauPlugin
                 if (note.HasMod() && (note.GetNum() == "INSERT" || note.ModIsChanged()))
                 {
                     if (Version == "1.0" || Version == "1.01" || Version == "1.11" || Version == "1.19") { writeData.Add("Moduration=" + note.GetMod().ToString()); }
-                    if (Version == "1.19"|| Version == "1.20") { writeData.Add("Modulation=" + note.GetMod().ToString()); }
+                    if (Version == "1.19" || Version == "1.20") { writeData.Add("Modulation=" + note.GetMod().ToString()); }
 
                 }
                 //Flags
@@ -363,7 +371,7 @@ namespace utauPlugin
                 {
                     if (Version == "1.0" || Version == "1.01" || Version == "1.19") { writeData.Add("Piches=" + string.Join(",", note.GetPitches())); }
                     if (Version == "1.11" || Version == "1.19") { writeData.Add("Pitches=" + string.Join(",", note.GetPitches())); }
-                    if (Version == "1.01"|| Version == "1.11" || Version == "1.19"|| Version == "1.20") { writeData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
+                    if (Version == "1.01" || Version == "1.11" || Version == "1.19" || Version == "1.20") { writeData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
                 }
                 //pbstart
                 if (note.HasPbStart() && (note.GetNum() == "INSERT" || note.PbStartIsChanged()))
@@ -383,7 +391,7 @@ namespace utauPlugin
                 //pbw
                 if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbwIsChanged()))
                 {
-                    writeData.Add("PBW=" + string.Join(",",note.GetPbw()));
+                    writeData.Add("PBW=" + string.Join(",", note.GetPbw()));
                 }
                 //pby
                 if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbyIsChanged()))
@@ -432,7 +440,20 @@ namespace utauPlugin
                     writeData.Add("$region_end=" + note.GetRegionEnd());
                 }
             }
-            File.WriteAllLines(FilePath, writeData, Encoding.GetEncoding("Shift_JIS"));
+        }
+        public void Output()
+        {
+            try
+            {
+                writeData = new List<String>();
+                OutputHelper();
+                File.WriteAllLines(FilePath, writeData, Encoding.GetEncoding("Shift_JIS"));
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(".\\utauPluginOutputLog.txt", ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                Environment.Exit(0);
+            }
         }
     }
 }
