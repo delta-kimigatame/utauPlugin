@@ -630,8 +630,8 @@ namespace utauPlugin
         public void InitPbs(string pbs) => mode2Pitch.InitPbs(pbs);
         public void SetPbs(string pbs) => mode2Pitch.SetPbs(pbs);
         public string GetPbs() => mode2Pitch.GetPbs();
-        public int GetPbsTime() => mode2Pitch.GetPbsTime();
-        public int GetPbsHeight() => mode2Pitch.GetPbsHeight();
+        public float GetPbsTime() => mode2Pitch.GetPbsTime();
+        public float GetPbsHeight() => mode2Pitch.GetPbsHeight();
         public Boolean PbsIsChanged() => mode2Pitch.PbsIsChanged();
 
         public void InitPbw(string pbw) => mode2Pitch.InitPbw(pbw);

@@ -8,7 +8,7 @@ namespace utauPlugin
     public class Mode2Pitch
     {
         private string inputPbs;
-        private int pbsTime, pbsHeight;
+        private float pbsTime, pbsHeight;
         private List<float> pbw;
         private List<string> pbm;
         private List<float> pby;
@@ -39,19 +39,19 @@ namespace utauPlugin
             if (inputPbs.Contains(";"))
             {
                 string[] tmp = inputPbs.Split(';');
-                pbsTime = int.Parse(tmp[0]);
-                pbsHeight = int.Parse(tmp[1]);
+                pbsTime = float.Parse(tmp[0]);
+                pbsHeight = float.Parse(tmp[1]);
             }
             else if (inputPbs.Contains(","))
             {
                 string[] tmp = inputPbs.Split(',');
-                pbsTime = int.Parse(tmp[0]);
-                pbsHeight = int.Parse(tmp[1]);
+                pbsTime = float.Parse(tmp[0]);
+                pbsHeight = float.Parse(tmp[1]);
             }
             else
             {
-                pbsTime = int.Parse(inputPbs);
-                pbsHeight = 0;
+                pbsTime = float.Parse(inputPbs);
+                pbsHeight = 0.0f;
             }
             pbsIsChanged = true;
         }
@@ -66,8 +66,8 @@ namespace utauPlugin
                 return pbsTime.ToString() + ";" + pbsHeight.ToString();
             }
         }
-        public int GetPbsTime() => pbsTime;
-        public int GetPbsHeight() => pbsHeight;
+        public float GetPbsTime() => pbsTime;
+        public float GetPbsHeight() => pbsHeight;
         public Boolean PbsIsChanged() => pbsIsChanged;
 
         //引数が1つの場合文字列をとる．
