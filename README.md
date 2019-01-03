@@ -68,9 +68,9 @@ namespace sample1
 パラメータはUstと同じのため詳細略
 
 #### void Input()
-'UtauPlugin.filePath'のファイルをshift_Jisで開き，内容を解析します．
+`UtauPlugin.filePath`のファイルをshift_Jisで開き，内容を解析します．
 
-ustのヘッダ情報は'UtauPlugin UtauPlugin'に，ノートの情報は'List UtauPlugin.note'に格納されます．
+ustのヘッダ情報は`UtauPlugin UtauPlugin`に，ノートの情報は`List UtauPlugin.note`に格納されます．
 
 #### void Output()
 `UtauPlugin.filePath`のファイルに編集内容を上書きします．
@@ -85,7 +85,7 @@ UTAUプラグインの仕様に則り，書き出し内容は最小限です．
 |[#INSERT]|すべてのエントリを書き出す|
 |その他|変更があったもののみ書き出す|
 
-ただし@つきのパラメータは'readonly'なので書き出しません．
+ただし@つきのパラメータは`readonly`なので書き出しません．
 
 ### Ust
 #### Ust()
