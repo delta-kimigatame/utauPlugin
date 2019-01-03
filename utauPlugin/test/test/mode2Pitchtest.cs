@@ -16,8 +16,8 @@ namespace mode2PitchTest
         {
             Mode2Pitch mode2Pitch = new Mode2Pitch();
             mode2Pitch.SetPbs("50;30");
-            Assert.IsTrue(50 == mode2Pitch.GetPbsTime());
-            Assert.IsTrue(30 == mode2Pitch.GetPbsHeight());
+            Assert.IsTrue(50.0f == mode2Pitch.GetPbsTime());
+            Assert.IsTrue(30.0f == mode2Pitch.GetPbsHeight());
             Assert.IsTrue("50;30" == mode2Pitch.GetPbs());
         }
         [TestMethod]
@@ -25,8 +25,8 @@ namespace mode2PitchTest
         {
             Mode2Pitch mode2Pitch = new Mode2Pitch();
             mode2Pitch.SetPbs("50,30");
-            Assert.IsTrue(50 == mode2Pitch.GetPbsTime());
-            Assert.IsTrue(30 == mode2Pitch.GetPbsHeight());
+            Assert.IsTrue(50.0f == mode2Pitch.GetPbsTime());
+            Assert.IsTrue(30.0f == mode2Pitch.GetPbsHeight());
             Assert.IsTrue("50;30" == mode2Pitch.GetPbs());
         }
         [TestMethod]
@@ -34,8 +34,8 @@ namespace mode2PitchTest
         {
             Mode2Pitch mode2Pitch = new Mode2Pitch();
             mode2Pitch.SetPbs("50");
-            Assert.IsTrue(50 == mode2Pitch.GetPbsTime());
-            Assert.IsTrue(0 == mode2Pitch.GetPbsHeight());
+            Assert.IsTrue(50.0f == mode2Pitch.GetPbsTime());
+            Assert.IsTrue(0.0f == mode2Pitch.GetPbsHeight());
             Assert.IsTrue("50" == mode2Pitch.GetPbs());
         }
         [TestMethod]
