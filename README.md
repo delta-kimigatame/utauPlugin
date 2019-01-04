@@ -125,13 +125,14 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 #### void InitOve(int ove)
 オーバーラップ値をoveで初期化します．
 
-#### Boolean HasOve()
-オーバーラップを初期化していればtrueを，していなければfalseを返します． 以下他のメソッドは初期化していない場合使用できません．
-
 #### void SetOve(string ove)
 #### void SetOve(float ove)
 #### void SetOve(int ove)
 オーバーラップ値をoveに変更し，`UtauPlugin.Output()`時書き出すようフラグを立てます．
+
+
+#### Boolean HasOve()
+オーバーラップを初期化していればtrueを，していなければfalseを返します． 以下他のメソッドは初期化していない場合使用できません．
 
 #### float GetOve()
 オーバーラップ値を取得します．
@@ -172,13 +173,14 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 |PBType=|mode1用ピッチベンドの種類|string|InitPbType|HasPbType|SetPbType|GetPbType|PbTypeIsChanged|
 
 ピッチ(mode2用)
+mode2用のピッチのパラメータは内部的には一括で宣言され，各パラメータのInitはプラグインに書き出ししない値の登録のために使用されます．
 
 |エントリ名|説明|type|Init|Has|Set|Get|IsChanged|
 |:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|PBS=|mode2用ピッチの開始位置|string|InitPbs|HasPbs|SetPbs|GetPbs|PbsIsChanged|
-|PBW=|mode2用ポルタメントの間隔|List|InitPbw|HasPbw|SetPbw|GetPbw|PbwIsChanged|
-|PBY=|mode2用ポルタメントの音高|List|InitPby|HasPby|SetPby|GetPby|PbyIsChanged|
-|PBM=|mode2用ピッチベンドの種類|List|InitPbm|HasPbm|SetPbm|GetPbm|PbmIsChanged|
+|PBS=|mode2用ピッチの開始位置|string|InitPbs|HasMode2Pitch|SetPbs|GetPbs|PbsIsChanged|
+|PBW=|mode2用ポルタメントの間隔|List|InitPbw|HasMode2Pitch|SetPbw|GetPbw|PbwIsChanged|
+|PBY=|mode2用ポルタメントの音高|List|InitPby|HasMode2Pitch|SetPby|GetPby|PbyIsChanged|
+|PBM=|mode2用ピッチベンドの種類|List|InitPbm|HasMode2Pitch|SetPbm|GetPbm|PbmIsChanged|
 
 読み取り専用のパラメータ
 
