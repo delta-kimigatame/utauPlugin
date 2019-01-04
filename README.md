@@ -19,7 +19,7 @@ UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 1. [プロジェクト]-[ソリューション]よりutauPluginにチェックする．
 
 ## 使い方
-```C#:sample1
+```Csharp:sample1
 using utauPlugin;
 
 namespace sample1
@@ -40,7 +40,7 @@ namespace sample1
 ```
 ## 具体的な使用例
 UTAU界隈おなじみの半音上げプラグイン(コンソール)の場合
-```C#:sample2
+```Csharp:sample2
 using utauPlugin;
 
 namespace sample1
