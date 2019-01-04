@@ -358,12 +358,12 @@ namespace inputUstTest
             utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\20190103Error.txt";
             utauPlugin.Input();
         }
-        [TestMethod]
-        public void ErrorCheck()
-        {
-            utauPlugin = new UtauPlugin();
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\error.txt";
-            utauPlugin.Input();
-        }
+        //[TestMethod]
+        //public void ErrorCheck()
+        //{
+        //    utauPlugin = new UtauPlugin();
+        //    utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\error.txt";
+        //    utauPlugin.Input();
+        //}
     }
 }

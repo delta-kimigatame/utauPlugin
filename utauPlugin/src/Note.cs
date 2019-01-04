@@ -70,7 +70,6 @@ namespace utauPlugin
         public Boolean NoteNumIsChanged() => noteNum.IsChanged();
         
         public void InitTempo(string tempo) => this.tempo = new Entry<float>(float.Parse(tempo));
-        public void InitTempo(int tempo) => this.tempo = new Entry<float>(tempo);
         public void InitTempo(float tempo) => this.tempo = new Entry<float>(tempo);
         public void SetTempo(string tempo) => this.tempo.Set(float.Parse(tempo));
         public void SetTempo(int tempo) => this.tempo.Set(tempo);
@@ -79,10 +78,8 @@ namespace utauPlugin
         public Boolean TempoIsChanged() => tempo.IsChanged();
 
         public void InitPre(string pre) => this.pre = new Pre(pre);
-        public void InitPre(int pre) => this.pre = new Pre(pre);
         public void InitPre(float pre) => this.pre = new Pre(pre);
         public void SetPre(string pre) => this.pre.Set(pre);
-        public void SetPre(int pre) => this.pre.Set(pre);
         public void SetPre(float pre) => this.pre.Set(pre);
         public float GetPre() => pre.Get();
         public Boolean PreIsChanged() => pre.IsChanged();
@@ -90,120 +87,261 @@ namespace utauPlugin
 
         
         public void InitAtPre(string atPre) => this.atPre = new Entry<float>(float.Parse(atPre));
-        public void InitAtPre(int atPre) => this.atPre = new Entry<float>(atPre);
         public void InitAtPre(float atPre) => this.atPre = new Entry<float>(atPre);
-        public void SetAtPre(string atPre) => this.atPre.Set(float.Parse(atPre));
-        public void SetAtPre(int atPre) => this.atPre.Set(atPre);
-        public void SetAtPre(float atPre) => this.atPre.Set(atPre);
+        public void SetAtPre(string atPre)
+        {
+            if (HasAtPre()) { this.atPre.Set(float.Parse(atPre)); }
+            else
+            {
+                this.atPre = new Entry<float>(0);
+                this.atPre.Set(float.Parse(atPre));
+            }
+        }
+        public void SetAtPre(float atPre)
+        {
+            if (HasAtPre()) { this.atPre.Set(atPre); }
+            else
+            {
+                this.atPre = new Entry<float>(0);
+                this.atPre.Set(atPre);
+            }
+        }
+
         public float GetAtPre() => atPre.Get();
         public Boolean AtPreIsChanged() => atPre.IsChanged();
         public Boolean HasAtPre() => (atPre != null);
         
         public void InitAtFileName(string atFileName) => this.atFileName = new Entry<string>(atFileName);
-        public void SetAtFileName(string atFileName) => this.atFileName.Set(atFileName);
+        public void SetAtFileName(string atFileName)
+        {
+            if (HasAtFileName()) { this.atFileName.Set(atFileName); }
+            else
+            {
+                this.atFileName = new Entry<string>("");
+                this.atFileName.Set(atFileName);
+            }
+        }
+
         public string GetAtFileName() => atFileName.Get();
         public Boolean AtFileNameIsChanged() => atFileName.IsChanged();
         public Boolean HasAtFileName() => (atFileName != null);
-        
+
         public void InitAtAlias(string atAlias) => this.atAlias = new Entry<string>(atAlias);
-        public void SetAtAlias(string atAlias) => this.atAlias.Set(atAlias);
+        public void SetAtAlias(string atAlias)
+        {
+            if (HasAtAlias()) { this.atAlias.Set(atAlias); }
+            else
+            {
+                this.atAlias = new Entry<string>("");
+                this.atAlias.Set(atAlias);
+            }
+        }
+
         public string GetAtAlias() => atAlias.Get();
         public Boolean AtAliasIsChanged() => atAlias.IsChanged();
         public Boolean HasAtAlias() => (atAlias != null);
 
-        
+
         public void InitOve(string ove) => this.ove = new Entry<float>(float.Parse(ove));
-        public void InitOve(int ove) => this.ove = new Entry<float>(ove);
         public void InitOve(float ove) => this.ove = new Entry<float>(ove);
-        public void SetOve(string ove) => this.ove.Set(float.Parse(ove));
-        public void SetOve(int ove) => this.ove.Set(ove);
-        public void SetOve(float ove) => this.ove.Set(ove);
+        public void SetOve(string ove)
+        {
+            if (HasOve()) { this.ove.Set(float.Parse(ove)); }
+            else
+            {
+                this.ove = new Entry<float>(0);
+                this.ove.Set(float.Parse(ove));
+            }
+        }
+        public void SetOve(float ove)
+        {
+            if (HasOve()) { this.ove.Set(ove); }
+            else
+            {
+                this.ove = new Entry<float>(0);
+                this.ove.Set(ove);
+            }
+        }
+
         public float GetOve() => ove.Get();
         public Boolean OveIsChanged() => ove.IsChanged();
         public Boolean HasOve() => (ove != null);
 
-        
+
         public void InitAtOve(string atOve) => this.atOve = new Entry<float>(float.Parse(atOve));
-        public void InitAtOve(int atOve) => this.atOve = new Entry<float>(atOve);
         public void InitAtOve(float atOve) => this.atOve = new Entry<float>(atOve);
-        public void SetAtOve(string atOve) => this.atOve.Set(float.Parse(atOve));
-        public void SetAtOve(int atOve) => this.atOve.Set(atOve);
-        public void SetAtOve(float atOve) => this.atOve.Set(atOve);
+        public void SetAtOve(string atOve)
+        {
+            if (HasAtOve()) { this.atOve.Set(float.Parse(atOve)); }
+            else
+            {
+                this.atOve = new Entry<float>(0);
+                this.atOve.Set(float.Parse(atOve));
+            }
+        }
+        public void SetAtOve(float atOve)
+        {
+            if (HasAtOve()) { this.atOve.Set(atOve); }
+            else
+            {
+                this.atOve = new Entry<float>(0);
+                this.atOve.Set(atOve);
+            }
+        }
+
         public float GetAtOve() => atOve.Get();
         public Boolean AtOveIsChanged() => atOve.IsChanged();
         public Boolean HasAtOve() => (atOve != null);
 
-        
+
         public void InitStp(string stp) => this.stp = new Entry<float>(float.Parse(stp));
-        public void InitStp(int stp) => this.stp = new Entry<float>(stp);
         public void InitStp(float stp) => this.stp = new Entry<float>(stp);
-        public void SetStp(string stp) => this.stp.Set(float.Parse(stp));
-        public void SetStp(int stp) => this.stp.Set(stp);
-        public void SetStp(float stp) => this.stp.Set(stp);
+        public void SetStp(string stp)
+        {
+            if (HasStp()) { this.stp.Set(float.Parse(stp)); }
+            else
+            {
+                this.stp = new Entry<float>(0);
+                this.stp.Set(float.Parse(stp));
+            }
+        }
+        public void SetStp(float stp)
+        {
+            if (HasStp()) { this.stp.Set(stp); }
+            else
+            {
+                this.stp = new Entry<float>(0);
+                this.stp.Set(stp);
+            }
+        }
+
         public float GetStp() => stp.Get();
         public Boolean StpIsChanged() => stp.IsChanged();
         public Boolean HasStp() => (stp != null);
 
-        
+
         public void InitAtStp(string atStp) => this.atStp = new Entry<float>(float.Parse(atStp));
-        public void InitAtStp(int atStp) => this.atStp = new Entry<float>(atStp);
         public void InitAtStp(float atStp) => this.atStp = new Entry<float>(atStp);
-        public void SetAtStp(string atStp) => this.atStp.Set(float.Parse(atStp));
-        public void SetAtStp(int atStp) => this.atStp.Set(atStp);
-        public void SetAtStp(float atStp) => this.atStp.Set(atStp);
+        public void SetAtStp(string atStp)
+        {
+            if (HasAtStp()) { this.atStp.Set(float.Parse(atStp)); }
+            else
+            {
+                this.atStp = new Entry<float>(0);
+                this.atStp.Set(float.Parse(atStp));
+            }
+        }
+        public void SetAtStp(float atStp)
+        {
+            if (HasAtStp()) { this.atStp.Set(atStp); }
+            else
+            {
+                this.atStp = new Entry<float>(0);
+                this.atStp.Set(atStp);
+            }
+        }
+
         public float GetAtStp() => atStp.Get();
         public Boolean AtStpIsChanged() => atStp.IsChanged();
         public Boolean HasAtStp() => (atStp != null);
-
-
-        private class Velocity
-        {
-            private int velocity;
-            private Boolean isChanged;
-            public Velocity(string velocity)
-            {
-                this.velocity = int.Parse(velocity);
-                isChanged = false;
-            }
-            public Velocity(int velocity)
-            {
-                this.velocity = velocity;
-                isChanged = false;
-            }
-            public void Set(string velocity) { this.velocity = int.Parse(velocity); isChanged = true; }
-            public void Set(int velocity) { this.velocity = velocity; isChanged = true; }
-            public int Get() => velocity;
-            public Boolean IsChanged() => isChanged;
-        }
+        
         public void InitVelocity(string velocity) => this.velocity = new Entry<int>(int.Parse(velocity));
         public void InitVelocity(int velocity) => this.velocity = new Entry<int>(velocity);
-        public void SetVelocity(string velocity) => this.velocity.Set(int.Parse(velocity));
-        public void SetVelocity(int velocity) => this.velocity.Set(velocity);
+        public void SetVelocity(string velocity)
+        {
+            if (HasVelocity()) { this.velocity.Set(int.Parse(velocity)); }
+            else
+            {
+                this.velocity = new Entry<int>(0);
+                this.velocity.Set(int.Parse(velocity));
+            }
+        }
+
+        public void SetVelocity(int velocity)
+        {
+            if (HasVelocity()) { this.velocity.Set(velocity); }
+            else
+            {
+                this.velocity = new Entry<int>(0);
+                this.velocity.Set(velocity);
+            }
+        }
+
         public int GetVelocity() => velocity.Get();
         public Boolean VelocityIsChanged() => velocity.IsChanged();
         public Boolean HasVelocity() => (velocity != null);
+        
 
         public void InitIntensity(string intensity) => this.intensity = new Entry<int>(int.Parse(intensity));
         public void InitIntensity(int intensity) => this.intensity = new Entry<int>(intensity);
-        public void SetIntensity(string intensity) => this.intensity.Set(int.Parse(intensity));
-        public void SetIntensity(int intensity) => this.intensity.Set(intensity);
+        public void SetIntensity(string intensity)
+        {
+            if (HasIntensity()) { this.intensity.Set(int.Parse(intensity)); }
+            else
+            {
+                this.intensity = new Entry<int>(0);
+                this.intensity.Set(int.Parse(intensity));
+            }
+        }
+
+        public void SetIntensity(int intensity)
+        {
+            if (HasIntensity()) { this.intensity.Set(intensity); }
+            else
+            {
+                this.intensity = new Entry<int>(0);
+                this.intensity.Set(intensity);
+            }
+        }
+
         public int GetIntensity() => intensity.Get();
         public Boolean IntensityIsChanged() => intensity.IsChanged();
         public Boolean HasIntensity() => (intensity != null);
-        
+
+
         public void InitMod(string mod) => this.mod = new Entry<int>(int.Parse(mod));
         public void InitMod(int mod) => this.mod = new Entry<int>(mod);
-        public void SetMod(string mod) => this.mod.Set(int.Parse(mod));
-        public void SetMod(int mod) => this.mod.Set(mod);
+        public void SetMod(string mod)
+        {
+            if (HasMod()) { this.mod.Set(int.Parse(mod)); }
+            else
+            {
+                this.mod = new Entry<int>(0);
+                this.mod.Set(int.Parse(mod));
+            }
+        }
+
+        public void SetMod(int mod)
+        {
+            if (HasMod()) { this.mod.Set(mod); }
+            else
+            {
+                this.mod = new Entry<int>(0);
+                this.mod.Set(mod);
+            }
+        }
+
         public int GetMod() => mod.Get();
         public Boolean ModIsChanged() => mod.IsChanged();
         public Boolean HasMod() => (mod != null);
 
+
+
         public void InitFlags(string flags) => this.flags = new Entry<string>(flags);
-        public void SetFlags(string flags) => this.flags.Set(flags);
+        public void SetFlags(string flags)
+        {
+            if (HasFlags()) { this.flags.Set(flags); }
+            else
+            {
+                this.flags = new Entry<string>("");
+                this.flags.Set(flags);
+            }
+        }
+
         public string GetFlags() => flags.Get();
         public Boolean FlagsIsChanged() => flags.IsChanged();
         public Boolean HasFlags() => (flags != null);
+
 
         private class Pitches
         {
@@ -240,24 +378,68 @@ namespace utauPlugin
 
         }
         public void InitPitches(string pitches) => this.pitches=new Pitches(pitches);
-        public void SetPitches(string pitches) => this.pitches.Set(pitches);
-        public void SetPitches(List<int> pitches) => this.pitches.Set(pitches);
+        public void SetPitches(string pitches)
+        {
+            if (HasPitches()) { this.pitches.Set(pitches); }
+            else
+            {
+                this.pitches = new Pitches("");
+                this.pitches.Set(pitches);
+            }
+        }
+
+        public void SetPitches(List<int> pitches)
+        {
+            if (HasPitches()) { this.pitches.Set(pitches); }
+            else
+            {
+                this.pitches = new Pitches("");
+                this.pitches.Set(pitches);
+            }
+        }
+
         public List<int> GetPitches() => pitches.Get();
         public Boolean PitchesIsChanged() => pitches.IsChanged();
         public Boolean HasPitches() => (pitches != null);
-        
+
         public void InitPbStart(string pbStart) => this.pbStart = new Entry<float>(float.Parse(pbStart));
-        public void InitPbStart(int pbStart) => this.pbStart = new Entry<float>(pbStart);
         public void InitPbStart(float pbStart) => this.pbStart = new Entry<float>(pbStart);
-        public void SetPbStart(string pbStart) => this.pbStart.Set(float.Parse(pbStart));
-        public void SetPbStart(int pbStart) => this.pbStart.Set(pbStart);
-        public void SetPbStart(float pbStart) => this.pbStart.Set(pbStart);
+        public void SetPbStart(string pbStart)
+        {
+            if (HasPbStart()) { this.pbStart.Set(float.Parse(pbStart)); }
+            else
+            {
+                this.pbStart = new Entry<float>(0);
+                this.pbStart.Set(float.Parse(pbStart));
+            }
+        }
+        public void SetPbStart(float pbStart)
+        {
+            if (HasPbStart()) { this.pbStart.Set(pbStart); }
+            else
+            {
+                this.pbStart = new Entry<float>(0);
+                this.pbStart.Set(pbStart);
+            }
+        }
+
         public float GetPbStart() => pbStart.Get();
         public Boolean PbStartIsChanged() => pbStart.IsChanged();
         public Boolean HasPbStart() => (pbStart != null);
-        
+
+
         public void InitPbType(string pbType) => this.pbType = new Entry<string>(pbType);
-        public void SetPbType(string pbType) => this.pbType.Set(pbType);
+        public void SetPbType(string pbType)
+        {
+            if (HasPbType()){ this.pbType.Set(pbType);} 
+            
+            else
+            {
+                this.pbType = new Entry<string>("");
+                this.pbType.Set(pbType);
+            }
+        }
+
         public string GetPbType() => pbType.Get();
         public Boolean PbTypeIsChanged() => pbType.IsChanged();
         public Boolean HasPbType() => (pbType != null);
@@ -266,90 +448,254 @@ namespace utauPlugin
         public void InitMode2Pitch() => mode2Pitch = new Mode2Pitch();
 
         public void InitPbs(string pbs) => mode2Pitch.InitPbs(pbs);
-        public void SetPbs(string pbs) => mode2Pitch.SetPbs(pbs);
+        public void SetPbs(string pbs)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbs(pbs); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbs(pbs);
+            }
+        }
+
         public string GetPbs() => mode2Pitch.GetPbs();
         public float GetPbsTime() => mode2Pitch.GetPbsTime();
         public float GetPbsHeight() => mode2Pitch.GetPbsHeight();
         public Boolean PbsIsChanged() => mode2Pitch.PbsIsChanged();
 
         public void InitPbw(string pbw) => mode2Pitch.InitPbw(pbw);
-        public void SetPbw(string pbw) => mode2Pitch.SetPbw(pbw);
-        public void SetPbw(string pbw, int point) => mode2Pitch.SetPbw(pbw, point);
-        public void SetPbw(int pbw, int point) => mode2Pitch.SetPbw(pbw, point);
-        public void SetPbw(List<float> pbw) => mode2Pitch.SetPbw(pbw);
+        public void SetPbw(string pbw)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbw(pbw);
+            }
+        }
+
+        public void SetPbw(string pbw, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbw(pbw, point);
+            }
+        }
+
+        public void SetPbw(int pbw, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbw(pbw, point);
+            }
+        }
+
+        public void SetPbw(List<float> pbw)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbw(pbw);
+            }
+        }
+
         public List<float> GetPbw() => mode2Pitch.GetPbw();
         public Boolean PbwIsChanged() => mode2Pitch.PbwIsChanged();
 
         public void InitPby(string pby) => mode2Pitch.InitPby(pby);
-        public void SetPby(string pby) => mode2Pitch.SetPby(pby);
-        public void SetPby(string pby, int point) => mode2Pitch.SetPby(pby, point);
-        public void SetPby(int pby, int point) => mode2Pitch.SetPby(pby, point);
-        public void SetPby(List<float> pby) => mode2Pitch.SetPby(pby);
+        public void SetPby(string pby)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPby(pby); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPby(pby);
+            }
+        }
+
+        public void SetPby(string pby, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPby(pby, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPby(pby, point);
+            }
+        }
+
+        public void SetPby(int pby, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPby(pby, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPby(pby, point);
+            }
+        }
+
+        public void SetPby(List<float> pby)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPby(pby); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPby(pby);
+            }
+        }
+
         public List<float> GetPby() => mode2Pitch.GetPby();
         public Boolean PbyIsChanged() => mode2Pitch.PbyIsChanged();
 
-        public void InitPbm(string pbm) => mode2Pitch.InitPbm(pbm);
-        public void SetPbm(string pbm) => mode2Pitch.SetPbm(pbm);
-        public void SetPbm(string pbm, int point) => mode2Pitch.SetPbm(pbm, point);
-        public void SetPbm(List<string> pbm) => mode2Pitch.SetPbm(pbm);
+        public void InitPbm(string pbm) => mode2Pitch.InitPbm(pbm); public void SetPbm(string pbm)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbm(pbm); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbm(pbm);
+            }
+        }
+
+        public void SetPbm(string pbm, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbm(pbm, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbm(pbm, point);
+            }
+        }
+
+
+        public void SetPbm(List<string> pbm)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbm(pbm); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbm(pbm);
+            }
+        }
         public List<string> GetPbm() => mode2Pitch.GetPbm();
         public Boolean PbmIsChanged() => mode2Pitch.PbmIsChanged();
 
         public void InitEnvelope() => envelope = new Envelope();
         public void InitEnvelope(string envelope) => this.envelope = new Envelope(envelope);
-        public void SetEnvelope(string envelope) => this.envelope.Set(envelope);
+        public void SetEnvelope(string envelope)
+        {
+            if (HasEnvelope()) { this.envelope.Set(envelope); }
+            else
+            {
+                this.envelope = new Envelope();
+                this.envelope.Set(envelope);
+            }
+        }
+
         public string GetEnvelope() => envelope.Get();
         public Boolean EnvelopeIsChanged() => envelope.IsChanged();
         public Boolean HasEnvelope() => (envelope != null);
 
         public void InitVibrato() => vibrato = new Vibrato();
         public void InitVibrato(string vibrato) => this.vibrato = new Vibrato(vibrato);
-        public void SetVibrato(string vibrato) => this.vibrato.Set(vibrato);
+        public void SetVibrato(string vibrato)
+        {
+            if (HasVibrato()) { this.vibrato.Set(vibrato); }
+            else
+            {
+                this.vibrato = new Vibrato();
+                this.vibrato.Set(vibrato);
+            }
+        }
+
         public string GetVibrato() => vibrato.Get();
         public Boolean VibratoIsChanged() => vibrato.IsChanged();
         public Boolean HasVibrato() => (vibrato != null);
-        
+
         public void InitLabel(string label) => this.label = new Entry<string>(label);
-        public void SetLabel(string label) => this.label.Set(label);
+        public void SetLabel(string label)
+        {
+            if (HasLabel()) { this.label.Set(label); }
+            else
+            {
+                this.label = new Entry<string>("");
+                this.label.Set(label);
+            }
+        }
+
         public string GetLabel() => label.Get();
         public Boolean LabelIsChanged() => label.IsChanged();
         public Boolean HasLabel() => (label != null);
-        
+
+
+
         public void InitDirect(Boolean direct) => this.direct = new Entry<Boolean>(direct);
         public void InitDirect(string direct) => this.direct = new Entry<Boolean>(Boolean.Parse(direct));
-        public void SetDirect(Boolean direct) => this.direct.Set(direct);
-        public void SetDirect(string direct) => this.direct.Set(Boolean.Parse(direct));
+        public void SetDirect(Boolean direct)
+        {
+            if (HasDirect()) { this.direct.Set(direct); }
+            else
+            {
+                this.direct = new Entry<Boolean>(false);
+                this.direct.Set(direct);
+            }
+            
+        }
+
+        public void SetDirect(string direct)
+        {
+            if (HasDirect()) { this.direct.Set(Boolean.Parse(direct)); }
+            else
+            {
+                this.direct = new Entry<Boolean>(false);
+                this.direct.Set(Boolean.Parse(direct));
+            }
+        }
+
         public Boolean GetDirect() => this.direct.Get();
         public Boolean DirectIsChanged() => direct.IsChanged();
         public Boolean HasDirect() => (direct != null);
 
 
+
         public void InitRegion(string region) => this.region = new Entry<string>(region);
-        public void SetRegion(string region) => this.region.Set(region);
+        public void SetRegion(string region)
+        {
+            if (HasRegion()) { this.region.Set(region); }
+            else
+            {
+                this.region = new Entry<string>("");
+                this.region.Set(region);
+            }
+        }
+
         public string GetRegion() => region.Get();
         public Boolean RegionIsChanged() => region.IsChanged();
         public Boolean HasRegion() => (region != null);
 
 
-        private class RegionEnd
-        {
-            private string regionEnd;
-            private Boolean isChanged;
-            public RegionEnd(string regionEnd)
-            {
-                this.regionEnd = regionEnd;
-                isChanged = false;
-            }
-            public void Set(string regionEnd) { this.regionEnd = regionEnd; isChanged = true; }
-            public string Get() => regionEnd;
-            public Boolean IsChanged() => isChanged;
 
-        }
+
         public void InitRegionEnd(string regionEnd) => this.regionEnd = new Entry<string>(regionEnd);
-        public void SetRegionEnd(string regionEnd) => this.regionEnd.Set(regionEnd);
+        public void SetRegionEnd(string regionEnd)
+        {
+            if (HasRegionEnd()) { this.regionEnd.Set(regionEnd); }
+            else
+            {
+                this.regionEnd = new Entry<string>("");
+                this.regionEnd.Set(regionEnd);
+            }
+        }
+
         public string GetRegionEnd() => regionEnd.Get();
         public Boolean RegionEndIsChanged() => regionEnd.IsChanged();
         public Boolean HasRegionEnd() => (regionEnd != null);
+
+
 
     }
 }

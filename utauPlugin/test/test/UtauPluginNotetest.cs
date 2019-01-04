@@ -624,7 +624,488 @@ namespace UtauPluginNoteTest
             Assert.IsTrue(note.GetRegionEnd() == "‚ ");
             Assert.IsTrue(note.RegionEndIsChanged());
         }
+        [TestMethod]
+        public void NoInitSetPreStr()
+        {
+            note.SetPre("120.0");
+            Assert.IsTrue(note.GetPre() == 120.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+            note.SetPre("121");
+            Assert.IsTrue(note.GetPre() == 121.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+        }
+        [TestMethod]
+        public void NoInitSetPreInt()
+        {
+            note.SetPre(120);
+            Assert.IsTrue(note.GetPre() == 120.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+            note.SetPre(121);
+            Assert.IsTrue(note.GetPre() == 121.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+        }
+        [TestMethod]
+        public void NoInitSetPreFloat()
+        {
+            note.SetPre(120.0f);
+            Assert.IsTrue(note.GetPre() == 120.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+            note.SetPre(121.0f);
+            Assert.IsTrue(note.GetPre() == 121.0f);
+            Assert.IsTrue(note.PreIsChanged());
+            Assert.IsTrue(note.PreHasValue());
+        }
 
+
+        [TestMethod]
+        public void NoInitSetAtPreStr()
+        {
+            note.SetAtPre("120.0");
+            Assert.IsTrue(note.GetAtPre() == 120.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+            note.SetAtPre("121");
+            Assert.IsTrue(note.GetAtPre() == 121.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtPreInt()
+        {
+            note.SetAtPre(120);
+            Assert.IsTrue(note.GetAtPre() == 120.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+            note.SetAtPre(121);
+            Assert.IsTrue(note.GetAtPre() == 121.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtPreFloat()
+        {
+            note.SetAtPre(120.0f);
+            Assert.IsTrue(note.GetAtPre() == 120.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+            note.SetAtPre(121.0f);
+            Assert.IsTrue(note.GetAtPre() == 121.0f);
+            Assert.IsTrue(note.AtPreIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetAtFileName()
+        {
+            note.SetAtFileName("‚¢");
+            Assert.IsTrue(note.GetAtFileName() == "‚¢");
+            Assert.IsTrue(note.AtFileNameIsChanged());
+            note.SetAtFileName("‚ ");
+            Assert.IsTrue(note.GetAtFileName() == "‚ ");
+            Assert.IsTrue(note.AtFileNameIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetAtAlias()
+        {
+            note.SetAtAlias("‚¢");
+            Assert.IsTrue(note.GetAtAlias() == "‚¢");
+            Assert.IsTrue(note.AtAliasIsChanged());
+            note.SetAtAlias("‚ ");
+            Assert.IsTrue(note.GetAtAlias() == "‚ ");
+            Assert.IsTrue(note.AtAliasIsChanged());
+        }
+
+        [TestMethod]
+        public void NoInitSetOveStr()
+        {
+            note.SetOve("120.0");
+            Assert.IsTrue(note.GetOve() == 120.0f);
+            Assert.IsTrue(note.OveIsChanged());
+            note.SetOve("121");
+            Assert.IsTrue(note.GetOve() == 121.0f);
+            Assert.IsTrue(note.OveIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetOveInt()
+        {
+            note.SetOve(120);
+            Assert.IsTrue(note.GetOve() == 120.0f);
+            Assert.IsTrue(note.OveIsChanged());
+            note.SetOve(121);
+            Assert.IsTrue(note.GetOve() == 121.0f);
+            Assert.IsTrue(note.OveIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetOveFloat()
+        {
+            note.SetOve(120.0f);
+            Assert.IsTrue(note.GetOve() == 120.0f);
+            Assert.IsTrue(note.OveIsChanged());
+            note.SetOve(121.0f);
+            Assert.IsTrue(note.GetOve() == 121.0f);
+            Assert.IsTrue(note.OveIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetAtOveStr()
+        {
+            note.SetAtOve("120.0");
+            Assert.IsTrue(note.GetAtOve() == 120.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+            note.SetAtOve("121");
+            Assert.IsTrue(note.GetAtOve() == 121.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtOveInt()
+        {
+            note.SetAtOve(120);
+            Assert.IsTrue(note.GetAtOve() == 120.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+            note.SetAtOve(121);
+            Assert.IsTrue(note.GetAtOve() == 121.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtOveFloat()
+        {
+            note.SetAtOve(120.0f);
+            Assert.IsTrue(note.GetAtOve() == 120.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+            note.SetAtOve(121.0f);
+            Assert.IsTrue(note.GetAtOve() == 121.0f);
+            Assert.IsTrue(note.AtOveIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetStpStr()
+        {
+            note.SetStp("120.0");
+            Assert.IsTrue(note.GetStp() == 120.0f);
+            Assert.IsTrue(note.StpIsChanged());
+            note.SetStp("121");
+            Assert.IsTrue(note.GetStp() == 121.0f);
+            Assert.IsTrue(note.StpIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetStpInt()
+        {
+            note.SetStp(120);
+            Assert.IsTrue(note.GetStp() == 120.0f);
+            Assert.IsTrue(note.StpIsChanged());
+            note.SetStp(121);
+            Assert.IsTrue(note.GetStp() == 121.0f);
+            Assert.IsTrue(note.StpIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetStpFloat()
+        {
+            note.SetStp(120.0f);
+            Assert.IsTrue(note.GetStp() == 120.0f);
+            Assert.IsTrue(note.StpIsChanged());
+            note.SetStp(121.0f);
+            Assert.IsTrue(note.GetStp() == 121.0f);
+            Assert.IsTrue(note.StpIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetAtStpStr()
+        {
+            note.SetAtStp("120.0");
+            Assert.IsTrue(note.GetAtStp() == 120.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+            note.SetAtStp("121");
+            Assert.IsTrue(note.GetAtStp() == 121.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtStpInt()
+        {
+            note.SetAtStp(120);
+            Assert.IsTrue(note.GetAtStp() == 120.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+            note.SetAtStp(121);
+            Assert.IsTrue(note.GetAtStp() == 121.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetAtStpFloat()
+        {
+            note.SetAtStp(120.0f);
+            Assert.IsTrue(note.GetAtStp() == 120.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+            note.SetAtStp(121.0f);
+            Assert.IsTrue(note.GetAtStp() == 121.0f);
+            Assert.IsTrue(note.AtStpIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetVelocityStr()
+        {
+            note.SetVelocity("480");
+            Assert.IsTrue(note.GetVelocity() == 480);
+            Assert.IsTrue(note.VelocityIsChanged());
+            note.SetVelocity("240");
+            Assert.IsTrue(note.GetVelocity() == 240);
+            Assert.IsTrue(note.VelocityIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetVelocityInt()
+        {
+            note.SetVelocity(480);
+            Assert.IsTrue(note.GetVelocity() == 480);
+            Assert.IsTrue(note.VelocityIsChanged());
+            note.SetVelocity(240);
+            Assert.IsTrue(note.GetVelocity() == 240);
+            Assert.IsTrue(note.VelocityIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetIntensityStr()
+        {
+            note.SetIntensity("480");
+            Assert.IsTrue(note.GetIntensity() == 480);
+            Assert.IsTrue(note.IntensityIsChanged());
+            note.SetIntensity("240");
+            Assert.IsTrue(note.GetIntensity() == 240);
+            Assert.IsTrue(note.IntensityIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetIntensityInt()
+        {
+            note.SetIntensity(480);
+            Assert.IsTrue(note.GetIntensity() == 480);
+            Assert.IsTrue(note.IntensityIsChanged());
+            note.SetIntensity(240);
+            Assert.IsTrue(note.GetIntensity() == 240);
+            Assert.IsTrue(note.IntensityIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetModStr()
+        {
+            note.SetMod("480");
+            Assert.IsTrue(note.GetMod() == 480);
+            Assert.IsTrue(note.ModIsChanged());
+            note.SetMod("240");
+            Assert.IsTrue(note.GetMod() == 240);
+            Assert.IsTrue(note.ModIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetModInt()
+        {
+            note.SetMod(480);
+            Assert.IsTrue(note.GetMod() == 480);
+            Assert.IsTrue(note.ModIsChanged());
+            note.SetMod(240);
+            Assert.IsTrue(note.GetMod() == 240);
+            Assert.IsTrue(note.ModIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetFlags()
+        {
+            note.SetFlags("‚¢");
+            Assert.IsTrue(note.GetFlags() == "‚¢");
+            Assert.IsTrue(note.FlagsIsChanged());
+            note.SetFlags("‚ ");
+            Assert.IsTrue(note.GetFlags() == "‚ ");
+            Assert.IsTrue(note.FlagsIsChanged());
+        }
+
+        [TestMethod]
+        public void NoInitSetPitches()
+        {
+            note.SetPitches("0,1,2,3,4,5");
+            Assert.IsTrue(note.GetPitches()[0] == 0);
+            Assert.IsTrue(note.GetPitches()[1] == 1);
+            Assert.IsTrue(note.GetPitches()[2] == 2);
+            Assert.IsTrue(note.GetPitches()[3] == 3);
+            Assert.IsTrue(note.GetPitches()[4] == 4);
+            Assert.IsTrue(note.GetPitches()[5] == 5);
+            Assert.IsTrue(note.GetPitches().Count == 6);
+            Assert.IsTrue(note.PitchesIsChanged());
+            note.SetPitches("6,7,8,9,10");
+            Assert.IsTrue(note.GetPitches()[0] == 6);
+            Assert.IsTrue(note.GetPitches()[1] == 7);
+            Assert.IsTrue(note.GetPitches()[2] == 8);
+            Assert.IsTrue(note.GetPitches()[3] == 9);
+            Assert.IsTrue(note.GetPitches()[4] == 10);
+            Assert.IsTrue(note.GetPitches().Count == 5);
+            Assert.IsTrue(note.PitchesIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPbStartStr()
+        {
+            note.SetPbStart("120.0");
+            Assert.IsTrue(note.GetPbStart() == 120.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+            note.SetPbStart("121");
+            Assert.IsTrue(note.GetPbStart() == 121.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPbStartInt()
+        {
+            note.SetPbStart(120);
+            Assert.IsTrue(note.GetPbStart() == 120.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+            note.SetPbStart(121);
+            Assert.IsTrue(note.GetPbStart() == 121.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPbStartFloat()
+        {
+            note.SetPbStart(120.0f);
+            Assert.IsTrue(note.GetPbStart() == 120.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+            note.SetPbStart(121.0f);
+            Assert.IsTrue(note.GetPbStart() == 121.0f);
+            Assert.IsTrue(note.PbStartIsChanged());
+        }
+
+
+
+
+        [TestMethod]
+        public void NoInitSetPbs()
+        {
+            note.SetPbs("10;20");
+            Assert.IsTrue(note.GetPbs() == "10;20");
+            Assert.IsTrue(note.GetPbsTime() == 10);
+            Assert.IsTrue(note.GetPbsHeight() == 20);
+            Assert.IsTrue(note.PbsIsChanged());
+            note.SetPbs("30;50");
+            Assert.IsTrue(note.GetPbs() == "30;50");
+            Assert.IsTrue(note.GetPbsTime() == 30);
+            Assert.IsTrue(note.GetPbsHeight() == 50);
+            Assert.IsTrue(note.PbsIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPbw()
+        {
+            note.SetPbw("0,1,2");
+            Assert.IsTrue(note.GetPbw()[0] == 0);
+            Assert.IsTrue(note.GetPbw()[1] == 1);
+            Assert.IsTrue(note.GetPbw()[2] == 2);
+            Assert.IsTrue(note.GetPbw().Count == 3);
+            Assert.IsTrue(note.PbwIsChanged());
+            note.SetPbw("2,3");
+            Assert.IsTrue(note.GetPbw()[0] == 2);
+            Assert.IsTrue(note.GetPbw()[1] == 3);
+            Assert.IsTrue(note.GetPbw().Count == 2);
+            Assert.IsTrue(note.PbwIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPby()
+        {
+            note.SetPby("0,1,2,");
+            Assert.IsTrue(note.GetPby()[0] == 0);
+            Assert.IsTrue(note.GetPby()[1] == 1);
+            Assert.IsTrue(note.GetPby()[2] == 2);
+            Assert.IsTrue(note.GetPby()[3] == 0);
+            Assert.IsTrue(note.GetPby().Count == 4);
+            Assert.IsTrue(note.PbyIsChanged());
+            note.SetPby("2,3");
+            Assert.IsTrue(note.GetPby()[0] == 2);
+            Assert.IsTrue(note.GetPby()[1] == 3);
+            Assert.IsTrue(note.GetPby().Count == 2);
+            Assert.IsTrue(note.PbyIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetPbm()
+        {
+            note.SetPbm(",r,j");
+            Assert.IsTrue(note.GetPbm()[0] == "");
+            Assert.IsTrue(note.GetPbm()[1] == "r");
+            Assert.IsTrue(note.GetPbm()[2] == "j");
+            Assert.IsTrue(note.GetPbm().Count == 3);
+            Assert.IsTrue(note.PbmIsChanged());
+            note.SetPbm("s,j");
+            Assert.IsTrue(note.GetPbm()[0] == "s");
+            Assert.IsTrue(note.GetPbm()[1] == "j");
+            Assert.IsTrue(note.GetPbm().Count == 2);
+            Assert.IsTrue(note.PbmIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetEnvelope()
+        {
+            note.SetEnvelope("0,5,30,100,100,100,100");
+            Assert.IsTrue(note.GetEnvelope() == "0,5,30,100,100,100,100");
+            Assert.IsTrue(note.envelope.GetP(1) == 5.0f);
+        }
+        [TestMethod]
+        public void NoInitSetVibrato()
+        {
+            note.SetVibrato("0,1,2,30,30,30,30");
+            Assert.IsTrue(note.GetVibrato() == "0,1,2,30,30,30,30,0");
+            Assert.IsTrue(note.vibrato.GetDepth() == 2);
+        }
+        [TestMethod]
+        public void NoInitSetLabel()
+        {
+            note.SetLabel("‚¢");
+            Assert.IsTrue(note.GetLabel() == "‚¢");
+            Assert.IsTrue(note.LabelIsChanged());
+            note.SetLabel("‚ ");
+            Assert.IsTrue(note.GetLabel() == "‚ ");
+            Assert.IsTrue(note.LabelIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetDirectStr()
+        {
+            note.SetDirect("true");
+            Assert.IsTrue(note.GetDirect());
+            Assert.IsTrue(note.DirectIsChanged());
+            note.SetDirect("false");
+            Assert.IsFalse(note.GetDirect());
+            Assert.IsTrue(note.DirectIsChanged());
+            note.SetDirect("True");
+            Assert.IsTrue(note.GetDirect());
+            Assert.IsTrue(note.DirectIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetDirect()
+        {
+            note.SetDirect(true);
+            Assert.IsTrue(note.GetDirect());
+            Assert.IsTrue(note.DirectIsChanged());
+            note.SetDirect(false);
+            Assert.IsFalse(note.GetDirect());
+            Assert.IsTrue(note.DirectIsChanged());
+        }
+        [TestMethod]
+        public void NoInitSetRegion()
+        {
+            note.SetRegion("‚¢");
+            Assert.IsTrue(note.GetRegion() == "‚¢");
+            Assert.IsTrue(note.RegionIsChanged());
+            note.SetRegion("‚ ");
+            Assert.IsTrue(note.GetRegion() == "‚ ");
+            Assert.IsTrue(note.RegionIsChanged());
+        }
+
+
+        [TestMethod]
+        public void NoInitSetRegionEnd()
+        {
+            note.SetRegionEnd("‚¢");
+            Assert.IsTrue(note.GetRegionEnd() == "‚¢");
+            Assert.IsTrue(note.RegionEndIsChanged());
+            note.SetRegionEnd("‚ ");
+            Assert.IsTrue(note.GetRegionEnd() == "‚ ");
+            Assert.IsTrue(note.RegionEndIsChanged());
+        }
 
     }
 }
