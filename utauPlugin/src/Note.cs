@@ -108,7 +108,7 @@ namespace utauPlugin
         }
 
         public float GetAtPre() => atPre.Get();
-        public Boolean AtPreIsChanged() => atPre.IsChanged();
+        public Boolean AtPreIsChanged() => (HasAtPre() && atPre.IsChanged());
         public Boolean HasAtPre() => (atPre != null);
         
         public void InitAtFileName(string atFileName) => this.atFileName = new Entry<string>(atFileName);
@@ -123,7 +123,7 @@ namespace utauPlugin
         }
 
         public string GetAtFileName() => atFileName.Get();
-        public Boolean AtFileNameIsChanged() => atFileName.IsChanged();
+        public Boolean AtFileNameIsChanged() => (HasAtFileName() && atFileName.IsChanged());
         public Boolean HasAtFileName() => (atFileName != null);
 
         public void InitAtAlias(string atAlias) => this.atAlias = new Entry<string>(atAlias);
@@ -138,7 +138,7 @@ namespace utauPlugin
         }
 
         public string GetAtAlias() => atAlias.Get();
-        public Boolean AtAliasIsChanged() => atAlias.IsChanged();
+        public Boolean AtAliasIsChanged() => (HasAtAlias() && atAlias.IsChanged());
         public Boolean HasAtAlias() => (atAlias != null);
 
 
@@ -164,7 +164,7 @@ namespace utauPlugin
         }
 
         public float GetOve() => ove.Get();
-        public Boolean OveIsChanged() => ove.IsChanged();
+        public Boolean OveIsChanged() => (HasOve() && ove.IsChanged());
         public Boolean HasOve() => (ove != null);
 
 
@@ -190,7 +190,7 @@ namespace utauPlugin
         }
 
         public float GetAtOve() => atOve.Get();
-        public Boolean AtOveIsChanged() => atOve.IsChanged();
+        public Boolean AtOveIsChanged() => (HasAtOve() && atOve.IsChanged());
         public Boolean HasAtOve() => (atOve != null);
 
 
@@ -216,7 +216,7 @@ namespace utauPlugin
         }
 
         public float GetStp() => stp.Get();
-        public Boolean StpIsChanged() => stp.IsChanged();
+        public Boolean StpIsChanged() => (HasStp() && stp.IsChanged());
         public Boolean HasStp() => (stp != null);
 
 
@@ -242,7 +242,7 @@ namespace utauPlugin
         }
 
         public float GetAtStp() => atStp.Get();
-        public Boolean AtStpIsChanged() => atStp.IsChanged();
+        public Boolean AtStpIsChanged() => (HasAtStp() && atStp.IsChanged());
         public Boolean HasAtStp() => (atStp != null);
         
         public void InitVelocity(string velocity) => this.velocity = new Entry<int>(int.Parse(velocity));
@@ -268,7 +268,7 @@ namespace utauPlugin
         }
 
         public int GetVelocity() => velocity.Get();
-        public Boolean VelocityIsChanged() => velocity.IsChanged();
+        public Boolean VelocityIsChanged() => (HasVelocity() && velocity.IsChanged());
         public Boolean HasVelocity() => (velocity != null);
         
 
@@ -295,7 +295,7 @@ namespace utauPlugin
         }
 
         public int GetIntensity() => intensity.Get();
-        public Boolean IntensityIsChanged() => intensity.IsChanged();
+        public Boolean IntensityIsChanged() => (HasIntensity() && intensity.IsChanged());
         public Boolean HasIntensity() => (intensity != null);
 
 
@@ -322,7 +322,7 @@ namespace utauPlugin
         }
 
         public int GetMod() => mod.Get();
-        public Boolean ModIsChanged() => mod.IsChanged();
+        public Boolean ModIsChanged() => (HasMod() && mod.IsChanged());
         public Boolean HasMod() => (mod != null);
 
 
@@ -339,7 +339,7 @@ namespace utauPlugin
         }
 
         public string GetFlags() => flags.Get();
-        public Boolean FlagsIsChanged() => flags.IsChanged();
+        public Boolean FlagsIsChanged() => (HasFlags() && flags.IsChanged());
         public Boolean HasFlags() => (flags != null);
 
 
@@ -399,7 +399,7 @@ namespace utauPlugin
         }
 
         public List<int> GetPitches() => pitches.Get();
-        public Boolean PitchesIsChanged() => pitches.IsChanged();
+        public Boolean PitchesIsChanged() => (HasPitches() && pitches.IsChanged());
         public Boolean HasPitches() => (pitches != null);
 
         public void InitPbStart(string pbStart) => this.pbStart = new Entry<float>(float.Parse(pbStart));
@@ -424,7 +424,7 @@ namespace utauPlugin
         }
 
         public float GetPbStart() => pbStart.Get();
-        public Boolean PbStartIsChanged() => pbStart.IsChanged();
+        public Boolean PbStartIsChanged() => (HasPbStart() && pbStart.IsChanged());
         public Boolean HasPbStart() => (pbStart != null);
 
 
@@ -441,7 +441,7 @@ namespace utauPlugin
         }
 
         public string GetPbType() => pbType.Get();
-        public Boolean PbTypeIsChanged() => pbType.IsChanged();
+        public Boolean PbTypeIsChanged() => (HasPbType() && pbType.IsChanged());
         public Boolean HasPbType() => (pbType != null);
         
         public Boolean HasMode2Pitch() => (mode2Pitch != null);
@@ -461,7 +461,7 @@ namespace utauPlugin
         public string GetPbs() => mode2Pitch.GetPbs();
         public float GetPbsTime() => mode2Pitch.GetPbsTime();
         public float GetPbsHeight() => mode2Pitch.GetPbsHeight();
-        public Boolean PbsIsChanged() => mode2Pitch.PbsIsChanged();
+        public Boolean PbsIsChanged() => (HasMode2Pitch() && mode2Pitch.PbsIsChanged());
 
         public void InitPbw(string pbw) => mode2Pitch.InitPbw(pbw);
         public void SetPbw(string pbw)
@@ -505,7 +505,7 @@ namespace utauPlugin
         }
 
         public List<float> GetPbw() => mode2Pitch.GetPbw();
-        public Boolean PbwIsChanged() => mode2Pitch.PbwIsChanged();
+        public Boolean PbwIsChanged() => (HasMode2Pitch() && mode2Pitch.PbwIsChanged());
 
         public void InitPby(string pby) => mode2Pitch.InitPby(pby);
         public void SetPby(string pby)
@@ -549,7 +549,7 @@ namespace utauPlugin
         }
 
         public List<float> GetPby() => mode2Pitch.GetPby();
-        public Boolean PbyIsChanged() => mode2Pitch.PbyIsChanged();
+        public Boolean PbyIsChanged() => (HasMode2Pitch() && mode2Pitch.PbyIsChanged());
 
         public void InitPbm(string pbm) => mode2Pitch.InitPbm(pbm); public void SetPbm(string pbm)
         {
@@ -582,7 +582,7 @@ namespace utauPlugin
             }
         }
         public List<string> GetPbm() => mode2Pitch.GetPbm();
-        public Boolean PbmIsChanged() => mode2Pitch.PbmIsChanged();
+        public Boolean PbmIsChanged() => (HasMode2Pitch() && mode2Pitch.PbmIsChanged());
 
         public void InitEnvelope() => envelope = new Envelope();
         public void InitEnvelope(string envelope) => this.envelope = new Envelope(envelope);
@@ -597,7 +597,7 @@ namespace utauPlugin
         }
 
         public string GetEnvelope() => envelope.Get();
-        public Boolean EnvelopeIsChanged() => envelope.IsChanged();
+        public Boolean EnvelopeIsChanged() => (HasEnvelope() && envelope.IsChanged());
         public Boolean HasEnvelope() => (envelope != null);
 
         public void InitVibrato() => vibrato = new Vibrato();
@@ -613,7 +613,7 @@ namespace utauPlugin
         }
 
         public string GetVibrato() => vibrato.Get();
-        public Boolean VibratoIsChanged() => vibrato.IsChanged();
+        public Boolean VibratoIsChanged() => (HasVibrato() && vibrato.IsChanged());
         public Boolean HasVibrato() => (vibrato != null);
 
         public void InitLabel(string label) => this.label = new Entry<string>(label);
@@ -628,7 +628,7 @@ namespace utauPlugin
         }
 
         public string GetLabel() => label.Get();
-        public Boolean LabelIsChanged() => label.IsChanged();
+        public Boolean LabelIsChanged() => (HasLabel() && label.IsChanged());
         public Boolean HasLabel() => (label != null);
 
 
@@ -657,7 +657,7 @@ namespace utauPlugin
         }
 
         public Boolean GetDirect() => this.direct.Get();
-        public Boolean DirectIsChanged() => direct.IsChanged();
+        public Boolean DirectIsChanged() => (HasDirect() && direct.IsChanged());
         public Boolean HasDirect() => (direct != null);
 
 
@@ -674,7 +674,7 @@ namespace utauPlugin
         }
 
         public string GetRegion() => region.Get();
-        public Boolean RegionIsChanged() => region.IsChanged();
+        public Boolean RegionIsChanged() => (HasRegion() && region.IsChanged());
         public Boolean HasRegion() => (region != null);
 
 
@@ -692,7 +692,7 @@ namespace utauPlugin
         }
 
         public string GetRegionEnd() => regionEnd.Get();
-        public Boolean RegionEndIsChanged() => regionEnd.IsChanged();
+        public Boolean RegionEndIsChanged() => (HasRegionEnd() && regionEnd.IsChanged());
         public Boolean HasRegionEnd() => (regionEnd != null);
 
 

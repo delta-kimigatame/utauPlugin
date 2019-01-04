@@ -675,6 +675,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtPreInt()
         {
+            Assert.IsFalse(note.AtPreIsChanged());
             note.SetAtPre(120);
             Assert.IsTrue(note.GetAtPre() == 120.0f);
             Assert.IsTrue(note.AtPreIsChanged());
@@ -685,6 +686,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtPreFloat()
         {
+            Assert.IsFalse(note.AtPreIsChanged());
             note.SetAtPre(120.0f);
             Assert.IsTrue(note.GetAtPre() == 120.0f);
             Assert.IsTrue(note.AtPreIsChanged());
@@ -697,6 +699,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtFileName()
         {
+            Assert.IsFalse(note.AtFileNameIsChanged());
             note.SetAtFileName("‚¢");
             Assert.IsTrue(note.GetAtFileName() == "‚¢");
             Assert.IsTrue(note.AtFileNameIsChanged());
@@ -709,6 +712,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtAlias()
         {
+            Assert.IsFalse(note.AtAliasIsChanged());
             note.SetAtAlias("‚¢");
             Assert.IsTrue(note.GetAtAlias() == "‚¢");
             Assert.IsTrue(note.AtAliasIsChanged());
@@ -720,6 +724,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetOveStr()
         {
+            Assert.IsFalse(note.OveIsChanged());
             note.SetOve("120.0");
             Assert.IsTrue(note.GetOve() == 120.0f);
             Assert.IsTrue(note.OveIsChanged());
@@ -730,6 +735,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetOveInt()
         {
+            Assert.IsFalse(note.OveIsChanged());
             note.SetOve(120);
             Assert.IsTrue(note.GetOve() == 120.0f);
             Assert.IsTrue(note.OveIsChanged());
@@ -740,6 +746,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetOveFloat()
         {
+            Assert.IsFalse(note.OveIsChanged());
             note.SetOve(120.0f);
             Assert.IsTrue(note.GetOve() == 120.0f);
             Assert.IsTrue(note.OveIsChanged());
@@ -752,6 +759,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtOveStr()
         {
+            Assert.IsFalse(note.AtOveIsChanged());
             note.SetAtOve("120.0");
             Assert.IsTrue(note.GetAtOve() == 120.0f);
             Assert.IsTrue(note.AtOveIsChanged());
@@ -762,6 +770,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtOveInt()
         {
+            Assert.IsFalse(note.AtOveIsChanged());
             note.SetAtOve(120);
             Assert.IsTrue(note.GetAtOve() == 120.0f);
             Assert.IsTrue(note.AtOveIsChanged());
@@ -772,6 +781,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtOveFloat()
         {
+            Assert.IsFalse(note.AtOveIsChanged());
             note.SetAtOve(120.0f);
             Assert.IsTrue(note.GetAtOve() == 120.0f);
             Assert.IsTrue(note.AtOveIsChanged());
@@ -784,6 +794,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetStpStr()
         {
+            Assert.IsFalse(note.StpIsChanged());
             note.SetStp("120.0");
             Assert.IsTrue(note.GetStp() == 120.0f);
             Assert.IsTrue(note.StpIsChanged());
@@ -794,6 +805,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetStpInt()
         {
+            Assert.IsFalse(note.StpIsChanged());
             note.SetStp(120);
             Assert.IsTrue(note.GetStp() == 120.0f);
             Assert.IsTrue(note.StpIsChanged());
@@ -804,6 +816,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetStpFloat()
         {
+            Assert.IsFalse(note.StpIsChanged());
             note.SetStp(120.0f);
             Assert.IsTrue(note.GetStp() == 120.0f);
             Assert.IsTrue(note.StpIsChanged());
@@ -816,6 +829,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtStpStr()
         {
+            Assert.IsFalse(note.AtStpIsChanged());
             note.SetAtStp("120.0");
             Assert.IsTrue(note.GetAtStp() == 120.0f);
             Assert.IsTrue(note.AtStpIsChanged());
@@ -826,6 +840,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtStpInt()
         {
+            Assert.IsFalse(note.AtStpIsChanged());
             note.SetAtStp(120);
             Assert.IsTrue(note.GetAtStp() == 120.0f);
             Assert.IsTrue(note.AtStpIsChanged());
@@ -836,6 +851,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetAtStpFloat()
         {
+            Assert.IsFalse(note.AtStpIsChanged());
             note.SetAtStp(120.0f);
             Assert.IsTrue(note.GetAtStp() == 120.0f);
             Assert.IsTrue(note.AtStpIsChanged());
@@ -848,6 +864,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetVelocityStr()
         {
+            Assert.IsFalse(note.VelocityIsChanged());
             note.SetVelocity("480");
             Assert.IsTrue(note.GetVelocity() == 480);
             Assert.IsTrue(note.VelocityIsChanged());
@@ -858,6 +875,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetVelocityInt()
         {
+            Assert.IsFalse(note.VelocityIsChanged());
             note.SetVelocity(480);
             Assert.IsTrue(note.GetVelocity() == 480);
             Assert.IsTrue(note.VelocityIsChanged());
@@ -870,6 +888,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetIntensityStr()
         {
+            Assert.IsFalse(note.IntensityIsChanged());
             note.SetIntensity("480");
             Assert.IsTrue(note.GetIntensity() == 480);
             Assert.IsTrue(note.IntensityIsChanged());
@@ -880,6 +899,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetIntensityInt()
         {
+            Assert.IsFalse(note.IntensityIsChanged());
             note.SetIntensity(480);
             Assert.IsTrue(note.GetIntensity() == 480);
             Assert.IsTrue(note.IntensityIsChanged());
@@ -892,6 +912,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetModStr()
         {
+            Assert.IsFalse(note.ModIsChanged());
             note.SetMod("480");
             Assert.IsTrue(note.GetMod() == 480);
             Assert.IsTrue(note.ModIsChanged());
@@ -902,6 +923,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetModInt()
         {
+            Assert.IsFalse(note.ModIsChanged());
             note.SetMod(480);
             Assert.IsTrue(note.GetMod() == 480);
             Assert.IsTrue(note.ModIsChanged());
@@ -912,6 +934,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetFlags()
         {
+            Assert.IsFalse(note.FlagsIsChanged());
             note.SetFlags("‚¢");
             Assert.IsTrue(note.GetFlags() == "‚¢");
             Assert.IsTrue(note.FlagsIsChanged());
@@ -923,6 +946,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPitches()
         {
+            Assert.IsFalse(note.PitchesIsChanged());
             note.SetPitches("0,1,2,3,4,5");
             Assert.IsTrue(note.GetPitches()[0] == 0);
             Assert.IsTrue(note.GetPitches()[1] == 1);
@@ -944,6 +968,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPbStartStr()
         {
+            Assert.IsFalse(note.PbStartIsChanged());
             note.SetPbStart("120.0");
             Assert.IsTrue(note.GetPbStart() == 120.0f);
             Assert.IsTrue(note.PbStartIsChanged());
@@ -954,6 +979,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPbStartInt()
         {
+            Assert.IsFalse(note.PbStartIsChanged());
             note.SetPbStart(120);
             Assert.IsTrue(note.GetPbStart() == 120.0f);
             Assert.IsTrue(note.PbStartIsChanged());
@@ -964,6 +990,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPbStartFloat()
         {
+            Assert.IsFalse(note.PbStartIsChanged());
             note.SetPbStart(120.0f);
             Assert.IsTrue(note.GetPbStart() == 120.0f);
             Assert.IsTrue(note.PbStartIsChanged());
@@ -972,12 +999,10 @@ namespace UtauPluginNoteTest
             Assert.IsTrue(note.PbStartIsChanged());
         }
 
-
-
-
         [TestMethod]
         public void NoInitSetPbs()
         {
+            Assert.IsFalse(note.PbsIsChanged());
             note.SetPbs("10;20");
             Assert.IsTrue(note.GetPbs() == "10;20");
             Assert.IsTrue(note.GetPbsTime() == 10);
@@ -992,6 +1017,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPbw()
         {
+            Assert.IsFalse(note.PbwIsChanged());
             note.SetPbw("0,1,2");
             Assert.IsTrue(note.GetPbw()[0] == 0);
             Assert.IsTrue(note.GetPbw()[1] == 1);
@@ -1007,6 +1033,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPby()
         {
+            Assert.IsFalse(note.PbyIsChanged());
             note.SetPby("0,1,2,");
             Assert.IsTrue(note.GetPby()[0] == 0);
             Assert.IsTrue(note.GetPby()[1] == 1);
@@ -1023,6 +1050,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetPbm()
         {
+            Assert.IsFalse(note.PbmIsChanged());
             note.SetPbm(",r,j");
             Assert.IsTrue(note.GetPbm()[0] == "");
             Assert.IsTrue(note.GetPbm()[1] == "r");
@@ -1038,6 +1066,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetEnvelope()
         {
+            Assert.IsFalse(note.EnvelopeIsChanged());
             note.SetEnvelope("0,5,30,100,100,100,100");
             Assert.IsTrue(note.GetEnvelope() == "0,5,30,100,100,100,100");
             Assert.IsTrue(note.envelope.GetP(1) == 5.0f);
@@ -1052,6 +1081,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetLabel()
         {
+            Assert.IsFalse(note.LabelIsChanged());
             note.SetLabel("‚¢");
             Assert.IsTrue(note.GetLabel() == "‚¢");
             Assert.IsTrue(note.LabelIsChanged());
@@ -1064,6 +1094,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetDirectStr()
         {
+            Assert.IsFalse(note.DirectIsChanged());
             note.SetDirect("true");
             Assert.IsTrue(note.GetDirect());
             Assert.IsTrue(note.DirectIsChanged());
@@ -1077,6 +1108,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetDirect()
         {
+            Assert.IsFalse(note.DirectIsChanged());
             note.SetDirect(true);
             Assert.IsTrue(note.GetDirect());
             Assert.IsTrue(note.DirectIsChanged());
@@ -1087,6 +1119,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetRegion()
         {
+            Assert.IsFalse(note.RegionIsChanged());
             note.SetRegion("‚¢");
             Assert.IsTrue(note.GetRegion() == "‚¢");
             Assert.IsTrue(note.RegionIsChanged());
@@ -1099,6 +1132,7 @@ namespace UtauPluginNoteTest
         [TestMethod]
         public void NoInitSetRegionEnd()
         {
+            Assert.IsFalse(note.RegionEndIsChanged());
             note.SetRegionEnd("‚¢");
             Assert.IsTrue(note.GetRegionEnd() == "‚¢");
             Assert.IsTrue(note.RegionEndIsChanged());
