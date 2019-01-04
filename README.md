@@ -130,6 +130,9 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 #### void SetOve(int ove)
 オーバーラップ値をoveに変更し，`UtauPlugin.Output()`時書き出すようフラグを立てます．
 
+#### Boolean OveIsChanged()
+1度でもオーバーラップをSetしていればtrueを，していなければfalseを返します．
+初期化されていない場合もfalseを返します．
 
 #### Boolean HasOve()
 オーバーラップを初期化していればtrueを，していなければfalseを返します． 以下他のメソッドは初期化していない場合使用できません．
@@ -137,8 +140,6 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 #### float GetOve()
 オーバーラップ値を取得します．
 
-#### Boolean OveIsChanged()
-1度でもオーバーラップをSetしていればtrueを，していなければfalseを返します．
 
 他のパラメータも同様にInit,Has,Set,Get,IsChangedが使えます． ただし，セクションNo,ノート長,歌詞，音高，先行発声はノート初期化時に必ずInitされるためHasはありません． テンポ情報は数値計算上の利便性を考慮して，'UtauPlugin.Input()'時に必ずInitされるためHasはありません．
 
