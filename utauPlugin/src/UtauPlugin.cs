@@ -9,19 +9,6 @@ namespace utauPlugin
 {
     public class UtauPlugin:Ust
     {
-        //private string filePath;
-        //private string version;
-        //private string projectName;
-        //private string voiceDir;
-        //private string cacheDir;
-        //private string outputFile;
-        //private float tempo;
-        //private string tool1Path;
-        //private string tool2Path;
-        //private string flags;
-        //private Boolean mode2;
-        //private Boolean utf8;
-        //public List<Note> note;
 
         private List<String> ustData;
         private List<String> writeData;
@@ -305,6 +292,12 @@ namespace utauPlugin
                     writeData.Add("[#" + note.GetNum() + "]");
                     continue;
                 }
+                else if (note.GetDirect() == false && note.DirectIsChanged())
+                {
+                    writeData.Add("[#DELETE]");
+                    note.SetNum("INSERT");
+                    writeData.Add("[#" + note.GetNum() + "]");
+                }
                 else
                 {
                     writeData.Add("[#" + note.GetNum() + "]");
@@ -427,7 +420,7 @@ namespace utauPlugin
                     writeData.Add("Label=" + note.GetLabel());
                 }
                 //direct
-                if (note.HasDirect() && (note.GetNum() == "INSERT" || note.DirectIsChanged()))
+                if (note.HasDirect() && (note.GetNum() == "INSERT" || note.DirectIsChanged()) && note.GetDirect())
                 {
                     writeData.Add("$direct=" + note.GetDirect().ToString());
                 }

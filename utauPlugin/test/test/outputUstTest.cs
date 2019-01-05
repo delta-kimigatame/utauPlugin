@@ -43,5 +43,14 @@ namespace outputUstTest.cs
             utauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119_Length.tmp";
             utauPlugin.Output();
         }
+        [TestMethod]
+        public void testv119_SetDirect()
+        {
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\test119.tmp";
+            utauPlugin.Input();
+            utauPlugin.note[2].SetDirect(false);
+            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\out119_Direct.tmp";
+            utauPlugin.Output();
+        }
     }
 }
