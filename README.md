@@ -92,15 +92,14 @@ UTAUプラグインの仕様に則り，書き出し内容は最小限です．
 #### Ust()
 #### Ust(string filePath)
 初期化．ファイルパスは宣言時でもあとからSetしても同じです．
-各パラメータはプロパティになっています．`Ust.FilePath="filePath"`でSetできます．
 
-~~#### void SetFilePath(string filePath)
-読み書きするファイルを変更できます．~~
+#### void SetFilePath(string filePath)
+読み書きするファイルを変更できます．
 
-~~#### string GetFilePath()
-filePathはprivate要素なので，こちらのメソッドで情報取得してください．~~
+#### string GetFilePath()
+filePathはprivate要素なので，こちらのメソッドで情報取得してください．
 
-~~他のパラメータについても同様にSetとGetができます．~~
+他のパラメータについても同様にSetとGetができます．
 
 |パラメータ|説明|
 |:-------|:-------|
