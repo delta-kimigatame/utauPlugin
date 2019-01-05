@@ -56,11 +56,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MapTests.cs" />
     <Compile Include="OtoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="testDir\prefix.map" />
+    <None Include="testDir\あ\prefix.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UtauVoiceBank\UtauVoiceBank.csproj">
@@ -71,6 +74,7 @@
   <ItemGroup>
     <Content Include="testWav\test1.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
