@@ -33,15 +33,52 @@ namespace utauPlugin
         private Entry<Boolean> direct;
         private Entry<string> region;
         private Entry<string> regionEnd;
-        
+
+        //定義されていないパラメータをGetされた時用のデフォルトパラメータ
+        //原音設定値に依存するpre,oveはデフォルト値は普通使いませんが一応定義
+        private const string DEFAULT_NUM = "";
+        private const int DEFAULT_LENGTH = 480;
+        private const string DEFAULT_LYRIC = "";
+        private const int DEFAULT_NOTENUM = 60;
+        private const float DEFAULT_TEMPO = 120.0f;
+        private const float DEFAULT_PRE = 0f;
+        private const float DEFAULT_ATPRE = 0f;
+        private const string DEFAULT_ATFILENAME = "";
+        private const string DEFAULT_ATALIAS = "";
+        private const float DEFAULT_OVE = 0f;
+        private const float DEFAULT_ATOVE = 0f;
+        private const float DEFAULT_STP = 0f;
+        private const float DEFAULT_ATSTP = 0f;
+        private const int DEFAULT_VELOCITY = 100;
+        private const int DEFAULT_INTENSITY = 100;
+        private const int DEFAULT_MOD = 0;
+        private const string DEFAULT_FLAGS = "";
+        private const float DEFAULT_PBSTART = 0f;
+        private IReadOnlyList<int> DEFAULT_PITCHES = new List<int>() { }.AsReadOnly();
+        private const string DEFAULT_PBTYPE = "5";
+        private const string DEFAULT_PBS = "-25";
+        private const float DEFAULT_PBS_TIME = -25f;
+        private const float DEFAULT_PBS_HEIGHT = 0f;
+        private IReadOnlyList<float> DEFAULT_PBW = new List<float>() {50}.AsReadOnly();
+        private IReadOnlyList<float> DEFAULT_PBY = new List<float>() { }.AsReadOnly();
+        private IReadOnlyList<string> DEFAULT_PBM = new List<string>() { }.AsReadOnly();
+        private const string DEFAULT_ENVELOPE = "0,5,35,0,100,100,0";
+        private const string DEFAULT_VIBRATO = "65,180,35,20,20,0,0,0";
+        private const string DEFAULT_LABEL = "";
+        private const Boolean DEFAULT_DIRECT = false;
+        private const string DEFAULT_REGION = "";
+        private const string DEFAULT_REGIONEND = "";
+
+
+
 
         public Note()
         {
-            num = new Entry<string>("");
-            length = new Entry<int>(0);
-            lyric = new Entry<string>("");
-            noteNum = new NoteNum(60);
-            pre = new Pre(0.0f);
+            num = new Entry<string>(DEFAULT_NUM);
+            length = new Entry<int>(DEFAULT_LENGTH);
+            lyric = new Entry<string>(DEFAULT_LYRIC);
+            noteNum = new NoteNum(DEFAULT_NOTENUM);
+            pre = new Pre(DEFAULT_PRE);
         }
         
         public void InitNum(string num) => this.num = new Entry<string>(num);
@@ -74,8 +111,9 @@ namespace utauPlugin
         public void SetTempo(string tempo) => this.tempo.Set(float.Parse(tempo));
         public void SetTempo(int tempo) => this.tempo.Set(tempo);
         public void SetTempo(float tempo) => this.tempo.Set(tempo);
-        public float GetTempo() => tempo.Get();
+        public float GetTempo() => HasTempo() ? tempo.Get() : DEFAULT_TEMPO;
         public Boolean TempoIsChanged() => tempo.IsChanged();
+        public Boolean HasTempo() => (tempo != null);
 
         public void InitPre(string pre) => this.pre = new Pre(pre);
         public void InitPre(float pre) => this.pre = new Pre(pre);
@@ -107,7 +145,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetAtPre() => atPre.Get();
+        public float GetAtPre() => HasAtPre() ? atPre.Get() : DEFAULT_ATPRE;
         public Boolean AtPreIsChanged() => (HasAtPre() && atPre.IsChanged());
         public Boolean HasAtPre() => (atPre != null);
         
@@ -122,7 +160,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetAtFileName() => atFileName.Get();
+        public string GetAtFileName() => HasAtFileName() ? atFileName.Get() : DEFAULT_ATFILENAME;
         public Boolean AtFileNameIsChanged() => (HasAtFileName() && atFileName.IsChanged());
         public Boolean HasAtFileName() => (atFileName != null);
 
@@ -137,7 +175,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetAtAlias() => atAlias.Get();
+        public string GetAtAlias() => HasAtAlias() ? atAlias.Get() : DEFAULT_ATALIAS;
         public Boolean AtAliasIsChanged() => (HasAtAlias() && atAlias.IsChanged());
         public Boolean HasAtAlias() => (atAlias != null);
 
@@ -163,7 +201,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetOve() => ove.Get();
+        public float GetOve() => HasOve() ? ove.Get() : DEFAULT_OVE;
         public Boolean OveIsChanged() => (HasOve() && ove.IsChanged());
         public Boolean HasOve() => (ove != null);
 
@@ -189,7 +227,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetAtOve() => atOve.Get();
+        public float GetAtOve() => HasAtOve() ? atOve.Get() : DEFAULT_ATOVE;
         public Boolean AtOveIsChanged() => (HasAtOve() && atOve.IsChanged());
         public Boolean HasAtOve() => (atOve != null);
 
@@ -215,7 +253,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetStp() => stp.Get();
+        public float GetStp() => HasStp() ? stp.Get() : DEFAULT_STP;
         public Boolean StpIsChanged() => (HasStp() && stp.IsChanged());
         public Boolean HasStp() => (stp != null);
 
@@ -241,7 +279,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetAtStp() => atStp.Get();
+        public float GetAtStp() => HasAtStp() ? atStp.Get() : DEFAULT_ATSTP;
         public Boolean AtStpIsChanged() => (HasAtStp() && atStp.IsChanged());
         public Boolean HasAtStp() => (atStp != null);
         
@@ -267,7 +305,7 @@ namespace utauPlugin
             }
         }
 
-        public int GetVelocity() => velocity.Get();
+        public int GetVelocity() => HasVelocity() ? velocity.Get() : DEFAULT_VELOCITY;
         public Boolean VelocityIsChanged() => (HasVelocity() && velocity.IsChanged());
         public Boolean HasVelocity() => (velocity != null);
         
@@ -294,7 +332,7 @@ namespace utauPlugin
             }
         }
 
-        public int GetIntensity() => intensity.Get();
+        public int GetIntensity() => HasIntensity() ? intensity.Get() : DEFAULT_INTENSITY;
         public Boolean IntensityIsChanged() => (HasIntensity() && intensity.IsChanged());
         public Boolean HasIntensity() => (intensity != null);
 
@@ -321,7 +359,7 @@ namespace utauPlugin
             }
         }
 
-        public int GetMod() => mod.Get();
+        public int GetMod() => HasMod() ? mod.Get() : DEFAULT_MOD;
         public Boolean ModIsChanged() => (HasMod() && mod.IsChanged());
         public Boolean HasMod() => (mod != null);
 
@@ -338,7 +376,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetFlags() => flags.Get();
+        public string GetFlags() => HasFlags() ? flags.Get() : DEFAULT_FLAGS;
         public Boolean FlagsIsChanged() => (HasFlags() && flags.IsChanged());
         public Boolean HasFlags() => (flags != null);
 
@@ -398,7 +436,7 @@ namespace utauPlugin
             }
         }
 
-        public List<int> GetPitches() => pitches.Get();
+        public List<int> GetPitches() => HasPitches() ? pitches.Get() : new List<int>(DEFAULT_PITCHES);
         public Boolean PitchesIsChanged() => (HasPitches() && pitches.IsChanged());
         public Boolean HasPitches() => (pitches != null);
 
@@ -423,7 +461,7 @@ namespace utauPlugin
             }
         }
 
-        public float GetPbStart() => pbStart.Get();
+        public float GetPbStart() => HasPbStart() ? pbStart.Get() : DEFAULT_PBSTART;
         public Boolean PbStartIsChanged() => (HasPbStart() && pbStart.IsChanged());
         public Boolean HasPbStart() => (pbStart != null);
 
@@ -440,7 +478,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetPbType() => pbType.Get();
+        public string GetPbType() => HasPbType() ? pbType.Get() : DEFAULT_PBTYPE;
         public Boolean PbTypeIsChanged() => (HasPbType() && pbType.IsChanged());
         public Boolean HasPbType() => (pbType != null);
         
@@ -458,9 +496,9 @@ namespace utauPlugin
             }
         }
 
-        public string GetPbs() => mode2Pitch.GetPbs();
-        public float GetPbsTime() => mode2Pitch.GetPbsTime();
-        public float GetPbsHeight() => mode2Pitch.GetPbsHeight();
+        public string GetPbs() => HasMode2Pitch() ? mode2Pitch.GetPbs() : DEFAULT_PBS;
+        public float GetPbsTime() => HasMode2Pitch() ? mode2Pitch.GetPbsTime() : DEFAULT_PBS_TIME;
+        public float GetPbsHeight() => HasMode2Pitch() ? mode2Pitch.GetPbsHeight() : DEFAULT_PBS_HEIGHT;
         public Boolean PbsIsChanged() => (HasMode2Pitch() && mode2Pitch.PbsIsChanged());
 
         public void InitPbw(string pbw) => mode2Pitch.InitPbw(pbw);
@@ -504,7 +542,7 @@ namespace utauPlugin
             }
         }
 
-        public List<float> GetPbw() => mode2Pitch.GetPbw();
+        public List<float> GetPbw() => HasMode2Pitch() ? mode2Pitch.GetPbw() : new List<float>(DEFAULT_PBW);
         public Boolean PbwIsChanged() => (HasMode2Pitch() && mode2Pitch.PbwIsChanged());
 
         public void InitPby(string pby) => mode2Pitch.InitPby(pby);
@@ -548,7 +586,7 @@ namespace utauPlugin
             }
         }
 
-        public List<float> GetPby() => mode2Pitch.GetPby();
+        public List<float> GetPby() => HasMode2Pitch() ? mode2Pitch.GetPby() : new List<float>(DEFAULT_PBY);
         public Boolean PbyIsChanged() => (HasMode2Pitch() && mode2Pitch.PbyIsChanged());
 
         public void InitPbm(string pbm) => mode2Pitch.InitPbm(pbm); public void SetPbm(string pbm)
@@ -581,7 +619,7 @@ namespace utauPlugin
                 mode2Pitch.SetPbm(pbm);
             }
         }
-        public List<string> GetPbm() => mode2Pitch.GetPbm();
+        public List<string> GetPbm() => HasMode2Pitch() ? mode2Pitch.GetPbm() : new List<string>(DEFAULT_PBM);
         public Boolean PbmIsChanged() => (HasMode2Pitch() && mode2Pitch.PbmIsChanged());
 
         public void InitEnvelope() => envelope = new Envelope();
@@ -596,7 +634,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetEnvelope() => envelope.Get();
+        public string GetEnvelope() => HasEnvelope() ? envelope.Get() : DEFAULT_ENVELOPE;
         public Boolean EnvelopeIsChanged() => (HasEnvelope() && envelope.IsChanged());
         public Boolean HasEnvelope() => (envelope != null);
 
@@ -612,7 +650,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetVibrato() => vibrato.Get();
+        public string GetVibrato() => HasVibrato() ? vibrato.Get() : DEFAULT_VIBRATO;
         public Boolean VibratoIsChanged() => (HasVibrato() && vibrato.IsChanged());
         public Boolean HasVibrato() => (vibrato != null);
 
@@ -627,7 +665,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetLabel() => label.Get();
+        public string GetLabel() => HasLabel() ? label.Get() : DEFAULT_LABEL;
         public Boolean LabelIsChanged() => (HasLabel() && label.IsChanged());
         public Boolean HasLabel() => (label != null);
 
@@ -656,7 +694,7 @@ namespace utauPlugin
             }
         }
 
-        public Boolean GetDirect() => this.direct.Get();
+        public Boolean GetDirect() => HasDirect() ? this.direct.Get() : DEFAULT_DIRECT;
         public Boolean DirectIsChanged() => (HasDirect() && direct.IsChanged());
         public Boolean HasDirect() => (direct != null);
 
@@ -673,7 +711,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetRegion() => region.Get();
+        public string GetRegion() => HasRegion() ? region.Get(): DEFAULT_REGION;
         public Boolean RegionIsChanged() => (HasRegion() && region.IsChanged());
         public Boolean HasRegion() => (region != null);
 
@@ -691,7 +729,7 @@ namespace utauPlugin
             }
         }
 
-        public string GetRegionEnd() => regionEnd.Get();
+        public string GetRegionEnd() => HasRegionEnd() ? regionEnd.Get() : DEFAULT_REGIONEND;
         public Boolean RegionEndIsChanged() => (HasRegionEnd() && regionEnd.IsChanged());
         public Boolean HasRegionEnd() => (regionEnd != null);
 

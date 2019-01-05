@@ -18,7 +18,7 @@ namespace UtauPluginNoteTest
         public void NoteInit()
         {
             Assert.IsTrue(note.GetNum() == "");
-            Assert.IsTrue(note.GetLength() == 0);
+            Assert.IsTrue(note.GetLength() == 480);
             Assert.IsTrue(note.GetLyric() == "");
             Assert.IsTrue(note.GetNoteNum() == 60);
         }
