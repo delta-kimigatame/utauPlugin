@@ -565,7 +565,7 @@ namespace UtauPluginNoteTest
             note.InitVibrato();
             note.SetVibrato("0,1,2,30,30,30,30");
             Assert.IsTrue(note.GetVibrato() == "0,1,2,30,30,30,30,0");
-            Assert.IsTrue(note.vibrato.GetDepth() == 2);
+            Assert.IsTrue(note.vibrato.Depth == 2);
         }
         [TestMethod]
         public void SetLabel()
@@ -1076,7 +1076,7 @@ namespace UtauPluginNoteTest
         {
             note.SetVibrato("0,1,2,30,30,30,30");
             Assert.IsTrue(note.GetVibrato() == "0,1,2,30,30,30,30,0");
-            Assert.IsTrue(note.vibrato.GetDepth() == 2);
+            Assert.IsTrue(note.vibrato.Depth == 2);
         }
         [TestMethod]
         public void NoInitSetLabel()
