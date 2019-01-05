@@ -226,17 +226,19 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 
 ### Vibrato
 `Note`から直接できない操作のみ説明
-`Note.vibrato`が`Vibrato型`なので，'Note.vibrato.GetLength()'のような使い方を想定しています．
-以下の通り各パラメータのSetとGetができます．
+`Note.vibrato`が`Vibrato型`なので，--`Note.vibrato.GetLength()`のような使い方を想定しています．--
+--以下の通り各パラメータのSetとGetができます．--]
 
-|パラメータ|type|Set|Get|説明|
-|:-------|:-------|:-------|:-------|:-------|
-|Length|float|SetLength|GetLength|ノート長に対するビブラート長|
-|Cycle|float|SetCycle|GetCycle|ビブラートの周期|
-|Depth|float|SetDepth|GetDepth|ビブラートの深さ|
-|FadeInTime|float|SetFadeInTime|GetFadeInTime|ビブラート長に対するフェードインの割合|
-|FadeoutTime|float|SetFadeoutTime|GetFadeoutTime|ビブラート長に対するフェードアウトの割合|
-|Phase|float|SetPhase|GetPhase|ビブラートの初期位相のずれ|
-|Height|float|SetHeight|GetHeight|ビブラートの音程オフセット|
+プロパティに変更しました．`Note.vibrato.Length`のようにそのままアクセスできます．
+
+|パラメータ|type|説明|
+|:-------|:-------|:-------|
+|Length|float|ノート長に対するビブラート長|
+|Cycle|float|ビブラートの周期|
+|Depth|float|ビブラートの深さ|
+|FadeInTime|float|ビブラート長に対するフェードインの割合|
+|FadeoutTime|float|ビブラート長に対するフェードアウトの割合|
+|Phase|float|ビブラートの初期位相のずれ|
+|Height|float|ビブラートの音程オフセット|
 
 
