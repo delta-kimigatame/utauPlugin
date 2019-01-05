@@ -15,7 +15,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvInit()
         {
-            Envelope env = new Envelope("0,5,30,1,2,3,4");
+            Note.Envelope env = new Note.Envelope("0,5,30,1,2,3,4");
             Assert.IsTrue(0.0f == env.GetP()[0]);
             Assert.IsTrue(5.0f == env.GetP()[1]);
             Assert.IsTrue(30.0f == env.GetP()[2]);
@@ -28,7 +28,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnv()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,5,30,1,2,3,4");
             Assert.IsTrue(0.0f == env.GetP()[0]);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -41,7 +41,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnv2()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             Assert.IsTrue(0.0f == env.GetP()[0]);
             Assert.IsTrue(0.0f == env.GetP()[1]);
@@ -54,7 +54,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnv8()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,5,30,1,2,3,4,%,15");
             Assert.IsTrue(0.0f == env.GetP()[0]);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -69,7 +69,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnv10()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,5,30,1,2,3,4,%,15,7.1,5");
             Assert.IsTrue(0.0f == env.GetP()[0]);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -86,7 +86,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvPInt()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             env.SetP(5, 1);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -94,7 +94,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvPFloat()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             env.SetP(5.0f, 1);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -102,7 +102,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvPStr()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             env.SetP("5", 1);
             Assert.IsTrue(5.0f == env.GetP()[1]);
@@ -110,7 +110,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvVInt()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             env.SetV(5, 1);
             Assert.IsTrue(5.0f == env.GetV()[1]);
@@ -118,7 +118,7 @@ namespace envelopeTest
         [TestMethod]
         public void SetEnvVStr()
         {
-            Envelope env = new Envelope();
+            Note.Envelope env = new Note.Envelope();
             env.Set("0,0");
             env.SetV("5", 1);
             Assert.IsTrue(5.0f == env.GetV()[1]);

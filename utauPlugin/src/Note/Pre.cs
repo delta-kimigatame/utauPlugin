@@ -5,6 +5,14 @@ namespace utauPlugin
 
     public partial class Note
     {
+        private const float DEFAULT_PRE = 0f;
+        public void InitPre(string pre) => this.pre = new Pre(pre);
+        public void InitPre(float pre) => this.pre = new Pre(pre);
+        public void SetPre(string pre) => this.pre.Set(pre);
+        public void SetPre(float pre) => this.pre.Set(pre);
+        public float GetPre() => pre.Get();
+        public Boolean PreIsChanged() => pre.IsChanged();
+        public Boolean PreHasValue() => pre.HasValue();
         private class Pre
         {
             private float pre;

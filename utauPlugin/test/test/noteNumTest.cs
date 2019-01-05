@@ -13,7 +13,7 @@ namespace noteNumTest
         [TestMethod]
         public void SetNoteNumInit()
         {
-            NoteNum noteNum = new NoteNum();
+            Note.NoteNum noteNum = new Note.NoteNum();
             Assert.IsTrue(noteNum.Get() == 60);
             Assert.IsTrue(noteNum.GetName() == "C4");
             Assert.IsTrue(noteNum.GetKey() == "C");
@@ -21,7 +21,7 @@ namespace noteNumTest
         [TestMethod]
         public void SetNoteNumInitStr()
         {
-            NoteNum noteNum = new NoteNum("59");
+            Note.NoteNum noteNum = new Note.NoteNum("59");
             Assert.IsTrue(noteNum.Get() == 59);
             Assert.IsTrue(noteNum.GetName() == "B3");
             Assert.IsTrue(noteNum.GetKey() == "B");
@@ -29,7 +29,7 @@ namespace noteNumTest
         [TestMethod]
         public void SetNoteNumInitInt()
         {
-            NoteNum noteNum = new NoteNum("71");
+            Note.NoteNum noteNum = new Note.NoteNum("71");
             Assert.IsTrue(noteNum.Get() == 71);
             Assert.IsTrue(noteNum.GetName() == "B4");
             Assert.IsTrue(noteNum.GetKey() == "B");
@@ -37,7 +37,7 @@ namespace noteNumTest
         [TestMethod]
         public void SetNoteNumStr()
         {
-            NoteNum noteNum = new NoteNum();
+            Note.NoteNum noteNum = new Note.NoteNum();
             noteNum.Set("72");
             Assert.IsTrue(noteNum.Get() == 72);
             Assert.IsTrue(noteNum.GetName() == "C5");
@@ -46,7 +46,7 @@ namespace noteNumTest
         [TestMethod]
         public void SetNoteNumInt()
         {
-            NoteNum noteNum = new NoteNum();
+            Note.NoteNum noteNum = new Note.NoteNum();
             noteNum.Set(61);
             Assert.IsTrue(noteNum.Get() == 61);
             Assert.IsTrue(noteNum.GetName() == "C#4");

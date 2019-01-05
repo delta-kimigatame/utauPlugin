@@ -26,7 +26,7 @@ namespace vibratoTest
         [TestMethod]
         public void SetVbrInit()
         {
-            Vibrato vbr = new Vibrato("7,1,2,3.1,4.2,5.3,6.4");
+            Note.Vibrato vbr = new Note.Vibrato("7,1,2,3.1,4.2,5.3,6.4");
             Assert.IsTrue(7==vbr.GetLength());
             Assert.IsTrue(1 == vbr.GetCycle());
             Assert.IsTrue(2 == vbr.GetDepth());
@@ -40,7 +40,7 @@ namespace vibratoTest
         [TestMethod]
         public void SetVbrParam()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.Set("7,1,2,3.1,4.2,5.3,6.4");
             Assert.IsTrue(7 == vbr.GetLength());
             Assert.IsTrue(1 == vbr.GetCycle());
@@ -54,126 +54,126 @@ namespace vibratoTest
         [TestMethod]
         public void SetVbrLengthInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetLength(7);
             Assert.IsTrue(7 == vbr.GetLength());
         }
         [TestMethod]
         public void SetVbrLengthStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetLength("7");
             Assert.IsTrue(7 == vbr.GetLength());
         }
         [TestMethod]
         public void SetVbrCycleInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetCycle(7);
             Assert.IsTrue(7 == vbr.GetCycle());
         }
         [TestMethod]
         public void SetVbrCycleStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetCycle("7");
             Assert.IsTrue(7 == vbr.GetCycle());
         }
         [TestMethod]
         public void SetVbrDepthInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetDepth(7);
             Assert.IsTrue(7 == vbr.GetDepth());
         }
         [TestMethod]
         public void SetVbrDepthStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetDepth("7");
             Assert.IsTrue(7 == vbr.GetDepth());
         }
         [TestMethod]
         public void SetVbrFadeInTimeFloat()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeInTime(7.0f);
             Assert.IsTrue(7.0f == vbr.GetFadeInTime());
         }
         [TestMethod]
         public void SetVbrFadeInTimeInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeInTime(7);
             Assert.IsTrue(7.0f == vbr.GetFadeInTime());
         }
         [TestMethod]
         public void SetVbrFadeInTimeStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeInTime("7");
             Assert.IsTrue(7.0f == vbr.GetFadeInTime());
         }
         [TestMethod]
         public void SetVbrFadeOutTimeFloat()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeOutTime(7.0f);
             Assert.IsTrue(7.0f == vbr.GetFadeOutTime());
         }
         [TestMethod]
         public void SetVbrFadeOutTimeInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeOutTime(7);
             Assert.IsTrue(7.0f == vbr.GetFadeOutTime());
         }
         [TestMethod]
         public void SetVbrFadeOutTimeStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetFadeOutTime("7");
             Assert.IsTrue(7.0f == vbr.GetFadeOutTime());
         }
         [TestMethod]
         public void SetVbrPhaseFloat()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetPhase(7.0f);
             Assert.IsTrue(7.0f == vbr.GetPhase());
         }
         [TestMethod]
         public void SetVbrPhaseInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetPhase(7);
             Assert.IsTrue(7.0f == vbr.GetPhase());
         }
         [TestMethod]
         public void SetVbrPhaseStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetPhase("7");
             Assert.IsTrue(7.0f == vbr.GetPhase());
         }
         [TestMethod]
         public void SetVbrHeightFloat()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetHeight(7.0f);
             Assert.IsTrue(7.0f == vbr.GetHeight());
         }
         [TestMethod]
         public void SetVbrHeightInt()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetHeight(7);
             Assert.IsTrue(7.0f == vbr.GetHeight());
         }
         [TestMethod]
         public void SetVbrHeightStr()
         {
-            Vibrato vbr = new Vibrato();
+            Note.Vibrato vbr = new Note.Vibrato();
             vbr.SetHeight("7");
             Assert.IsTrue(7.0f == vbr.GetHeight());
         }
