@@ -132,66 +132,74 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 
 #### Boolean OveIsChanged()
 1度でもオーバーラップをSetしていればtrueを，していなければfalseを返します．
+
 初期化されていない場合もfalseを返します．
 
 #### Boolean HasOve()
-オーバーラップを初期化していればtrueを，していなければfalseを返します． 以下他のメソッドは初期化していない場合使用できません．
+オーバーラップを初期化していればtrueを，していなければfalseを返します． 
 
 #### float GetOve()
 オーバーラップ値を取得します．
 
+初期化をしていない場合初期値を返します．
 
-他のパラメータも同様にInit,Has,Set,Get,IsChangedが使えます． ただし，セクションNo,ノート長,歌詞，音高，先行発声はノート初期化時に必ずInitされるためHasはありません． テンポ情報は数値計算上の利便性を考慮して，'UtauPlugin.Input()'時に必ずInitされるためHasはありません．
 
-|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|
-|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|[#0000]|セクションNo.|string|InitNum|-|SetNum|GetNum|-|
-|Length=|ノートの長さ|int|InitLength|-|SetLength|GetLength|LengthIsChanged|
-|Lyric=|入力された歌詞|string|InitLyric|-|SetLyric|GetLyric|LyricIsChanged|
-|Tempo=|テンポ|float|InitTempo|-|SetTempo|GetTempo|TempoIsChanged|
-|PreUtterance=|先行発声値|float|InitPre|-|SetPre|GetPre|PreIsChanged|
-|VoiceOverlap=|オーバーラップ値|float|InitOve|HasOve|SetOve|GetOve|OveIsChanged|
-|StartPoint=|STP値|float|InitStp|HasStp|SetStp|GetStp|StpIsChanged|
-|Velocity=|音量|int|InitVelocity|HasVelocity|SetVelocity|GetVelocity|VelocityIsChanged|
-|Intensity=|音量|int|InitIntensity|HasIntensity|SetIntensity|GetIntensity|IntensityIsChanged|
-|Modulation=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|
-|Moduration=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|
-|Envelope=|エンベロープ|Envelope|InitEnvelope|HasEnvelope|SetEnvelope|GetEnvelope|EnvelopeIsChanged|
-|VBR=|ビブラート|Vibrato|InitVibrato|HasVibrato|SetVibrato|GetVibrato|VibratoIsChanged|
-|Flags=|フラグ|string|InitFlags|HasFlags|SetFlags|GetFlags|FlagsIsChanged|
-|label=|ラベル|string|InitLabel|HasLabel|SetLabel|GetLabel|LabelIsChanged|
-|$region=|選択範囲の始め|string|InitRegion|HasRegion|SetRegion|GetRegion|RegionIsChanged|
-|$region_end=|選択範囲の終わり|string|InitRegionEnd|HasRegionEnd|SetRegionEnd|GetRegionEnd|RegionEndIsChanged|
+他のパラメータも同様にInit,Has,Set,Get,IsChangedが使えます． 
+
+ただし，セクションNo,ノート長,歌詞，音高，先行発声はノート初期化時に必ずInitされるためHasはありません． 
+
+~~テンポ情報は数値計算上の利便性を考慮して，'UtauPlugin.Input()'時に必ずInitされるためHasはありません．~~
+NoteをINSERTした時必要になるので実装しました．
+
+|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
+|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
+|[#0000]|セクションNo.|string|InitNum|-|SetNum|GetNum|-|""|
+|Length=|ノートの長さ|int|InitLength|-|SetLength|GetLength|LengthIsChanged|480|
+|Lyric=|入力された歌詞|string|InitLyric|-|SetLyric|GetLyric|LyricIsChanged|""|
+|Tempo=|テンポ|float|InitTempo|HasTempo|SetTempo|GetTempo|TempoIsChanged|120f|
+|PreUtterance=|先行発声値|float|InitPre|-|SetPre|GetPre|PreIsChanged|0f|
+|VoiceOverlap=|オーバーラップ値|float|InitOve|HasOve|SetOve|GetOve|OveIsChanged|0f|
+|StartPoint=|STP値|float|InitStp|HasStp|SetStp|GetStp|StpIsChanged|0f|
+|Velocity=|音量|int|InitVelocity|HasVelocity|SetVelocity|GetVelocity|VelocityIsChanged|100|
+|Intensity=|音量|int|InitIntensity|HasIntensity|SetIntensity|GetIntensity|IntensityIsChanged|100|
+|Modulation=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|100|
+|Moduration=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|100|
+|Envelope=|エンベロープ|Envelope|InitEnvelope|HasEnvelope|SetEnvelope|GetEnvelope|EnvelopeIsChanged|"0,5,35,0,100,100,0"|
+|VBR=|ビブラート|Vibrato|InitVibrato|HasVibrato|SetVibrato|GetVibrato|VibratoIsChanged|"65,180,35,20,20,0,0,0"|
+|Flags=|フラグ|string|InitFlags|HasFlags|SetFlags|GetFlags|FlagsIsChanged|""|
+|label=|ラベル|string|InitLabel|HasLabel|SetLabel|GetLabel|LabelIsChanged|""|
+|$region=|選択範囲の始め|string|InitRegion|HasRegion|SetRegion|GetRegion|RegionIsChanged|""|
+|$region_end=|選択範囲の終わり|string|InitRegionEnd|HasRegionEnd|SetRegionEnd|GetRegionEnd|RegionEndIsChanged|""|
 
 ピッチ(mode1用)
 
-|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|
-|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|Piches=|mode1用ピッチ数列|List|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|
-|Pitches=|mode1用ピッチ数列|List|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|
-|PitchBend=|mode1用ピッチ数列|List|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|
-|PBStart=|mode1用ピッチ数列の開始位置|float|InitPbStart|HasPbStart|SetPbStart|GetPbStart|PbStartIsChanged|
-|PBType=|mode1用ピッチベンドの種類|string|InitPbType|HasPbType|SetPbType|GetPbType|PbTypeIsChanged|
+|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
+|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
+|Piches=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|Pitches=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|PitchBend=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|PBStart=|mode1用ピッチ数列の開始位置|float|InitPbStart|HasPbStart|SetPbStart|GetPbStart|PbStartIsChanged|0.0f|
+|PBType=|mode1用ピッチベンドの種類|string|InitPbType|HasPbType|SetPbType|GetPbType|PbTypeIsChanged|"5"|
 
 ピッチ(mode2用)
 mode2用のピッチのパラメータは内部的には一括で宣言され，各パラメータのInitはプラグインに書き出ししない値の登録のために使用されます．
 
-|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|
-|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|PBS=|mode2用ピッチの開始位置|string|InitPbs|HasMode2Pitch|SetPbs|GetPbs|PbsIsChanged|
-|PBW=|mode2用ポルタメントの間隔|List|InitPbw|HasMode2Pitch|SetPbw|GetPbw|PbwIsChanged|
-|PBY=|mode2用ポルタメントの音高|List|InitPby|HasMode2Pitch|SetPby|GetPby|PbyIsChanged|
-|PBM=|mode2用ピッチベンドの種類|List|InitPbm|HasMode2Pitch|SetPbm|GetPbm|PbmIsChanged|
+|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
+|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
+|PBS=|mode2用ピッチの開始位置|string|InitPbs|HasMode2Pitch|SetPbs|GetPbs|PbsIsChanged|"-50"|
+|PBW=|mode2用ポルタメントの間隔|List<float>|InitPbw|HasMode2Pitch|SetPbw|GetPbw|PbwIsChanged|空のList<float>|
+|PBY=|mode2用ポルタメントの音高|List<float>|InitPby|HasMode2Pitch|SetPby|GetPby|PbyIsChanged|空のList<float>|
+|PBM=|mode2用ピッチベンドの種類|List<string>|InitPbm|HasMode2Pitch|SetPbm|GetPbm|PbmIsChanged|空のList<string>|
 
 読み取り専用のパラメータ
 
-|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|
-|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|@preuttr=|自動調整後の先行発声値|float|InitAtPre|HasAtPre|SetAtPre|GetAtPre|AtPreIsChanged|
-|@overlap=|自動調整後のオーバーラップ値|float|InitAtOve|HasAtOve|SetAtOve|GetAtOve|AtOveIsChanged|
-|@stpoint=|自動調整後のstp値|float|InitAtStp|HasAtStp|SetAtStp|GetAtStp|AtStpIsChanged|
-|@alias=|自動調整後/prefix.map適用後の歌詞|string|InitAtAlias|HasAtAlias|SetAtAlias|GetAtAlias|AtAliasIsChanged|
-|@filename=|使用するwavのvoiceDirからの相対パス|string|InitAtFileName|HasAtFileName|SetAtFileName|GetAtFileName|AtFileNameIsChanged|
+|エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
+|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
+|@preuttr=|自動調整後の先行発声値|float|InitAtPre|HasAtPre|SetAtPre|GetAtPre|AtPreIsChanged|0.0f|
+|@overlap=|自動調整後のオーバーラップ値|float|InitAtOve|HasAtOve|SetAtOve|GetAtOve|AtOveIsChanged|0.0f|
+|@stpoint=|自動調整後のstp値|float|InitAtStp|HasAtStp|SetAtStp|GetAtStp|AtStpIsChanged|0.0f|
+|@alias=|自動調整後/prefix.map適用後の歌詞|string|InitAtAlias|HasAtAlias|SetAtAlias|GetAtAlias|AtAliasIsChanged|""|
+|@filename=|使用するwavのvoiceDirからの相対パス|string|InitAtFileName|HasAtFileName|SetAtFileName|GetAtFileName|AtFileNameIsChanged|""|
 
 その他特殊な操作
 
@@ -200,8 +208,8 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |Boolean PreHasValue()|先行発声は""で初期化される場合があります．""で初期化している場合trueを返します．|
 |string GetNoteNumName()|音高名(C4,C#4,D4...)を返します．|
 |string GetKey()|音名(C,C#,D...)を返します．|
-|float GetPbsTime()|mode2のピッチ開始の時間を返します．|
-|float GetPbsHeight()|mode2のピッチ開始の音高を返します．|
+|float GetPbsTime()|mode2のピッチ開始の時間を返します．宣言されていない場合，-50fを返します．|
+|float GetPbsHeight()|mode2のピッチ開始の音高を返します．宣言されていない場合，0fを返します．|
 |void SetPbw(int pbw, int point)|'point'個目(0スタート)のPBW値を'pbw'に変更します．|
 |void SetPby(int pby, int point)|'point'個目(0スタート)のPBY値を'pby'に変更します．|
 |void SetPbm(string pbm, int point)|'point'個目(0スタート)のPBY値を'pbm'に変更します．|
