@@ -226,8 +226,8 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 
 ### Vibrato
 `Note`から直接できない操作のみ説明
-`Note.vibrato`が`Vibrato型`なので，--`Note.vibrato.GetLength()`のような使い方を想定しています．--
---以下の通り各パラメータのSetとGetができます．--]
+`Note.vibrato`が`Vibrato型`なので，~~`Note.vibrato.GetLength()`のような使い方を想定しています．~~
+~~以下の通り各パラメータのSetとGetができます．~~
 
 プロパティに変更しました．`Note.vibrato.Length`のようにそのままアクセスできます．
 
