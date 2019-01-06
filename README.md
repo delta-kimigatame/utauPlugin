@@ -160,7 +160,7 @@ NoteをINSERTした時必要になるので実装しました．
 |PreUtterance=|先行発声値|float|InitPre|-|SetPre|GetPre|PreIsChanged|0f|
 |VoiceOverlap=|オーバーラップ値|float|InitOve|HasOve|SetOve|GetOve|OveIsChanged|0f|
 |StartPoint=|STP値|float|InitStp|HasStp|SetStp|GetStp|StpIsChanged|0f|
-|Velocity=|音量|int|InitVelocity|HasVelocity|SetVelocity|GetVelocity|VelocityIsChanged|100|
+|Velocity=|子音速度|int|InitVelocity|HasVelocity|SetVelocity|GetVelocity|VelocityIsChanged|100|
 |Intensity=|音量|int|InitIntensity|HasIntensity|SetIntensity|GetIntensity|IntensityIsChanged|100|
 |Modulation=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|100|
 |Moduration=|モジュレーション|int|InitMod|HasMod|SetMod|GetMod|ModIsChanged|100|
