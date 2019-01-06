@@ -5,7 +5,7 @@ namespace utauPlugin
 {
     public partial class Note
     {
-        private const int DEFAULT_NOTENUM = 60;
+        private static readonly int DEFAULT_NOTENUM = 60;
         public void InitNoteNum(string noteNum) => this.noteNum = new NoteNum(noteNum);
         public void InitNoteNum(int noteNum) => this.noteNum = new NoteNum(noteNum);
         public void SetNoteNum(string noteNum) => this.noteNum.Set(noteNum);
