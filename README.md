@@ -19,7 +19,7 @@ UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 1. [プロジェクト]-[ソリューション]よりutauPluginにチェックする．
 
 ## 使い方
-```Csharp:sample1
+```CSharp
 using utauPlugin;
 
 namespace sample1
@@ -40,7 +40,7 @@ namespace sample1
 ```
 ## 具体的な使用例
 UTAU界隈おなじみの半音上げプラグイン(コンソール)の場合
-```Csharp:sample2
+```CSharp
 using utauPlugin;
 
 namespace sample1
@@ -63,17 +63,17 @@ namespace sample1
 
 
 ## 簡易APIマニュアル
-### UtauPlugin(base Ust)
-#### UtauPlugin()
-#### UtauPlugin(string filePath)
+### `UtauPlugin(base Ust)`
+#### `UtauPlugin()`
+#### `UtauPlugin(string filePath)`
 パラメータはUstと同じのため詳細略
 
-#### void Input()
+#### `void Input()`
 `UtauPlugin.filePath`のファイルをshift_Jisで開き，内容を解析します．
 
 ustのヘッダ情報は`UtauPlugin UtauPlugin`に，ノートの情報は`List UtauPlugin.note`に格納されます．
 
-#### void Output()
+#### `void Output()`
 `UtauPlugin.filePath`のファイルに編集内容を上書きします．
 
 UTAUプラグインの仕様に則り，書き出し内容は最小限です．
@@ -88,15 +88,30 @@ UTAUプラグインの仕様に則り，書き出し内容は最小限です．
 
 ただし@つきのパラメータは`readonly`なので書き出しません．
 
-### Ust
-#### Ust()
-#### Ust(string filePath)
+#### `InitOriginalEntry(string entryName, Object defaultValue)`
+ファイル読み書きの際に独自エントリの扱いを設定します．
+初期値`hoge`の`MyEntry`を宣言する場合，
+
+```CSharp
+using utauPlugin
+
+UtauPlugin utauPlugin = new UtauPlugin(filePath);
+utauPlugin.InitOriginalEntry("MyEntry", "hoge");
+utauPlugin.Input()
+```
+
+とします．
+
+
+### `Ust`
+#### `Ust()`
+#### `Ust(string filePath)`
 初期化．ファイルパスは宣言時でもあとからSetしても同じです．
 
-#### void SetFilePath(string filePath)
+#### `void SetFilePath(string filePath)`
 読み書きするファイルを変更できます．
 
-#### string GetFilePath()
+#### `string GetFilePath()`
 filePathはprivate要素なので，こちらのメソッドで情報取得してください．
 
 他のパラメータについても同様にSetとGetができます．
@@ -116,29 +131,29 @@ filePathはprivate要素なので，こちらのメソッドで情報取得し�
 |Boolean utf8|utf8形式かのチェック(現在使用していません)|
 
 
-### Note
-#### Note()
+### `Note`
+#### `Note()`
 各ノートに必ずある，セクションNo,ノート長,歌詞，音高，先行発声を初期化して持っています．
 
-#### void InitOve(string ove)
-#### void InitOve(float ove)
-#### void InitOve(int ove)
+#### `void InitOve(string ove)`
+#### `void InitOve(float ove)`
+#### `void InitOve(int ove)`
 オーバーラップ値をoveで初期化します．
 
-#### void SetOve(string ove)
-#### void SetOve(float ove)
-#### void SetOve(int ove)
+#### `void SetOve(string ove)`
+#### `void SetOve(float ove)`
+#### `void SetOve(int ove)`
 オーバーラップ値をoveに変更し，`UtauPlugin.Output()`時書き出すようフラグを立てます．
 
-#### Boolean OveIsChanged()
+#### `Boolean OveIsChanged()`
 1度でもオーバーラップをSetしていればtrueを，していなければfalseを返します．
 
 初期化されていない場合もfalseを返します．
 
-#### Boolean HasOve()
+#### `Boolean HasOve()`
 オーバーラップを初期化していればtrueを，していなければfalseを返します． 
 
-#### float GetOve()
+#### `float GetOve()`
 オーバーラップ値を取得します．
 
 初期化をしていない場合初期値を返します．
@@ -201,6 +216,17 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |@alias=|自動調整後/prefix.map適用後の歌詞|string|InitAtAlias|HasAtAlias|SetAtAlias|GetAtAlias|AtAliasIsChanged|""|
 |@filename=|使用するwavのvoiceDirからの相対パス|string|InitAtFileName|HasAtFileName|SetAtFileName|GetAtFileName|AtFileNameIsChanged|""|
 
+独自エントリ
+
+|種類|
+|:------------|
+|void InitOriginalEntry(string entryName, Object value)|
+|void SetOriginalEntry(string entryName, Object value)|
+|Object GetOriginalEntry(string entryName)|
+|Boolean HasOriginalEntry(string entryName)|
+|Boolean OriginalEntryIsChanged(string entryName)|
+
+
 その他特殊な操作
 
 |メソッド|説明|
@@ -214,13 +240,13 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |void SetPby(int pby, int point)|'point'個目(0スタート)のPBY値を'pby'に変更します．|
 |void SetPbm(string pbm, int point)|'point'個目(0スタート)のPBY値を'pbm'に変更します．|
     
-### NoteNum
+### `NoteNum`
 必要な操作は全て`Note`からできるため説明略
 
-### Mode2Pitch
+### `Mode2Pitch`
 必要な操作は全て`Note`からできるため説明略
 
-### Envelope
+### `Envelope`
 `Note`から直接できない操作のみ説明
 `Note.envelope`が`Envelope型`なので，'Note.envelope.GetP()'のような使い方を想定しています．
 
@@ -232,7 +258,7 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |List<int> GetV()|エンベロープのvを取得|
     
 
-### Vibrato
+### `Vibrato`
 `Note`から直接できない操作のみ説明
 `Note.vibrato`が`Vibrato型`なので，~~`Note.vibrato.GetLength()`のような使い方を想定しています．~~
 ~~以下の通り各パラメータのSetとGetができます．~~
