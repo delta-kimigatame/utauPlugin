@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace utauPlugin
 {
@@ -32,6 +33,7 @@ namespace utauPlugin
         private Entry<Boolean> direct;
         private Entry<string> region;
         private Entry<string> regionEnd;
+        private Dictionary<string,Entry<Object>> originalEntries;
 
         //各エントリのデフォルト値，メソッドはNoteフォルダ内の各csファイルに記述されています．
         

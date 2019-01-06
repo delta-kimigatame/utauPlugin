@@ -7,37 +7,38 @@ using System.Threading.Tasks;
 namespace utauPlugin
 {
     public partial class UtauPlugin : Ust
-    { 
-        private void ParseLength(int index, string key) { note[index].InitLength(ustData[i].Replace(key, "")); }
-        private void ParseLyric(int index, string key) { note[index].InitLyric(ustData[i].Replace(key, "")); }
-        private void ParseNoteNum(int index, string key) { note[index].InitNoteNum(ustData[i].Replace(key, "")); }
-        private void ParseTempo(int index, string key) { note[index].InitTempo(ustData[i].Replace(key, "")); nowTempo = note[index].GetTempo(); }
-        private void ParsePre(int index, string key) { note[index].InitPre(ustData[i].Replace(key, "")); }
-        private void ParseAtPre(int index, string key) { note[index].InitAtPre(ustData[i].Replace(key, "")); }
-        private void ParseOve(int index, string key) { note[index].InitOve(ustData[i].Replace(key, "")); }
-        private void ParseAtOve(int index, string key) { note[index].InitAtOve(ustData[i].Replace(key, "")); }
-        private void ParseStp(int index, string key) { note[index].InitStp(ustData[i].Replace(key, "")); }
-        private void ParseAtStp(int index, string key) { note[index].InitAtStp(ustData[i].Replace(key, "")); }
-        private void ParseAtFileName(int index, string key) { note[index].InitAtFileName(ustData[i].Replace(key, "")); }
-        private void ParseAtAlias(int index, string key) { note[index].InitAtAlias(ustData[i].Replace(key, "")); }
-        private void ParseVelocity(int index, string key) { note[index].InitVelocity(ustData[i].Replace(key, "")); }
-        private void ParseIntensity(int index, string key) { note[index].InitIntensity(ustData[i].Replace(key, "")); }
-        private void ParseMod(int index, string key) { note[index].InitMod(ustData[i].Replace(key, "")); }
-        private void ParsePitches(int index, string key) { note[index].InitPitches(ustData[i].Replace(key, "")); }
-        private void ParsePbStart(int index, string key) { note[index].InitPbStart(ustData[i].Replace(key, "")); }
-        private void ParsePbType(int index, string key) { note[index].InitPbType(ustData[i].Replace(key, "")); }
-        private void ParsePbs(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbs(ustData[i].Replace(key, "")); }
-        private void ParsePbw(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbw(ustData[i].Replace(key, "")); }
-        private void ParsePby(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPby(ustData[i].Replace(key, "")); }
-        private void ParsePbm(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbm(ustData[i].Replace(key, "")); }
-        private void ParseFlags(int index, string key) { note[index].InitFlags(ustData[i].Replace(key, "")); }
-        private void ParseVibrato(int index, string key) { note[index].InitVibrato(ustData[i].Replace(key, "")); }
-        private void ParseEnvelope(int index, string key) { note[index].InitEnvelope(ustData[i].Replace(key, "")); }
-        private void ParseLabel(int index, string key) { note[index].InitLabel(ustData[i].Replace(key, "")); }
-        private void ParseDirect(int index, string key) { note[index].InitDirect(ustData[i].Replace(key, "")); }
-        private void ParseRegion(int index, string key) { note[index].InitRegion(ustData[i].Replace(key, "")); }
-        private void ParseRegionEnd(int index, string key) { note[index].InitRegionEnd(ustData[i].Replace(key, "")); }
-        private void WriteLength(Note note)
+    {
+        private void ParseLength(int index, string key) { note[index].InitLength(ustData[i].Replace(key+"=", "")); }
+        private void ParseLyric(int index, string key) { note[index].InitLyric(ustData[i].Replace(key + "=", "")); }
+        private void ParseNoteNum(int index, string key) { note[index].InitNoteNum(ustData[i].Replace(key + "=", "")); }
+        private void ParseTempo(int index, string key) { note[index].InitTempo(ustData[i].Replace(key + "=", "")); nowTempo = note[index].GetTempo(); }
+        private void ParsePre(int index, string key) { note[index].InitPre(ustData[i].Replace(key + "=", "")); }
+        private void ParseAtPre(int index, string key) { note[index].InitAtPre(ustData[i].Replace(key + "=", "")); }
+        private void ParseOve(int index, string key) { note[index].InitOve(ustData[i].Replace(key + "=", "")); }
+        private void ParseAtOve(int index, string key) { note[index].InitAtOve(ustData[i].Replace(key + "=", "")); }
+        private void ParseStp(int index, string key) { note[index].InitStp(ustData[i].Replace(key + "=", "")); }
+        private void ParseAtStp(int index, string key) { note[index].InitAtStp(ustData[i].Replace(key + "=", "")); }
+        private void ParseAtFileName(int index, string key) { note[index].InitAtFileName(ustData[i].Replace(key + "=", "")); }
+        private void ParseAtAlias(int index, string key) { note[index].InitAtAlias(ustData[i].Replace(key + "=", "")); }
+        private void ParseVelocity(int index, string key) { note[index].InitVelocity(ustData[i].Replace(key + "=", "")); }
+        private void ParseIntensity(int index, string key) { note[index].InitIntensity(ustData[i].Replace(key + "=", "")); }
+        private void ParseMod(int index, string key) { note[index].InitMod(ustData[i].Replace(key + "=", "")); }
+        private void ParsePitches(int index, string key) { note[index].InitPitches(ustData[i].Replace(key + "=", "")); }
+        private void ParsePbStart(int index, string key) { note[index].InitPbStart(ustData[i].Replace(key + "=", "")); }
+        private void ParsePbType(int index, string key) { note[index].InitPbType(ustData[i].Replace(key + "=", "")); }
+        private void ParsePbs(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbs(ustData[i].Replace(key + "=", "")); }
+        private void ParsePbw(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbw(ustData[i].Replace(key + "=", "")); }
+        private void ParsePby(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPby(ustData[i].Replace(key + "=", "")); }
+        private void ParsePbm(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbm(ustData[i].Replace(key + "=", "")); }
+        private void ParseFlags(int index, string key) { note[index].InitFlags(ustData[i].Replace(key + "=", "")); }
+        private void ParseVibrato(int index, string key) { note[index].InitVibrato(ustData[i].Replace(key + "=", "")); }
+        private void ParseEnvelope(int index, string key) { note[index].InitEnvelope(ustData[i].Replace(key + "=", "")); }
+        private void ParseLabel(int index, string key) { note[index].InitLabel(ustData[i].Replace(key + "=", "")); }
+        private void ParseDirect(int index, string key) { note[index].InitDirect(ustData[i].Replace(key + "=", "")); }
+        private void ParseRegion(int index, string key) { note[index].InitRegion(ustData[i].Replace(key + "=", "")); }
+        private void ParseRegionEnd(int index, string key) { note[index].InitRegionEnd(ustData[i].Replace(key + "=", "")); }
+        private void ParseOriginalEntry(int index, string key) { note[index].InitOriginalEntry(key,ustData[i].Replace(key + "=", "")); }
+        private void WriteLength(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.LengthIsChanged())
             {
@@ -45,7 +46,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteLyric(Note note)
+        private void WriteLyric(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.LyricIsChanged())
             {
@@ -53,7 +54,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteNoteNum(Note note)
+        private void WriteNoteNum(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.NoteNumIsChanged())
             {
@@ -61,7 +62,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteTempo(Note note)
+        private void WriteTempo(Note note, string key)
         {
             if (note.TempoIsChanged())
             {
@@ -69,7 +70,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePre(Note note)
+        private void WritePre(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.PreIsChanged())
             {
@@ -80,7 +81,7 @@ namespace utauPlugin
         }
         
 
-        private void WriteOve(Note note)
+        private void WriteOve(Note note, string key)
         {
             if (note.HasOve() && (note.GetNum() == "INSERT" || note.OveIsChanged()))
             {
@@ -89,7 +90,7 @@ namespace utauPlugin
         }
         
 
-        private void WriteStp(Note note)
+        private void WriteStp(Note note, string key)
         {
             if (note.HasStp() && (note.GetNum() == "INSERT" || note.StpIsChanged()))
             {
@@ -97,7 +98,7 @@ namespace utauPlugin
             }
         }
                 
-        private void WriteVelocity(Note note)
+        private void WriteVelocity(Note note, string key)
         {
             if (note.HasVelocity() && (note.GetNum() == "INSERT" || note.VelocityIsChanged()))
             {
@@ -105,7 +106,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteIntensity(Note note)
+        private void WriteIntensity(Note note, string key)
         {
             if (note.HasIntensity() && (note.GetNum() == "INSERT" || note.IntensityIsChanged()))
             {
@@ -113,7 +114,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteMod(Note note)
+        private void WriteMod(Note note, string key)
         {
             if (note.HasMod() && (note.GetNum() == "INSERT" || note.ModIsChanged()))
             {
@@ -123,7 +124,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePitches(Note note)
+        private void WritePitches(Note note, string key)
         {
             if (note.HasPitches() && (note.GetNum() == "INSERT" || note.PitchesIsChanged()))
             {
@@ -133,7 +134,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePbStart(Note note)
+        private void WritePbStart(Note note, string key)
         {
             if (note.HasPbStart() && (note.GetNum() == "INSERT" || note.PbStartIsChanged()))
             {
@@ -141,7 +142,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePbType(Note note)
+        private void WritePbType(Note note, string key)
         {
             if (note.HasPbType() && (note.GetNum() == "INSERT" || note.PbTypeIsChanged()))
             {
@@ -149,7 +150,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePbs(Note note)
+        private void WritePbs(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbsIsChanged()))
             {
@@ -157,7 +158,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePbw(Note note)
+        private void WritePbw(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbwIsChanged()))
             {
@@ -165,7 +166,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePby(Note note)
+        private void WritePby(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbyIsChanged()))
             {
@@ -179,7 +180,7 @@ namespace utauPlugin
             }
         }
 
-        private void WritePbm(Note note)
+        private void WritePbm(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbmIsChanged()))
             {
@@ -187,7 +188,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteFlags(Note note)
+        private void WriteFlags(Note note, string key)
         {
             if (note.HasFlags() && (note.GetNum() == "INSERT" || note.FlagsIsChanged()))
             {
@@ -195,7 +196,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteVibrato(Note note)
+        private void WriteVibrato(Note note, string key)
         {
             if (note.HasVibrato() && (note.GetNum() == "INSERT" || note.VibratoIsChanged()))
             {
@@ -203,7 +204,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteEnvelope(Note note)
+        private void WriteEnvelope(Note note, string key)
         {
             if (note.HasEnvelope() && (note.GetNum() == "INSERT" || note.EnvelopeIsChanged()))
             {
@@ -211,7 +212,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteLabel(Note note)
+        private void WriteLabel(Note note, string key)
         {
             if (note.HasLabel() && (note.GetNum() == "INSERT" || note.LabelIsChanged()))
             {
@@ -219,7 +220,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteDirect(Note note)
+        private void WriteDirect(Note note, string key)
         {
             if (note.HasDirect() && (note.GetNum() == "INSERT" || note.DirectIsChanged()) && note.GetDirect())
             {
@@ -227,7 +228,7 @@ namespace utauPlugin
             }
         }
 
-        private void WriteRegion(Note note)
+        private void WriteRegion(Note note, string key)
         {
             if (note.HasRegion() && (note.GetNum() == "INSERT" || note.RegionIsChanged()))
             {
@@ -235,124 +236,139 @@ namespace utauPlugin
             }
         }
 
-        private void WriteRegionEnd(Note note)
+        private void WriteRegionEnd(Note note, string key)
         {
             if (note.HasRegionEnd() && (note.GetNum() == "INSERT" || note.RegionEndIsChanged()))
             {
                 writeData.Add("$region_end=" + note.GetRegionEnd());
             }
         }
-
+        private void WriteOriginalEntry(Note note, string key)
+        {
+            if (note.HasOriginalEntry(key) && (note.GetNum() == "INSERT" || note.OriginalEntryIsChanged(key)))
+            {
+                writeData.Add(key +"="+ note.GetOriginalEntry(key).ToString());
+            }
+        }
 
         private Dictionary<string, EntryMethods> entries;
 
         private void InitEntries()
         {
             entries = new Dictionary<string, EntryMethods>();
-            entries.Add("Length=", new EntryMethods());
-            entries["Length="].Input = ParseLength;
-            entries["Length="].Output = WriteLength;
-            entries.Add("Lyric=", new EntryMethods());
-            entries["Lyric="].Input = ParseLyric;
-            entries["Lyric="].Output = WriteLyric;
-            entries.Add("NoteNum=", new EntryMethods());
-            entries["NoteNum="].Input = ParseNoteNum;
-            entries["NoteNum="].Output = WriteNoteNum;
-            entries.Add("Tempo=", new EntryMethods());
-            entries["Tempo="].Input = ParseTempo;
-            entries["Tempo="].Output = WriteTempo;
-            entries.Add("PreUtterance=", new EntryMethods());
-            entries["PreUtterance="].Input = ParsePre;
-            entries["PreUtterance="].Output = WritePre;
-            entries.Add("@preuttr=", new EntryMethods());
-            entries["@preuttr="].Input = ParseAtPre;
-            entries["@preuttr="].Output = null;
-            entries.Add("VoiceOverlap=", new EntryMethods());
-            entries["VoiceOverlap="].Input = ParseOve;
-            entries["VoiceOverlap="].Output = WriteOve;
-            entries.Add("@overlap=", new EntryMethods());
-            entries["@overlap="].Input = ParseAtOve;
-            entries["@overlap="].Output = null;
-            entries.Add("StartPoint=", new EntryMethods());
-            entries["StartPoint="].Input = ParseStp;
-            entries["StartPoint="].Output = WriteStp;
-            entries.Add("@stpoint=", new EntryMethods());
-            entries["@stpoint="].Input = ParseAtStp;
-            entries["@stpoint="].Output = null;
-            entries.Add("@filename=", new EntryMethods());
-            entries["@filename="].Input = ParseAtFileName;
-            entries["@filename="].Output = null;
-            entries.Add("@alias=", new EntryMethods());
-            entries["@alias="].Input = ParseAtAlias;
-            entries["@alias="].Output = null;
-            entries.Add("Velocity=", new EntryMethods());
-            entries["Velocity="].Input = ParseVelocity;
-            entries["Velocity="].Output = WriteVelocity;
-            entries.Add("Intensity=", new EntryMethods());
-            entries["Intensity="].Input = ParseIntensity;
-            entries["Intensity="].Output = WriteIntensity;
-            entries.Add("Moduration=", new EntryMethods());
-            entries["Moduration="].Input = ParseMod;
-            entries["Moduration="].Output = WriteMod;
-            entries.Add("Modulation=", new EntryMethods());
-            entries["Modulation="].Input = ParseMod;
-            entries["Modulation="].Output = null;
-            entries.Add("Piches=", new EntryMethods());
-            entries["Piches="].Input = ParsePitches;
-            entries["Piches="].Output = null;
-            entries.Add("Pitches=", new EntryMethods());
-            entries["Pitches="].Input = ParsePitches;
-            entries["Pitches="].Output = null;
-            entries.Add("PitchBend=", new EntryMethods());
-            entries["PitchBend="].Input = ParsePitches;
-            entries["PitchBend="].Output = null;
-            entries.Add("PBStart=", new EntryMethods());
-            entries["PBStart="].Input = ParsePbStart;
-            entries["PBStart="].Output = WritePbStart;
-            entries.Add("PBType=", new EntryMethods());
-            entries["PBType="].Input = ParsePbType;
-            entries["PBType="].Output = WritePbType;
-            entries.Add("PBS=", new EntryMethods());
-            entries["PBS="].Input = ParsePbs;
-            entries["PBS="].Output = WritePbs;
-            entries.Add("PBW=", new EntryMethods());
-            entries["PBW="].Input = ParsePbw;
-            entries["PBW="].Output = WritePbw;
-            entries.Add("PBY=", new EntryMethods());
-            entries["PBY="].Input = ParsePby;
-            entries["PBY="].Output = WritePby;
-            entries.Add("PBM=", new EntryMethods());
-            entries["PBM="].Input = ParsePbm;
-            entries["PBM="].Output = WritePbm;
-            entries.Add("Flags=", new EntryMethods());
-            entries["Flags="].Input = ParseFlags;
-            entries["Flags="].Output = WriteFlags;
-            entries.Add("VBR=", new EntryMethods());
-            entries["VBR="].Input = ParseVibrato;
-            entries["VBR="].Output = WriteVibrato;
-            entries.Add("Envelope=", new EntryMethods());
-            entries["Envelope="].Input = ParseEnvelope;
-            entries["Envelope="].Output = WriteEnvelope;
-            entries.Add("Label=", new EntryMethods());
-            entries["Label="].Input = ParseLabel;
-            entries["Label="].Output = WriteLabel;
-            entries.Add("$direct=", new EntryMethods());
-            entries["$direct="].Input = ParseDirect;
-            entries["$direct="].Output = WriteDirect;
-            entries.Add("$region=", new EntryMethods());
-            entries["$region="].Input = ParseRegion;
-            entries["$region="].Output = WriteRegion;
-            entries.Add("$region_end=", new EntryMethods());
-            entries["$region_end="].Input = ParseRegionEnd;
-            entries["$region_end="].Output = WriteRegionEnd;
+            entries.Add("Length", new EntryMethods());
+            entries["Length"].Input = ParseLength;
+            entries["Length"].Output = WriteLength;
+            entries.Add("Lyric", new EntryMethods());
+            entries["Lyric"].Input = ParseLyric;
+            entries["Lyric"].Output = WriteLyric;
+            entries.Add("NoteNum", new EntryMethods());
+            entries["NoteNum"].Input = ParseNoteNum;
+            entries["NoteNum"].Output = WriteNoteNum;
+            entries.Add("Tempo", new EntryMethods());
+            entries["Tempo"].Input = ParseTempo;
+            entries["Tempo"].Output = WriteTempo;
+            entries.Add("PreUtterance", new EntryMethods());
+            entries["PreUtterance"].Input = ParsePre;
+            entries["PreUtterance"].Output = WritePre;
+            entries.Add("@preuttr", new EntryMethods());
+            entries["@preuttr"].Input = ParseAtPre;
+            entries["@preuttr"].Output = null;
+            entries.Add("VoiceOverlap", new EntryMethods());
+            entries["VoiceOverlap"].Input = ParseOve;
+            entries["VoiceOverlap"].Output = WriteOve;
+            entries.Add("@overlap", new EntryMethods());
+            entries["@overlap"].Input = ParseAtOve;
+            entries["@overlap"].Output = null;
+            entries.Add("StartPoint", new EntryMethods());
+            entries["StartPoint"].Input = ParseStp;
+            entries["StartPoint"].Output = WriteStp;
+            entries.Add("@stpoint", new EntryMethods());
+            entries["@stpoint"].Input = ParseAtStp;
+            entries["@stpoint"].Output = null;
+            entries.Add("@filename", new EntryMethods());
+            entries["@filename"].Input = ParseAtFileName;
+            entries["@filename"].Output = null;
+            entries.Add("@alias", new EntryMethods());
+            entries["@alias"].Input = ParseAtAlias;
+            entries["@alias"].Output = null;
+            entries.Add("Velocity", new EntryMethods());
+            entries["Velocity"].Input = ParseVelocity;
+            entries["Velocity"].Output = WriteVelocity;
+            entries.Add("Intensity", new EntryMethods());
+            entries["Intensity"].Input = ParseIntensity;
+            entries["Intensity"].Output = WriteIntensity;
+            entries.Add("Moduration", new EntryMethods());
+            entries["Moduration"].Input = ParseMod;
+            entries["Moduration"].Output = WriteMod;
+            entries.Add("Modulation", new EntryMethods());
+            entries["Modulation"].Input = ParseMod;
+            entries["Modulation"].Output = null;
+            entries.Add("Piches", new EntryMethods());
+            entries["Piches"].Input = ParsePitches;
+            entries["Piches"].Output = null;
+            entries.Add("Pitches", new EntryMethods());
+            entries["Pitches"].Input = ParsePitches;
+            entries["Pitches"].Output = null;
+            entries.Add("PitchBend", new EntryMethods());
+            entries["PitchBend"].Input = ParsePitches;
+            entries["PitchBend"].Output = null;
+            entries.Add("PBStart", new EntryMethods());
+            entries["PBStart"].Input = ParsePbStart;
+            entries["PBStart"].Output = WritePbStart;
+            entries.Add("PBType", new EntryMethods());
+            entries["PBType"].Input = ParsePbType;
+            entries["PBType"].Output = WritePbType;
+            entries.Add("PBS", new EntryMethods());
+            entries["PBS"].Input = ParsePbs;
+            entries["PBS"].Output = WritePbs;
+            entries.Add("PBW", new EntryMethods());
+            entries["PBW"].Input = ParsePbw;
+            entries["PBW"].Output = WritePbw;
+            entries.Add("PBY", new EntryMethods());
+            entries["PBY"].Input = ParsePby;
+            entries["PBY"].Output = WritePby;
+            entries.Add("PBM", new EntryMethods());
+            entries["PBM"].Input = ParsePbm;
+            entries["PBM"].Output = WritePbm;
+            entries.Add("Flags", new EntryMethods());
+            entries["Flags"].Input = ParseFlags;
+            entries["Flags"].Output = WriteFlags;
+            entries.Add("VBR", new EntryMethods());
+            entries["VBR"].Input = ParseVibrato;
+            entries["VBR"].Output = WriteVibrato;
+            entries.Add("Envelope", new EntryMethods());
+            entries["Envelope"].Input = ParseEnvelope;
+            entries["Envelope"].Output = WriteEnvelope;
+            entries.Add("Label", new EntryMethods());
+            entries["Label"].Input = ParseLabel;
+            entries["Label"].Output = WriteLabel;
+            entries.Add("$direct", new EntryMethods());
+            entries["$direct"].Input = ParseDirect;
+            entries["$direct"].Output = WriteDirect;
+            entries.Add("$region", new EntryMethods());
+            entries["$region"].Input = ParseRegion;
+            entries["$region"].Output = WriteRegion;
+            entries.Add("$region_end", new EntryMethods());
+            entries["$region_end"].Input = ParseRegionEnd;
+            entries["$region_end"].Output = WriteRegionEnd;
 
         }
-
+        public List<string> debug;
+        public void InitOriginalEntry(string entryName,Object defaultValue)
+        {
+            debug = new List<string>();
+            Note.InitOriginalEntryDefault(entryName, defaultValue);
+            debug.AddRange(Note.originalEntriesDefaultValue.Keys);
+            entries.Add(entryName, new EntryMethods());
+            entries[entryName].Input = ParseOriginalEntry;
+            entries[entryName].Output = WriteOriginalEntry;
+        }
 
         public class EntryMethods
         {
             public delegate void InputDelegate(int index, string key);
-            public delegate void OutputDelegate(Note ntoe);
+            public delegate void OutputDelegate(Note ntoe, string key);
             private InputDelegate input;
             private OutputDelegate output;
 

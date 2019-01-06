@@ -62,7 +62,6 @@ namespace utauPlugin
                 ustData.Add(line);
             }
             file2.Close();
-
         }
 
         private Boolean IsHeader(string value) => !(Regex.IsMatch(value, @"\[#([0-9]+|PREV|NEXT)\]$"));
@@ -132,7 +131,7 @@ namespace utauPlugin
                 }
                 foreach (string key in entries.Keys)
                 {
-                    if (ustData[i].Contains(key)){
+                    if (ustData[i].Contains(key+"=")){
                         entries[key].Input(note.Count - 1, key);
                         continue;
                     }
@@ -167,10 +166,7 @@ namespace utauPlugin
                 }
                 foreach(string key in entries.Keys)
                 {
-                    if (entries[key].Output != null)
-                    {
-                        entries[key].Output(note);
-                    }
+                    entries[key].Output?.Invoke(note,key);
                 }
             }
         }

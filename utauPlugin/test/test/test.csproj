@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="outputData\" />
+    <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="inputData\error.txt" />

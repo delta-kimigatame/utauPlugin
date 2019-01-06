@@ -358,6 +358,23 @@ namespace inputUstTest
             utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\20190103Error.txt";
             utauPlugin.Input();
         }
+        [TestMethod()]
+        public void InitOriginalEntryTest()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
+            utauPlugin.InitOriginalEntry("myEntry", "ccc");
+            utauPlugin.InitOriginalEntry("myEntry2", "");
+            utauPlugin.Input();
+            Assert.IsTrue("hoge"==utauPlugin.note[2].GetOriginalEntry("myEntry").ToString());
+            Assert.IsTrue("fuga"==utauPlugin.note[2].GetOriginalEntry("myEntry2").ToString());
+            utauPlugin.note[3].InitOriginalEntry("myEntry", "aaa");
+            Assert.IsTrue("aaa" == utauPlugin.note[3].GetOriginalEntry("myEntry").ToString());
+            utauPlugin.note[1].SetOriginalEntry("myEntry2", "bbb");
+            Assert.IsTrue("bbb" == utauPlugin.note[1].GetOriginalEntry("myEntry2").ToString());
+            Assert.IsTrue("ccc" == utauPlugin.note[1].GetOriginalEntry("myEntry").ToString());
+
+        }
         //[TestMethod]
         //public void ErrorCheck()
         //{

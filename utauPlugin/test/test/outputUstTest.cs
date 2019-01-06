@@ -52,5 +52,36 @@ namespace outputUstTest.cs
             utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\out119_Direct.tmp";
             utauPlugin.Output();
         }
+        [TestMethod()]
+        public void InitOriginalEntryOutputTest()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
+            utauPlugin.InitOriginalEntry("myEntry", "ccc");
+            utauPlugin.InitOriginalEntry("myEntry2", "");
+            utauPlugin.Input();
+            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\original.tmp";
+            utauPlugin.note[1].SetOriginalEntry("myEntry","ddd");
+
+            utauPlugin.Output();
+
+        }
+        [TestMethod()]
+        public void InitOriginalEntryInsertTest()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
+            utauPlugin.InitOriginalEntry("myEntry", "ccc");
+            utauPlugin.InitOriginalEntry("myEntry2", "");
+            utauPlugin.Input();
+            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\originalInsert.tmp";
+            for (int i = 0; i < utauPlugin.note.Count; i++)
+            {
+                utauPlugin.note[i].SetNum("INSERT");
+            }
+
+            utauPlugin.Output();
+
+        }
     }
 }
