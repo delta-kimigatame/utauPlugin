@@ -37,6 +37,16 @@ namespace utauPlugin
             }
         }
 
+        public void SetPbw(float pbw, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPbw(pbw, point);
+            }
+        }
+
         public void SetPbw(List<float> pbw)
         {
             if (HasMode2Pitch()) { mode2Pitch.SetPbw(pbw); }

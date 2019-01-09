@@ -38,6 +38,16 @@ namespace utauPlugin
             }
         }
 
+        public void SetPby(float pby, int point)
+        {
+            if (HasMode2Pitch()) { mode2Pitch.SetPby(pby, point); }
+            else
+            {
+                mode2Pitch = new Mode2Pitch();
+                mode2Pitch.SetPby(pby, point);
+            }
+        }
+
         public void SetPby(List<float> pby)
         {
             if (HasMode2Pitch()) { mode2Pitch.SetPby(pby); }
