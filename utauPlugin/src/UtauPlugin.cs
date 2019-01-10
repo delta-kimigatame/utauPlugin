@@ -34,6 +34,7 @@ namespace utauPlugin
             catch (Exception ex)
             {
                 File.WriteAllText(".\\utauPluginInputLog.txt", ex.Message+"\n"+ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                File.WriteAllLines(".\\InputData.txt",ustData);
                 Environment.Exit(0);
             }
         }
@@ -181,6 +182,7 @@ namespace utauPlugin
             catch (Exception ex)
             {
                 File.WriteAllText(".\\utauPluginOutputLog.txt", ex.Message + "\n"+ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                File.WriteAllLines(".\\InputData.txt", ustData);
                 Environment.Exit(0);
             }
         }
