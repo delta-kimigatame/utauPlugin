@@ -375,6 +375,13 @@ namespace inputUstTest
             Assert.IsTrue("ccc" == utauPlugin.note[1].GetOriginalEntry("myEntry").ToString());
 
         }
+        [TestMethod]
+        public void Error20190110()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\error20190110.txt";
+            utauPlugin.Input();
+        }
         //[TestMethod]
         //public void ErrorCheck()
         //{

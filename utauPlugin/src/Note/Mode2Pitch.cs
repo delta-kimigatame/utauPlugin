@@ -43,14 +43,45 @@ namespace utauPlugin
                 if (inputPbs.Contains(";"))
                 {
                     string[] tmp = inputPbs.Split(';');
-                    pbsTime = float.Parse(tmp[0]);
-                    pbsHeight = float.Parse(tmp[1]);
+
+                    if (tmp[0] != "")
+                    {
+                        pbsTime = float.Parse(tmp[0]);
+                    }
+                    else
+                    {
+                        pbsTime = 0;
+
+                    }
+                    if(tmp[1] != "")
+                    {
+                        pbsHeight = float.Parse(tmp[1]);
+                    }
+                    else
+                    {
+                        pbsHeight =0;
+                    }
                 }
                 else if (inputPbs.Contains(","))
                 {
                     string[] tmp = inputPbs.Split(',');
-                    pbsTime = float.Parse(tmp[0]);
-                    pbsHeight = float.Parse(tmp[1]);
+                    if (tmp[0] != "")
+                    {
+                        pbsTime = float.Parse(tmp[0]);
+                    }
+                    else
+                    {
+                        pbsTime = 0;
+
+                    }
+                    if (tmp[1] != "")
+                    {
+                        pbsHeight = float.Parse(tmp[1]);
+                    }
+                    else
+                    {
+                        pbsHeight = 0;
+                    }
                 }
                 else
                 {
@@ -96,7 +127,14 @@ namespace utauPlugin
                 this.pbw.Clear();
                 foreach (string x in tmpPbw)
                 {
-                    this.pbw.Add(float.Parse(x));
+                    if (x != "")
+                    {
+                        this.pbw.Add(float.Parse(x));
+                    }
+                    else
+                    {
+                        this.pbw.Add(0);
+                    }
                 }
                 pbwIsChanged = true;
             }
