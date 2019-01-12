@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WaveTests</RootNamespace>
     <AssemblyName>WaveTests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -63,13 +63,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wave\Wave.csproj">
-      <Project>{C0CC431F-2A53-4CCB-9026-451570C7ACE8}</Project>
-      <Name>Wave</Name>
-    </ProjectReference>
+    <Content Include="testWav\test1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="testWav\test1.wav" />
+    <ProjectReference Include="..\Wave\Wave.csproj">
+      <Project>{c0cc431f-2a53-4ccb-9026-451570c7ace8}</Project>
+      <Name>Wave</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

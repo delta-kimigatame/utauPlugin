@@ -24,7 +24,7 @@ namespace utauPlugin
             try
             {
                 Console.WriteLine(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName);
-                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
                 //ustData.AddRange(File.ReadAllLines(FilePath, Encoding.GetEncoding("Shift_JIS")));
                 GetUstData();
                 AnalyzeHeader();
