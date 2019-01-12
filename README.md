@@ -102,6 +102,26 @@ utauPlugin.Input()
 
 とします．
 
+#### `InputVoiceBank()`
+UtauPlugin.VoiceDirを参照し，oto.iniとprefix.mapを読込ます．
+
+oto.iniは `Dictionary <string, Oto > UtauPlugin.vb.oto`に，
+
+prefix.mapは `Dictionary <string, MapValue > UtauPlugin.vb.map`に格納されます．
+
+#### `ApplyOto()`
+`UtauPlugin.note`のうちpreとoveが定義されていないものを，`UtauPlugin.vb.map`と`UtauPlugin.vb.oto`に基づいて補完します．
+なお，Outputには反映されません．
+
+#### `InitAtParam`
+`UtauPlugin.note`のうち@filename,@alias,@pre,@pve,@stpが定義されていないものを，他のパラメータに基づいて補完します．
+pre/oveが定義されていない場合自動的に`ApplyOto`も呼ばれます．
+
+#### `DeleteNote(int index)`
+index番目のnote.numをDELETEに変更し，前後のノートをprev/nextで繋ぎます．
+
+#### `InsertNote(int index)`
+index番目にnoteを追加します．追加されたノートはnote.num=INSERT以外未定義となります．
 
 ### `Ust`
 #### `Ust()`
@@ -190,9 +210,9 @@ NoteをINSERTした時必要になるので実装しました．
 
 |エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
 |:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
-|Piches=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
-|Pitches=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
-|PitchBend=|mode1用ピッチ数列|List<int>|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|Piches=|mode1用ピッチ数列|List&lt;int&gt;|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|Pitches=|mode1用ピッチ数列|List&lt;int&gt;|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
+|PitchBend=|mode1用ピッチ数列|List&lt;int&gt;|InitPitches|HasPitches|SetPitches|GetPitches|PitchesIsChanged|空のList<int>|
 |PBStart=|mode1用ピッチ数列の開始位置|float|InitPbStart|HasPbStart|SetPbStart|GetPbStart|PbStartIsChanged|0.0f|
 |PBType=|mode1用ピッチベンドの種類|string|InitPbType|HasPbType|SetPbType|GetPbType|PbTypeIsChanged|"5"|
 
@@ -202,9 +222,9 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |エントリ名|説明|type|Init|Has|Set|Get|IsChanged|初期値|
 |:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
 |PBS=|mode2用ピッチの開始位置|string|InitPbs|HasMode2Pitch|SetPbs|GetPbs|PbsIsChanged|"-50"|
-|PBW=|mode2用ポルタメントの間隔|List<float>|InitPbw|HasMode2Pitch|SetPbw|GetPbw|PbwIsChanged|空のList<float>|
-|PBY=|mode2用ポルタメントの音高|List<float>|InitPby|HasMode2Pitch|SetPby|GetPby|PbyIsChanged|空のList<float>|
-|PBM=|mode2用ピッチベンドの種類|List<string>|InitPbm|HasMode2Pitch|SetPbm|GetPbm|PbmIsChanged|空のList<string>|
+|PBW=|mode2用ポルタメントの間隔|List&lt;float&gt;|InitPbw|HasMode2Pitch|SetPbw|GetPbw|PbwIsChanged|空のList<float>|
+|PBY=|mode2用ポルタメントの音高|List&lt;float&gt;|InitPby|HasMode2Pitch|SetPby|GetPby|PbyIsChanged|空のList<float>|
+|PBM=|mode2用ピッチベンドの種類|List&lt;string&gt;|InitPbm|HasMode2Pitch|SetPbm|GetPbm|PbmIsChanged|空のList<string>|
 
 読み取り専用のパラメータ
 
@@ -239,6 +259,8 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |void SetPbw(int pbw, int point)|'point'個目(0スタート)のPBW値を'pbw'に変更します．|
 |void SetPby(int pby, int point)|'point'個目(0スタート)のPBY値を'pby'に変更します．|
 |void SetPbm(string pbm, int point)|'point'個目(0スタート)のPBY値を'pbm'に変更します．|
+|void ApplyOto(Dictionary&lt;string,MapValue&gt; map, Dictionary&lt;string, Oto&gt; oto)|pre/oveをoto,mapに基づいて初期化します．|
+|void InitAtParam(Dictionary&lt;string,MapValue&gt; map, Dictionary&lt;string, Oto&gt; oto)|@パラメータをoto,mapに基づいて初期化します．|
     
 ### `NoteNum`
 必要な操作は全て`Note`からできるため説明略
@@ -274,5 +296,61 @@ mode2用のピッチのパラメータは内部的には一括で宣言され，
 |FadeoutTime|float|ビブラート長に対するフェードアウトの割合|
 |Phase|float|ビブラートの初期位相のずれ|
 |Height|float|ビブラートの音程オフセット|
+
+
+### `UtauVoiceBank.VoiceBank`
+#### `VoiceBank(string dirPath)`
+#### `VoiceBank()`
+要素としてstring DirPathを持ちます．
+
+#### `InputPrefixMap`
+dirPathのルートにあるprefix.mapを`Dictionary <string, MapValue> VoiceBank.prefixMap`に格納します．
+
+keyはNote.GetNoteNumNameで取得できる音高名です．
+
+#### `InputPrefixMapsAll`
+`Dictionary <string, Dictionary <string, MapValue>> VoiceBank.prefixMaps`にprefix.mapを格納します．
+
+dirPathのルートは`prefixMaps[""]`に，
+サブフォルダのprefix.mapが`prefixMaps["dirName"]`に格納されます．
+
+#### `InputOto`
+dirPathのルートにあるoto.iniを`Dictionary <string, Oto> VoiceBank.oto`に格納します．
+
+keyは原音設定のエイリアスとファイル名が設定されます．
+
+同一のキーがある場合先に読み込まれた内容が適用されます．
+
+#### `InputOtoAll(Boolean Recursive = false)`
+dirPath以下サブフォルダ内のoto.iniを`Dictionary <string, Oto> VoiceBank.oto`に格納します．
+
+標準ではdirPathの子フォルダまでですが，Recursive=trueとすると，再帰的に子フォルダからoto.iniを探します．
+
+### `MapValue`
+string Preとstring Su を持ちます．
+
+### `Oto`
+
+|パラメータ|説明|
+|:----------|:----------|
+|string DirPath|ルートフォルダからの相対パス|
+|string fileName|ファイル名|
+|string alias|エイリアス|
+|float Offset|左ブランク|
+|float Vel|固定範囲|
+|float Blank|右ブランク|
+|float Pre|先行発声|
+|float Ove|オーバーラップ|
+|int WavLength|wavファイルの長さ(ms)|
+
+#### `int GetWavLength()`
+WavLength値を返します．不明な場合，wavファイルにアクセスしてファイル長を求めます．
+
+#### `float GetInverseBlank()`
+UTAUにはBlankが正の場合(wav末尾からの時間)と負の場合(Offsetからの時間の-1倍)の2種類の書式があります．
+
+Blankの正負を逆にした値を計算し返します．
+
+
 
 
