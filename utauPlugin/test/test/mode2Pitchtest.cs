@@ -163,5 +163,13 @@ namespace mode2PitchTest
             Assert.IsTrue("j" == mode2Pitch.GetPbm()[1]);
             Assert.IsTrue(2 == mode2Pitch.GetPbm().Count);
         }
+        [TestMethod]
+        public void ChangeGetPbyTest()
+        {
+            Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
+            mode2Pitch.SetPby("50,30,20");
+            mode2Pitch.GetPby()[0] = mode2Pitch.GetPby()[0] + 100;
+            Assert.IsTrue(150f == mode2Pitch.GetPby()[0]);
+        }
     }
 }

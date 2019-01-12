@@ -1140,6 +1140,21 @@ namespace UtauPluginNoteTest
             Assert.IsTrue(note.GetRegionEnd() == "‚ ");
             Assert.IsTrue(note.RegionEndIsChanged());
         }
+        [TestMethod]
+        public void ChangeGetPbyTest()
+        {
+            note.SetPby("0,1,2,");
+            note.GetPby()[0] = note.GetPby()[0] + 100;
+            Assert.IsTrue(note.GetPby()[0] == 100f);
+        }
+
+        [TestMethod]
+        public void ChangeGetPbyTest2()
+        {
+            note.SetPby("0,1,2,");
+            note.GetPby()[0] = 100;
+            Assert.IsTrue(note.GetPby()[0] == 100f);
+        }
 
     }
 }

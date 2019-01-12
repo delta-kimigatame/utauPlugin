@@ -50,6 +50,14 @@
     <Reference Include="utauPlugin">
       <HintPath>..\..\bin\Release\utauPlugin.dll</HintPath>
     </Reference>
+    <Reference Include="UtauVoiceBank, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Release\UtauVoiceBank.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Release\Wave.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="envelopeTest.cs" />

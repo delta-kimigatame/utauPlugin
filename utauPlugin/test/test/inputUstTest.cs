@@ -382,6 +382,143 @@ namespace inputUstTest
             utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\error20190110.txt";
             utauPlugin.Input();
         }
+        [TestMethod]
+        public void TestNotePrevNext()
+        {
+            Assert.IsTrue(utauPlugin.note[1].GetNum() == "0002");
+            Assert.IsTrue(utauPlugin.note[1].Next.GetNum() == "0003");
+            Assert.IsTrue(utauPlugin.note[2].Prev.GetNum() == "0002");
+        }
+        [TestMethod]
+        public void TestNoteInsert()
+        {
+            utauPlugin.InsertNote(2);
+            Assert.IsTrue(utauPlugin.note[1].GetNum() == "0002");
+            Assert.IsTrue(utauPlugin.note[1].Next.GetNum() == "INSERT");
+            Assert.IsTrue(utauPlugin.note[2].Prev.GetNum() == "0002");
+            Assert.IsTrue(utauPlugin.note[2].Next.GetNum() == "0003");
+            Assert.IsTrue(utauPlugin.note[3].Prev.GetNum() == "INSERT");
+        }
+        [TestMethod]
+        public void TestNoteInsertFirst()
+        {
+            utauPlugin.InsertNote(0);
+            Assert.IsTrue(utauPlugin.note[0].GetNum() == "INSERT");
+            Assert.IsTrue(utauPlugin.note[0].Next.GetNum() == "PREV");
+            Assert.IsTrue(utauPlugin.note[1].Prev.GetNum() == "INSERT");
+        }
+        [TestMethod]
+        public void TestNoteInsertLast()
+        {
+            utauPlugin.InsertNote(utauPlugin.note.Count);
+            Assert.IsTrue(utauPlugin.note[utauPlugin.note.Count - 1].GetNum() == "INSERT");
+            Assert.IsTrue(utauPlugin.note[utauPlugin.note.Count - 1].Prev.GetNum() == "NEXT");
+            Assert.IsTrue(utauPlugin.note[utauPlugin.note.Count - 2].Next.GetNum() == "INSERT");
+        }
+        [TestMethod]
+        public void TestNoteDelete()
+        {
+            utauPlugin.DeleteNote(2);
+            Assert.IsTrue(utauPlugin.note[2].GetNum() == "DELETE");
+            Assert.IsTrue(utauPlugin.note[1].Next.GetNum() == "0004");
+            Assert.IsTrue(utauPlugin.note[3].Prev.GetNum() == "0002");
+        }
+        [TestMethod]
+        public void TestNoteDeleteInsert()
+        {
+            utauPlugin.DeleteNote(2);
+            utauPlugin.InsertNote(3);
+            Assert.IsTrue(utauPlugin.note[2].GetNum() == "DELETE");
+            Assert.IsTrue(utauPlugin.note[3].GetNum() == "INSERT");
+            Assert.IsTrue(utauPlugin.note[1].Next.GetNum() == "INSERT");
+            Assert.IsTrue(utauPlugin.note[3].Prev.GetNum() == "0002");
+            Assert.IsTrue(utauPlugin.note[3].Next.GetNum() == "0004");
+            Assert.IsTrue(utauPlugin.note[4].Prev.GetNum() == "INSERT");
+        }
+        [TestMethod]
+        public void TestApplyOto()
+        {
+            utauPlugin.InsertNote(2);
+            utauPlugin.note[2].SetLyric("‚³");
+            utauPlugin.note[2].SetNoteNum(60);
+            utauPlugin.InputVoiceBank();
+            utauPlugin.ApplyOto();
+            Assert.IsTrue(utauPlugin.note[2].GetPre() == 141f);
+            Assert.IsTrue(utauPlugin.note[2].GetOve() == 36);
+        }
+
+        [TestMethod]
+        public void TestInitAtParam()
+        {
+            utauPlugin.InsertNote(2);
+            utauPlugin.note[2].SetLyric("‚³");
+            utauPlugin.note[2].SetNoteNum(60);
+            utauPlugin.note[2].SetPre(300);
+            utauPlugin.note[2].SetOve(100);
+            utauPlugin.note[2].SetStp(50);
+            utauPlugin.InputVoiceBank();
+            utauPlugin.InitAtParam();
+            Assert.IsTrue(utauPlugin.note[2].GetAtFileName() == "‚³.wav");
+            Assert.IsTrue(utauPlugin.note[2].GetAtAlias() == "‚³");
+            Assert.IsTrue(utauPlugin.note[2].GetAtPre() == 300f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtOve() == 100f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 50f);
+        }
+        [TestMethod]
+        public void TestInitAtParamApplyVelocity200()
+        {
+            utauPlugin.InsertNote(2);
+            utauPlugin.note[2].SetLyric("‚³");
+            utauPlugin.note[2].SetNoteNum(60);
+            utauPlugin.note[2].SetPre(300);
+            utauPlugin.note[2].SetOve(100);
+            utauPlugin.note[2].SetStp(50);
+            utauPlugin.note[2].SetVelocity(200);
+            utauPlugin.InputVoiceBank();
+            utauPlugin.InitAtParam();
+            Assert.IsTrue(utauPlugin.note[2].GetAtFileName() == "‚³.wav");
+            Assert.IsTrue(utauPlugin.note[2].GetAtAlias() == "‚³");
+            Assert.IsTrue(utauPlugin.note[2].GetAtPre() == 150f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtOve() == 50f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 50f);
+        }
+        [TestMethod]
+        public void TestInitAtParamApplyVelocity0()
+        {
+            utauPlugin.InsertNote(2);
+            utauPlugin.note[2].SetLyric("‚³");
+            utauPlugin.note[2].SetNoteNum(60);
+            utauPlugin.note[2].SetPre(150);
+            utauPlugin.note[2].SetOve(50);
+            utauPlugin.note[2].SetStp(50);
+            utauPlugin.note[2].SetVelocity(0);
+            utauPlugin.InputVoiceBank();
+            utauPlugin.InitAtParam();
+            Assert.IsTrue(utauPlugin.note[2].GetAtFileName() == "‚³.wav");
+            Assert.IsTrue(utauPlugin.note[2].GetAtAlias() == "‚³");
+            Assert.IsTrue(utauPlugin.note[2].GetAtPre() == 300f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtOve() == 100f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 50f);
+        }
+        [TestMethod]
+        public void TestInitAtParamAutoFit()
+        {
+            utauPlugin.InsertNote(2);
+            utauPlugin.note[2].SetLyric("‚³");
+            utauPlugin.note[2].SetNoteNum(60);
+            utauPlugin.note[2].SetPre(750);
+            utauPlugin.note[2].SetOve(250);
+            utauPlugin.note[2].SetStp(50);
+            utauPlugin.note[2].Prev.SetTempo(120);
+            utauPlugin.note[2].Prev.SetLength(480);//”¼•ª‚Í250ms
+            utauPlugin.InputVoiceBank();
+            utauPlugin.InitAtParam();
+            Assert.IsTrue(utauPlugin.note[2].GetAtFileName() == "‚³.wav");
+            Assert.IsTrue(utauPlugin.note[2].GetAtAlias() == "‚³");
+            Assert.IsTrue(utauPlugin.note[2].GetAtPre() == 375f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtOve() == 125f);
+            Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 425f);
+        }
         //[TestMethod]
         //public void ErrorCheck()
         //{

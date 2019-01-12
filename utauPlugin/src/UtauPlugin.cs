@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using UtauVoiceBank;
 
 namespace utauPlugin
 {
@@ -14,6 +15,7 @@ namespace utauPlugin
         private List<String> writeData;
         private int i;
         private float nowTempo;
+        private VoiceBank vb;
 
 
         public UtauPlugin() { InitEntries(); }
@@ -127,6 +129,11 @@ namespace utauPlugin
             {
                 if (IsNote(ustData[i])){
                     note.Add(new Note());
+                    if (note.Count != 1)
+                    {
+                        note[note.Count - 2].Next = note[note.Count - 1];
+                        note[note.Count - 1].Prev = note[note.Count - 2];
+                    }
                     note[note.Count - 1].InitNum(ustData[i].Replace("[#","").Replace("]",""));
                     note[note.Count - 1].InitTempo(nowTempo);
                 }
@@ -186,5 +193,97 @@ namespace utauPlugin
                 Environment.Exit(0);
             }
         }
+
+        public void InsertNote(int index)
+        {
+            note.Insert(index, new Note());
+            note[index].SetNum("INSERT");
+            note[index].InitPre("");
+            Note prevNote = GetPrevNote(index - 1);
+            Note nextNote = GetNextNote(index + 1);
+            if (prevNote != null)
+            {
+                note[index].Next = prevNote.Next;
+                prevNote.Next = note[index];
+            }
+            else if (nextNote != null)
+            {
+                note[index].Next = note[index + 1];
+            }
+            if(nextNote != null)
+            {
+                note[index].Prev = note[index + 1].Prev;
+                note[index + 1].Prev = note[index];
+            }
+            else if(prevNote != null)
+            {
+                note[index].Prev = note[index - 1];
+            }
+        }
+
+        public void DeleteNote(int index)
+        {
+            note[index].SetNum("DELETE");
+            if (note[index].Prev != null)
+            {
+                note[index].Prev.Next = note[index].Next;
+            }
+            if (note[index].Next != null)
+            {
+                note[index].Next.Prev = note[index].Prev;
+            }
+        }
+
+        private Note GetPrevNote(int index)
+        {
+            while (index >= 0)
+            {
+                if (note[index].GetNum() != "DELETE")
+                {
+                    return note[index];
+                }
+                index--;
+            }
+            return null;
+        }
+        private Note GetNextNote(int index)
+        {
+            while (index < note.Count)
+            {
+                if (note[index].GetNum() != "DELETE")
+                {
+                    return note[index];
+                }
+                index++;
+            }
+            return null;
+        }
+
+        public void InputVoiceBank()
+        {
+            vb = new VoiceBank(VoiceDir);
+            vb.InputPrefixMap();
+            vb.InputOtoAll();
+        }
+
+        //先行発声やオーバーラップ値が与えられていないノートに原音設定値を設定する．
+        //書き出しには影響しない
+        public void ApplyOto()
+        {
+
+            for (int i=0;i<note.Count;i++)
+            {
+                note[i].ApplyOto(vb.prefixMap, vb.oto);
+            }
+        }
+        //@パラメータが存在しないノートの原音設定値から初期化する．
+        public void InitAtParam()
+        {
+            for (int i = 0; i < note.Count; i++)
+            {
+                note[i].InitAtParam(vb.prefixMap, vb.oto);
+            }
+        }
+        
     }
 }

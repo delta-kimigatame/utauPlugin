@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\InitEntries.cs" />
+    <Compile Include="src\Note\Alias.cs" />
     <Compile Include="src\Note\AtAlias.cs" />
     <Compile Include="src\Note\AtFileName.cs" />
     <Compile Include="src\Note\AtOve.cs" />
@@ -87,6 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtauVoiceBank\UtauVoiceBank\UtauVoiceBank.csproj">
+      <Project>{3cd4045e-4d2d-4fbe-b3eb-a950efc15309}</Project>
+      <Name>UtauVoiceBank</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

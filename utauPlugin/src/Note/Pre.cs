@@ -48,7 +48,7 @@ namespace utauPlugin
             }
             public void Set(string pre) { this.pre = float.Parse(pre); isChanged = true; hasValue = true; }
             public void Set(int pre) { this.pre = pre; isChanged = true; hasValue = true; }
-            public void Set(float pre) { this.pre = pre; isChanged = true; }
+            public void Set(float pre) { this.pre = pre; isChanged = true; hasValue = true; }
             public float Get() => pre;
             public Boolean IsChanged() => isChanged;
             public Boolean HasValue() => hasValue;
