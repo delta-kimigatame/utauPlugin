@@ -1,6 +1,6 @@
 # utauPlugin
 飴屋／菖蒲氏によって公開されている，Windows向けに作成された歌声合成ソフトウェア「UTAU」の，
-プラグイン作成のためのC#(.Net Framework 4.6.1)クラスライブラリです．
+プラグイン作成のためのC#(.Net Framework 4.5)クラスライブラリです．
 visual studioでの使用を想定しています．
 
 UTAU公式サイト(http://utau2008.web.fc2.com/)
