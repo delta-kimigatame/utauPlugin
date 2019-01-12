@@ -9,7 +9,7 @@ namespace UtauVoiceBank
     public partial class VoiceBank
     {
         private string dirPath;
-        public List<Oto> oto;
+        public Dictionary<string,Oto> oto;
         public Dictionary<string, MapValue> prefixMap;
         public Dictionary<string, Dictionary<string, MapValue>> prefixMaps;
         List<string> inputData;
@@ -19,7 +19,7 @@ namespace UtauVoiceBank
         public VoiceBank(string dirPath)
         {
             DirPath = dirPath;
-            oto = new List<Oto>();
+            oto = new Dictionary<string, Oto>();
             prefixMap = new Dictionary<string, MapValue>();
             prefixMaps = new Dictionary<string, Dictionary<string, MapValue>>();
         }

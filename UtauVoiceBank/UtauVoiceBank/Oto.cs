@@ -1,9 +1,96 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Wave;
 using System.IO;
 
 namespace UtauVoiceBank
 {
+    public partial class VoiceBank
+    {
+        public void InputOtoAll(Boolean Recursive = false)
+        {
+            InputOto();
+            SearchOto(Recursive);
+        }
+
+        private void SearchOto(Boolean Recursive,string subDirPath = "")
+        {
+            foreach (string fileName in Directory.GetDirectories(Path.Combine(DirPath,subDirPath)))
+            {
+                if (!File.Exists(Path.Combine(fileName, "oto.ini")))
+                {
+                    continue;
+                }
+                else
+                {
+                    inputData.Clear();
+                    inputData.AddRange(File.ReadAllLines(Path.Combine(fileName, "oto.ini"), Encoding.GetEncoding("Shift_JIS")));
+                    ParseOto(oto, inputData, Path.Combine(subDirPath, Path.GetFileName(fileName)));
+                    if(Directory.GetDirectories(fileName).Length != 0 && Recursive)
+                    {
+                        SearchOto(Recursive, Path.Combine(subDirPath, Path.GetFileName(fileName)));
+                    }
+
+                }
+            }
+        }
+
+        public void InputOto()
+        {
+            if( oto == null)
+            {
+                oto = new Dictionary<string, Oto>();
+            }
+            if (File.Exists(Path.Combine(DirPath, "oto.ini")))
+            {
+                inputData = new List<string>();
+                inputData.AddRange(File.ReadAllLines(Path.Combine(DirPath, "oto.ini"), Encoding.GetEncoding("Shift_JIS")));
+                ParseOto(oto, inputData);
+            }
+        }
+        public bool check = false;
+        public string test;
+        public void ParseOto(Dictionary<string, Oto> oto, List<string> inputData,string subDirPath ="")
+        {
+            foreach (string x in inputData)
+            {
+                if(!x.Contains("="))
+                {
+                    continue;
+                }
+                string[] tmp = x.Split('=');
+                string[] splitData = tmp[1].Split(',');
+                //ファイル名でエイリアス追加
+                AddOto(oto, Path.Combine(subDirPath,tmp[0].Replace(".wav","")), subDirPath, tmp[0], splitData);
+                //エイリアスがあればエイリアス通り追加
+                if (splitData[0] != "")
+                {
+                    AddOto(oto, splitData[0], subDirPath, tmp[0], splitData);
+                }
+
+            }
+        }
+
+        private void AddOto(Dictionary<string, Oto> oto,string alias,string subDirPath,string fileName,string[] splitData)
+        {
+            if (oto.ContainsKey(alias))
+            {
+                return;
+            }
+            oto.Add(alias, new Oto());
+            oto[alias].DirPath = subDirPath;
+            oto[alias].FileName = fileName;
+            oto[alias].Alias = alias;
+            oto[alias].Offset = float.Parse(splitData[1]);
+            oto[alias].Vel = float.Parse(splitData[2]);
+            oto[alias].Blank = float.Parse(splitData[3]);
+            oto[alias].Pre = float.Parse(splitData[4]);
+            oto[alias].Ove = float.Parse(splitData[5]);
+
+        }
+
+    }
     public class Oto
     {
         private string dirPath;

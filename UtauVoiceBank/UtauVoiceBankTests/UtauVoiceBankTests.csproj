@@ -62,8 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="testDir\oto.ini" />
     <None Include="testDir\prefix.map" />
+    <None Include="testDir\あ\oto.ini" />
     <None Include="testDir\あ\prefix.map" />
+    <None Include="testDir\あ\あ\oto.ini" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UtauVoiceBank\UtauVoiceBank.csproj">
