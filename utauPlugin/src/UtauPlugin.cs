@@ -15,7 +15,7 @@ namespace utauPlugin
         private List<String> writeData;
         private int i;
         private float nowTempo;
-        private VoiceBank vb;
+        public VoiceBank vb;
 
 
         public UtauPlugin() { InitEntries(); }

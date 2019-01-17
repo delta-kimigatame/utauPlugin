@@ -49,8 +49,6 @@ namespace UtauVoiceBank
                 ParseOto(oto, inputData);
             }
         }
-        public bool check = false;
-        public string test;
         public void ParseOto(Dictionary<string, Oto> oto, List<string> inputData,string subDirPath ="")
         {
             foreach (string x in inputData)
