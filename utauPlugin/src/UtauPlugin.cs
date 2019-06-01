@@ -219,6 +219,15 @@ namespace utauPlugin
             {
                 note[index].Prev = note[index - 1];
             }
+
+            if (note[index].Prev != null)
+            {
+                note[index].InitTempo(note[index].Prev.GetTempo());
+            }
+            else
+            {
+                note[index].InitTempo(Tempo);
+            }
         }
 
         public void DeleteNote(int index)
