@@ -164,7 +164,7 @@ namespace utauPlugin
                 this.pbw.AddRange(pbw);
                 pbwIsChanged = true;
             }
-            public List<float> GetPbw() => pbw;
+            public List<float> GetPbw() => new List<float>(pbw);
             public Boolean PbwIsChanged() => pbwIsChanged;
 
             public void InitPby(string pby)
@@ -226,7 +226,7 @@ namespace utauPlugin
                 this.pby.AddRange(pby);
                 pbyIsChanged = true;
             }
-            public List<float> GetPby() => pby;
+            public List<float> GetPby() => new List<float>(pby);
             public Boolean PbyIsChanged() => pbyIsChanged;
 
             public void InitPbm(string pbm)
@@ -261,7 +261,7 @@ namespace utauPlugin
                 this.pbm.AddRange(pbm);
                 pbmIsChanged = true;
             }
-            public List<string> GetPbm() => pbm;
+            public List<string> GetPbm() => new List<string>(pbm);
             public Boolean PbmIsChanged() => pbmIsChanged;
 
         }

@@ -131,10 +131,34 @@ namespace mode2PitchTest
         {
             Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
             mode2Pitch.SetPby("50,30,20");
-            mode2Pitch.SetPby(new List<float> { 15, 25 });
+            mode2Pitch.SetPby(new List<float> { 15, 25,40,50 });
             Assert.IsTrue(15f == mode2Pitch.GetPby()[0]);
             Assert.IsTrue(25f == mode2Pitch.GetPby()[1]);
-            Assert.IsTrue(2 == mode2Pitch.GetPby().Count);
+            Assert.IsTrue(4 == mode2Pitch.GetPby().Count);
+        }
+        [TestMethod]
+        public void ChangeMode2PitchPbyList2()
+        {
+            Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
+            mode2Pitch.SetPby("50,30,20");
+            List<float> pby = new List<float> { 15, 25, -40, 50 };
+            mode2Pitch.SetPby(pby);
+            Assert.IsTrue(4 == pby.Count);
+            Assert.IsTrue(15f == mode2Pitch.GetPby()[0]);
+            Assert.IsTrue(25f == mode2Pitch.GetPby()[1]);
+            Assert.IsTrue(4 == mode2Pitch.GetPby().Count);
+        }
+        [TestMethod]
+        public void ChangeMode2PitchPbyList3()
+        {
+            Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
+            mode2Pitch.SetPby("50,30,20");
+            List<float> pby = mode2Pitch.GetPby();
+            mode2Pitch.SetPby(pby);
+            Assert.IsTrue(3 == pby.Count);
+            Assert.IsTrue(50f == mode2Pitch.GetPby()[0]);
+            Assert.IsTrue(30f == mode2Pitch.GetPby()[1]);
+            Assert.IsTrue(3 == mode2Pitch.GetPby().Count);
         }
         [TestMethod]
         public void SetMode2PitchPbm()
@@ -163,13 +187,15 @@ namespace mode2PitchTest
             Assert.IsTrue("j" == mode2Pitch.GetPbm()[1]);
             Assert.IsTrue(2 == mode2Pitch.GetPbm().Count);
         }
-        [TestMethod]
-        public void ChangeGetPbyTest()
-        {
-            Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
-            mode2Pitch.SetPby("50,30,20");
-            mode2Pitch.GetPby()[0] = mode2Pitch.GetPby()[0] + 100;
-            Assert.IsTrue(150f == mode2Pitch.GetPby()[0]);
-        }
+        
+        //2019.10.06ƒAƒvƒf‚Å–v
+        //[TestMethod]
+        //public void ChangeGetPbyTest()
+        //{
+            //Note.Mode2Pitch mode2Pitch = new Note.Mode2Pitch();
+            //mode2Pitch.SetPby("50,30,20");
+            //mode2Pitch.GetPby()[0] = mode2Pitch.GetPby()[0] + 100;
+            //Assert.IsTrue(150f == mode2Pitch.GetPby()[0]);
+        //}
     }
 }

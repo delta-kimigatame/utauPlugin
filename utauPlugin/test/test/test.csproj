@@ -64,6 +64,7 @@
     <Compile Include="inputUstTest.cs" />
     <Compile Include="mode2Pitchtest.cs" />
     <Compile Include="noteNumTest.cs" />
+    <Compile Include="errorTest.cs" />
     <Compile Include="outputUstTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtauPluginNotetest.cs" />
