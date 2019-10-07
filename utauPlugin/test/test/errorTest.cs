@@ -32,15 +32,12 @@ namespace errorTest.cs
             pby.Insert(0, note.GetPbsHeight());
             pbm.Insert(0, "");
             pbw.Insert(1, 0);
-            Assert.IsTrue(6 == pbw.Count);
             pby.Insert(1, nextY);
             pbm.Insert(1, "");
             pbw[2] = ave;
-            Assert.IsTrue(6 == pbw.Count);
             note.SetPbw(pbw);
-            Assert.IsTrue(6 == note.GetPbw().Count);
-            //note.SetPby(pby);
-            //note.SetPbm(pbm);
+            note.SetPby(pby);
+            note.SetPbm(pbm);
             //Assert.IsTrue(pby[0] == -20f);
             //Assert.IsTrue(pby[1] == 0f);
             //Assert.IsTrue(pby[2] == -10.7f);

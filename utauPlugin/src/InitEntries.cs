@@ -173,8 +173,9 @@ namespace utauPlugin
                 List<string> pbyTmp = new List<String>();
                 foreach (float f in note.GetPby())
                 {
-                    if (f == 0.0f) { pbyTmp.Add(""); }
-                    else { pbyTmp.Add(f.ToString()); }
+                    pbyTmp.Add(f.ToString());
+                    //if (f == 0.0f) { pbyTmp.Add(""); }
+                    //else { pbyTmp.Add(f.ToString()); }
                 }
                 writeData.Add("PBY=" + string.Join(",", pbyTmp));
             }
