@@ -80,11 +80,46 @@ namespace UtauVoiceBank
             oto[alias].DirPath = subDirPath;
             oto[alias].FileName = fileName;
             oto[alias].Alias = alias;
-            oto[alias].Offset = float.Parse(splitData[1]);
-            oto[alias].Vel = float.Parse(splitData[2]);
-            oto[alias].Blank = float.Parse(splitData[3]);
-            oto[alias].Pre = float.Parse(splitData[4]);
-            oto[alias].Ove = float.Parse(splitData[5]);
+            try
+            {
+                oto[alias].Offset = float.Parse(splitData[1]);
+            }
+            catch
+            {
+                oto[alias].Offset = 0f;
+            }
+            try
+            {
+                oto[alias].Vel = float.Parse(splitData[2]);
+            }
+            catch
+            {
+                oto[alias].Vel = 0f;
+            }
+            try
+            {
+                oto[alias].Blank = float.Parse(splitData[3]);
+            }
+            catch
+            {
+                oto[alias].Blank = 0f;
+            }
+            try
+            {
+                oto[alias].Pre = float.Parse(splitData[4]);
+            }
+            catch
+            {
+                oto[alias].Pre = 0f;
+            }
+            try
+            {
+                oto[alias].Ove = float.Parse(splitData[5]);
+            }
+            catch
+            {
+                oto[alias].Ove = 0f;
+            }
 
         }
 
