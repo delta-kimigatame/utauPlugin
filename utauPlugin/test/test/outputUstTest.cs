@@ -83,5 +83,13 @@ namespace outputUstTest.cs
             utauPlugin.Output();
 
         }
+        [TestMethod]
+        public void testNoBody()
+        {
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\nobody.tmp";
+            utauPlugin.Input();
+            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\nobody.tmp";
+            utauPlugin.Output();
+        }
     }
 }

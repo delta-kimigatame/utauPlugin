@@ -519,6 +519,14 @@ namespace inputUstTest
             Assert.IsTrue(utauPlugin.note[2].GetAtOve() == 125f);
             Assert.IsTrue(utauPlugin.note[2].GetAtStp() == 425f);
         }
+        [TestMethod]
+        public void TestNoBodyInput()
+        {
+            utauPlugin = new UtauPlugin();
+            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\nobody.tmp";
+            utauPlugin.Input();
+            Assert.IsTrue(utauPlugin.Version == "1.19");
+        }
         //[TestMethod]
         //public void ErrorCheck()
         //{

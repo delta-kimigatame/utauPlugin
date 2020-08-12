@@ -71,6 +71,7 @@
     <Compile Include="vibratoTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="inputData\nobody.tmp" />
     <None Include="inputData\test100.tmp" />
     <None Include="inputData\test101.tmp" />
     <None Include="inputData\test111.tmp" />
