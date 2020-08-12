@@ -155,7 +155,7 @@ namespace utauPlugin
 
 
 
-            if( prevMsLength / 2 < tmpPre - tmpOve)
+            if( prevMsLength < tmpPre - tmpOve)
             {
                 float fitPre = tmpPre - tmpOve;
                 float oldPre = tmpPre;
