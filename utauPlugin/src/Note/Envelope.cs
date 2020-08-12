@@ -47,6 +47,8 @@ namespace utauPlugin
             public void Set(string value)
             {
                 List<string> tmp = new List<string>();
+                p = new List<float>();
+                v = new List<int>();
                 tmp.AddRange(value.Split(','));
                 while (tmp.Count < 3)
                 {

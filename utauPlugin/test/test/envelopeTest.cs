@@ -123,5 +123,21 @@ namespace envelopeTest
             env.SetV("5", 1);
             Assert.IsTrue(5.0f == env.GetV()[1]);
         }
+        [TestMethod]
+        public void SetEnvRe8()
+        {
+            Note.Envelope env = new Note.Envelope();
+            env.Set("0,0");
+            env.Set("0,5,30,1,2,3,4,%,15");
+            Assert.IsTrue(0.0f == env.GetP()[0]);
+            Assert.IsTrue(5.0f == env.GetP()[1]);
+            Assert.IsTrue(30.0f == env.GetP()[2]);
+            Assert.IsTrue(15.0f == env.GetP()[3]);
+            Assert.IsTrue(1 == env.GetV()[0]);
+            Assert.IsTrue(2 == env.GetV()[1]);
+            Assert.IsTrue(3 == env.GetV()[2]);
+            Assert.IsTrue(4 == env.GetV()[3]);
+            Assert.IsTrue("0,5,30,1,2,3,4,%,15" == env.Get());
+        }
     }
 }
