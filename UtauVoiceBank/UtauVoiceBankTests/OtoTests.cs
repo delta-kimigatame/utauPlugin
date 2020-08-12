@@ -101,5 +101,32 @@ namespace UtauVoiceBank.Tests
             Assert.IsTrue(vb.oto["お"].Alias == "お");
 
         }
+        [TestMethod()]
+        public void InputOtoAllTestNoRootOto()
+        {
+            VoiceBank vb = new VoiceBank("..\\..\\testDirNoRootOto");
+            vb.InputOtoAll();
+            Assert.IsTrue(vb.oto["う"].DirPath == "あ");
+            Assert.IsTrue(vb.oto["う"].Alias == "う");
+            Assert.IsTrue(vb.oto["あ\\え"].DirPath == "あ");
+            Assert.IsTrue(vb.oto["あ\\え"].Alias == "あ\\え");
+            Assert.IsFalse(vb.oto.ContainsKey("え"));
+            Assert.IsFalse(vb.oto.ContainsKey("お"));
+
+        }
+        [TestMethod()]
+        public void InputOtoAllTestRecursiveNoRootOto()
+        {
+            VoiceBank vb = new VoiceBank("..\\..\\testDirNoRootOto");
+            vb.InputOtoAll(true);
+            Assert.IsTrue(vb.oto["う"].DirPath == "あ");
+            Assert.IsTrue(vb.oto["う"].Alias == "う");
+            Assert.IsTrue(vb.oto["あ\\え"].DirPath == "あ");
+            Assert.IsTrue(vb.oto["あ\\え"].Alias == "あ\\え");
+            Assert.IsFalse(vb.oto.ContainsKey("え"));
+            Assert.IsTrue(vb.oto["お"].DirPath == "あ\\あ");
+            Assert.IsTrue(vb.oto["お"].Alias == "お");
+
+        }
     }
 }

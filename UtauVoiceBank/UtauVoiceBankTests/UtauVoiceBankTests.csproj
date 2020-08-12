@@ -62,6 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="testDirNoRootOto\prefix.map" />
+    <None Include="testDirNoRootOto\あ\oto.ini" />
+    <None Include="testDirNoRootOto\あ\prefix.map" />
+    <None Include="testDirNoRootOto\あ\あ\oto.ini" />
     <None Include="testDir\oto.ini" />
     <None Include="testDir\prefix.map" />
     <None Include="testDir\あ\oto.ini" />

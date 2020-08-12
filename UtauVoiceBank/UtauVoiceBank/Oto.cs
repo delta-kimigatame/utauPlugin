@@ -20,11 +20,25 @@ namespace UtauVoiceBank
             {
                 if (!File.Exists(Path.Combine(fileName, "oto.ini")))
                 {
-                    continue;
+                    if (subDirPath == "" && Directory.GetDirectories(fileName).Length != 0)
+                    {
+                        SearchOto(Recursive, Path.Combine(subDirPath, Path.GetFileName(fileName)));
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
                 else
                 {
-                    inputData.Clear();
+                    if (inputData != null)
+                    {
+                        inputData.Clear();
+                    }
+                    else
+                    {
+                        inputData = new List<string>();
+                    }
                     inputData.AddRange(File.ReadAllLines(Path.Combine(fileName, "oto.ini"), Encoding.GetEncoding("Shift_JIS")));
                     ParseOto(oto, inputData, Path.Combine(subDirPath, Path.GetFileName(fileName)));
                     if(Directory.GetDirectories(fileName).Length != 0 && Recursive)
