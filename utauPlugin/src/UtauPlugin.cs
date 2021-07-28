@@ -162,7 +162,7 @@ namespace utauPlugin
                 }
                 foreach (string key in entries.Keys)
                 {
-                    if (ustData[i].Contains(key + "="))
+                    if (ustData[i].StartsWith(key + "="))
                     {
                         entries[key].Input(note.Count - 1, key);
                         continue;
