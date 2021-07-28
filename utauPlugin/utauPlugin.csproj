@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\ConvertPitch.cs" />
     <Compile Include="src\InitEntries.cs" />
     <Compile Include="src\Note\Alias.cs" />
     <Compile Include="src\Note\AtAlias.cs" />

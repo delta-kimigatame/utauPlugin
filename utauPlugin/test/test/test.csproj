@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertPitchTest.cs" />
     <Compile Include="envelopeTest.cs" />
     <Compile Include="inputUstTest.cs" />
     <Compile Include="mode2Pitchtest.cs" />
