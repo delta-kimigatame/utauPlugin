@@ -1,9 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Globalization;
 using UtauVoiceBank;
 
 namespace utauPlugin
@@ -11,22 +11,18 @@ namespace utauPlugin
     public partial class UtauPlugin : Ust
     {
 
-        private List<String> ustData;
+        public List<String> UstData { get; private set; }
+        public VoiceBank vb;
         private List<String> writeData;
         private int i;
         private float nowTempo;
-        public VoiceBank vb;
 
 
         public UtauPlugin() { InitEntries(); }
         public UtauPlugin(string filePath) : base(filePath) { InitEntries(); }
 
-        public void Input()
+        public void Input(bool autoLogOutputAndExit = true)
         {
-            //GetUstData();
-            //AnalyzeHeader();
-            //note = new List<Note>();
-            //AnalyzeNotes();
             try
             {
                 Console.WriteLine(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName);
@@ -39,9 +35,27 @@ namespace utauPlugin
             }
             catch (Exception ex)
             {
-                File.WriteAllText(".\\utauPluginInputLog.txt", ex.Message + "\n" + ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
-                File.WriteAllLines(".\\InputData.txt", ustData);
-                Environment.Exit(0);
+                if (autoLogOutputAndExit)
+                {
+                    try
+                    {
+                        File.WriteAllText(".\\utauPluginInputLog.txt", ex.Message + "\n" + ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
+                        File.WriteAllLines(".\\InputData.txt", UstData);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        Console.WriteLine(e.ToString());
+                    }
+                    finally
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+                else
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -49,7 +63,7 @@ namespace utauPlugin
         {
             string line;
             long pos = 0;
-            ustData = new List<string>();
+            UstData = new List<string>();
             StreamReader file = new StreamReader(FilePath, Encoding.GetEncoding(Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage).WebName));
 
             while ((line = file.ReadLine()) != null)
@@ -58,7 +72,7 @@ namespace utauPlugin
                 {
                     break;
                 }
-                ustData.Add(line);
+                UstData.Add(line);
                 pos += line.Length;
             }
             file.Close();
@@ -66,11 +80,11 @@ namespace utauPlugin
             file2.BaseStream.Seek(pos, SeekOrigin.Begin);
             if (!IsHeader(line = file2.ReadLine()))
             {
-                ustData.Add(line);
+                UstData.Add(line);
             }
             while ((line = file2.ReadLine()) != null)
             {
-                ustData.Add(line);
+                UstData.Add(line);
             }
             file2.Close();
         }
@@ -90,54 +104,54 @@ namespace utauPlugin
         private void AnalyzeHeader()
         {
             i = 0;
-            while (IsHeader(ustData[i]))
+            while (IsHeader(UstData[i]))
             {
-                if (ustData[i].Contains("UstVersion="))
+                if (UstData[i].Contains("UstVersion="))
                 {
-                    Version = ustData[i].Replace("UstVersion=", "");
+                    Version = UstData[i].Replace("UstVersion=", "");
                 }
-                else if (ustData[i].Contains("UST Version "))
+                else if (UstData[i].Contains("UST Version "))
                 {
-                    Version = ustData[i].Replace("UST Version ", "");
+                    Version = UstData[i].Replace("UST Version ", "");
                 }
-                else if (ustData[i].Contains("Tempo="))
+                else if (UstData[i].Contains("Tempo="))
                 {
-                    Tempo = float.Parse(ustData[i].Replace("Tempo=", ""));
+                    Tempo = float.Parse(UstData[i].Replace("Tempo=", ""));
                 }
-                else if (ustData[i].Contains("Project="))
+                else if (UstData[i].Contains("Project="))
                 {
-                    ProjectName = ustData[i].Replace("Project=", "");
+                    ProjectName = UstData[i].Replace("Project=", "");
                 }
-                else if (ustData[i].Contains("VoiceDir="))
+                else if (UstData[i].Contains("VoiceDir="))
                 {
-                    VoiceDir = ustData[i].Replace("VoiceDir=", "");
+                    VoiceDir = UstData[i].Replace("VoiceDir=", "");
                 }
-                else if (ustData[i].Contains("OutFile="))
+                else if (UstData[i].Contains("OutFile="))
                 {
-                    OutputFile = ustData[i].Replace("OutFile=", "");
+                    OutputFile = UstData[i].Replace("OutFile=", "");
                 }
-                else if (ustData[i].Contains("CacheDir="))
+                else if (UstData[i].Contains("CacheDir="))
                 {
-                    CacheDir = ustData[i].Replace("CacheDir=", "");
+                    CacheDir = UstData[i].Replace("CacheDir=", "");
                 }
-                else if (ustData[i].Contains("Tool1="))
+                else if (UstData[i].Contains("Tool1="))
                 {
-                    Tool1Path = ustData[i].Replace("Tool1=", "");
+                    Tool1Path = UstData[i].Replace("Tool1=", "");
                 }
-                else if (ustData[i].Contains("Tool2="))
+                else if (UstData[i].Contains("Tool2="))
                 {
-                    Tool2Path = ustData[i].Replace("Tool2=", "");
+                    Tool2Path = UstData[i].Replace("Tool2=", "");
                 }
-                else if (ustData[i].Contains("Flags="))
+                else if (UstData[i].Contains("Flags="))
                 {
-                    Flags = ustData[i].Replace("Flags=", "");
+                    Flags = UstData[i].Replace("Flags=", "");
                 }
-                else if (ustData[i].Contains("Mode2="))
+                else if (UstData[i].Contains("Mode2="))
                 {
-                    Mode2 = Boolean.Parse(ustData[i].Replace("Mode2=", ""));
+                    Mode2 = Boolean.Parse(UstData[i].Replace("Mode2=", ""));
                 }
                 i++;
-                if (ustData.Count <= i)
+                if (UstData.Count <= i)
                 {
                     break;
                 }
@@ -147,9 +161,9 @@ namespace utauPlugin
         private void AnalyzeNotes()
         {
             nowTempo = Tempo;
-            while (ustData.Count > i)
+            while (UstData.Count > i)
             {
-                if (IsNote(ustData[i]))
+                if (IsNote(UstData[i]))
                 {
                     note.Add(new Note());
                     if (note.Count != 1)
@@ -157,12 +171,12 @@ namespace utauPlugin
                         note[note.Count - 2].Next = note[note.Count - 1];
                         note[note.Count - 1].Prev = note[note.Count - 2];
                     }
-                    note[note.Count - 1].InitNum(ustData[i].Replace("[#", "").Replace("]", ""));
+                    note[note.Count - 1].InitNum(UstData[i].Replace("[#", "").Replace("]", ""));
                     note[note.Count - 1].InitTempo(nowTempo);
                 }
                 foreach (string key in entries.Keys)
                 {
-                    if (ustData[i].StartsWith(key + "="))
+                    if (UstData[i].StartsWith(key + "="))
                     {
                         entries[key].Input(note.Count - 1, key);
                         continue;
@@ -213,7 +227,7 @@ namespace utauPlugin
             catch (Exception ex)
             {
                 File.WriteAllText(".\\utauPluginOutputLog.txt", ex.Message + "\n" + ex.StackTrace, Encoding.GetEncoding("Shift_JIS"));
-                File.WriteAllLines(".\\InputData.txt", ustData);
+                File.WriteAllLines(".\\InputData.txt", UstData);
                 Environment.Exit(0);
             }
         }
@@ -292,18 +306,17 @@ namespace utauPlugin
             return null;
         }
 
-        public void InputVoiceBank()
+        public void InputVoiceBank(bool recursive = false)
         {
             vb = new VoiceBank(VoiceDir);
             vb.InputPrefixMap();
-            vb.InputOtoAll();
+            vb.InputOtoAll(recursive);
         }
 
         //先行発声やオーバーラップ値が与えられていないノートに原音設定値を設定する．
         //書き出しには影響しない
         public void ApplyOto()
         {
-
             for (int i = 0; i < note.Count; i++)
             {
                 note[i].ApplyOto(vb.prefixMap, vb.oto);
