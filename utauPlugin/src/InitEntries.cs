@@ -8,36 +8,36 @@ namespace utauPlugin
 {
     public partial class UtauPlugin : Ust
     {
-        private void ParseLength(int index, string key) { note[index].InitLength(ustData[i].Replace(key+"=", "")); }
-        private void ParseLyric(int index, string key) { note[index].InitLyric(ustData[i].Replace(key + "=", "")); }
-        private void ParseNoteNum(int index, string key) { note[index].InitNoteNum(ustData[i].Replace(key + "=", "")); }
-        private void ParseTempo(int index, string key) { note[index].InitTempo(ustData[i].Replace(key + "=", "")); nowTempo = note[index].GetTempo(); }
-        private void ParsePre(int index, string key) { note[index].InitPre(ustData[i].Replace(key + "=", "")); }
-        private void ParseAtPre(int index, string key) { note[index].InitAtPre(ustData[i].Replace(key + "=", "")); }
-        private void ParseOve(int index, string key) { note[index].InitOve(ustData[i].Replace(key + "=", "")); }
-        private void ParseAtOve(int index, string key) { note[index].InitAtOve(ustData[i].Replace(key + "=", "")); }
-        private void ParseStp(int index, string key) { note[index].InitStp(ustData[i].Replace(key + "=", "")); }
-        private void ParseAtStp(int index, string key) { note[index].InitAtStp(ustData[i].Replace(key + "=", "")); }
-        private void ParseAtFileName(int index, string key) { note[index].InitAtFileName(ustData[i].Replace(key + "=", "")); }
-        private void ParseAtAlias(int index, string key) { note[index].InitAtAlias(ustData[i].Replace(key + "=", "")); }
-        private void ParseVelocity(int index, string key) { note[index].InitVelocity(ustData[i].Replace(key + "=", "")); }
-        private void ParseIntensity(int index, string key) { note[index].InitIntensity(ustData[i].Replace(key + "=", "")); }
-        private void ParseMod(int index, string key) { note[index].InitMod(ustData[i].Replace(key + "=", "")); }
-        private void ParsePitches(int index, string key) { note[index].InitPitches(ustData[i].Replace(key + "=", "")); }
-        private void ParsePbStart(int index, string key) { note[index].InitPbStart(ustData[i].Replace(key + "=", "")); }
-        private void ParsePbType(int index, string key) { note[index].InitPbType(ustData[i].Replace(key + "=", "")); }
-        private void ParsePbs(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbs(ustData[i].Replace(key + "=", "")); }
-        private void ParsePbw(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbw(ustData[i].Replace(key + "=", "")); }
-        private void ParsePby(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPby(ustData[i].Replace(key + "=", "")); }
-        private void ParsePbm(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbm(ustData[i].Replace(key + "=", "")); }
-        private void ParseFlags(int index, string key) { note[index].InitFlags(ustData[i].Replace(key + "=", "")); }
-        private void ParseVibrato(int index, string key) { note[index].InitVibrato(ustData[i].Replace(key + "=", "")); }
-        private void ParseEnvelope(int index, string key) { note[index].InitEnvelope(ustData[i].Replace(key + "=", "")); }
-        private void ParseLabel(int index, string key) { note[index].InitLabel(ustData[i].Replace(key + "=", "")); }
-        private void ParseDirect(int index, string key) { note[index].InitDirect(ustData[i].Replace(key + "=", "")); }
-        private void ParseRegion(int index, string key) { note[index].InitRegion(ustData[i].Replace(key + "=", "")); }
-        private void ParseRegionEnd(int index, string key) { note[index].InitRegionEnd(ustData[i].Replace(key + "=", "")); }
-        private void ParseOriginalEntry(int index, string key) { note[index].InitOriginalEntry(key,ustData[i].Replace(key + "=", "")); }
+        private void ParseLength(int index, string key) { note[index].InitLength(UstData[i].Replace(key+"=", "")); }
+        private void ParseLyric(int index, string key) { note[index].InitLyric(UstData[i].Replace(key + "=", "")); }
+        private void ParseNoteNum(int index, string key) { note[index].InitNoteNum(UstData[i].Replace(key + "=", "")); }
+        private void ParseTempo(int index, string key) { note[index].InitTempo(UstData[i].Replace(key + "=", "")); nowTempo = note[index].GetTempo(); }
+        private void ParsePre(int index, string key) { note[index].InitPre(UstData[i].Replace(key + "=", "")); }
+        private void ParseAtPre(int index, string key) { note[index].InitAtPre(UstData[i].Replace(key + "=", "")); }
+        private void ParseOve(int index, string key) { note[index].InitOve(UstData[i].Replace(key + "=", "")); }
+        private void ParseAtOve(int index, string key) { note[index].InitAtOve(UstData[i].Replace(key + "=", "")); }
+        private void ParseStp(int index, string key) { note[index].InitStp(UstData[i].Replace(key + "=", "")); }
+        private void ParseAtStp(int index, string key) { note[index].InitAtStp(UstData[i].Replace(key + "=", "")); }
+        private void ParseAtFileName(int index, string key) { note[index].InitAtFileName(UstData[i].Replace(key + "=", "")); }
+        private void ParseAtAlias(int index, string key) { note[index].InitAtAlias(UstData[i].Replace(key + "=", "")); }
+        private void ParseVelocity(int index, string key) { note[index].InitVelocity(UstData[i].Replace(key + "=", "")); }
+        private void ParseIntensity(int index, string key) { note[index].InitIntensity(UstData[i].Replace(key + "=", "")); }
+        private void ParseMod(int index, string key) { note[index].InitMod(UstData[i].Replace(key + "=", "")); }
+        private void ParsePitches(int index, string key) { note[index].InitPitches(UstData[i].Replace(key + "=", "")); }
+        private void ParsePbStart(int index, string key) { note[index].InitPbStart(UstData[i].Replace(key + "=", "")); }
+        private void ParsePbType(int index, string key) { note[index].InitPbType(UstData[i].Replace(key + "=", "")); }
+        private void ParsePbs(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbs(UstData[i].Replace(key + "=", "")); }
+        private void ParsePbw(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbw(UstData[i].Replace(key + "=", "")); }
+        private void ParsePby(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPby(UstData[i].Replace(key + "=", "")); }
+        private void ParsePbm(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbm(UstData[i].Replace(key + "=", "")); }
+        private void ParseFlags(int index, string key) { note[index].InitFlags(UstData[i].Replace(key + "=", "")); }
+        private void ParseVibrato(int index, string key) { note[index].InitVibrato(UstData[i].Replace(key + "=", "")); }
+        private void ParseEnvelope(int index, string key) { note[index].InitEnvelope(UstData[i].Replace(key + "=", "")); }
+        private void ParseLabel(int index, string key) { note[index].InitLabel(UstData[i].Replace(key + "=", "")); }
+        private void ParseDirect(int index, string key) { note[index].InitDirect(UstData[i].Replace(key + "=", "")); }
+        private void ParseRegion(int index, string key) { note[index].InitRegion(UstData[i].Replace(key + "=", "")); }
+        private void ParseRegionEnd(int index, string key) { note[index].InitRegionEnd(UstData[i].Replace(key + "=", "")); }
+        private void ParseOriginalEntry(int index, string key) { note[index].InitOriginalEntry(key,UstData[i].Replace(key + "=", "")); }
         private void WriteLength(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.LengthIsChanged())
