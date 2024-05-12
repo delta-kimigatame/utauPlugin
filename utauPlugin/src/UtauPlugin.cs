@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UtauVoiceBank;
 
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class UtauPlugin : Ust
     {

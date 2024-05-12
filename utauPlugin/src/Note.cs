@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UtauVoiceBank;
 
-namespace utauPlugin
+namespace UtauPlugin
 {
 
     public partial class Note

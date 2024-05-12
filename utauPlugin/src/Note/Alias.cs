@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UtauVoiceBank;
 
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class Note
     {

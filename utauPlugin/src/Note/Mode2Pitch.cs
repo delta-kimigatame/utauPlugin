@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 //mode2のピッチを扱うためのクラスです．
 //詳細の仕様はmode2PitcheTest.csを参照．
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class Note
     {

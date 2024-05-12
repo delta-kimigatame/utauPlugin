@@ -1,7 +1,7 @@
 ﻿using System;
 //ビブラートデータを扱うためのクラスです．
 //詳細はvibratoTest.csを参照
-namespace utauPlugin
+namespace UtauPlugin
 {
 
     public partial class Note

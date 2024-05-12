@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 //ust形式のエンベロープを扱うためのクラスです．
 //詳細の仕様はenvelopeTest.cs参照
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class Note
     {

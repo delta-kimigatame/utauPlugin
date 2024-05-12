@@ -1,5 +1,5 @@
 ﻿using System;
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class Note
     {

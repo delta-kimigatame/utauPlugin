@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace utauPlugin
+namespace UtauPlugin
 {
     public class Ust
     {

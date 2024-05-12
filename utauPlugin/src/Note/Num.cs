@@ -1,4 +1,4 @@
-﻿namespace utauPlugin
+﻿namespace UtauPlugin
 {
     public partial class Note
     {

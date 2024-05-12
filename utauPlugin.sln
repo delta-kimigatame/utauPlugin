@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utauPlugin", "utauPlugin\utauPlugin.csproj", "{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauPlugin", "utauPlugin\UtauPlugin.csproj", "{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauVoiceBank", "UtauVoiceBank\UtauVoiceBank\UtauVoiceBank.csproj", "{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}"
 EndProject
