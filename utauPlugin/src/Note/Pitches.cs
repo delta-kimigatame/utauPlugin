@@ -40,7 +40,7 @@ namespace utauPlugin
                 this.pitches = new List<int>();
                 foreach (string x in pitches.Split(','))
                 {
-                    if (x != "") { this.pitches.Add(int.Parse(x)); }
+                    if (x != "") { this.pitches.Add((int)Math.Round(double.Parse(x))); }
                     else { this.pitches.Add(0); }
                     
                 }

@@ -132,7 +132,6 @@ namespace utauPlugin
                 Phase = float.Parse(tmp[5]);
                 Height = float.Parse(tmp[6]);
                 isChanged = true;
-
             }
             public string Get()
             {
