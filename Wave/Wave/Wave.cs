@@ -82,7 +82,7 @@ namespace Wave
         /// Waveヘッダを取得します。
         /// </summary>
         /// <remarks>
-        /// 詳細はクラス<c>Wave.Header</c>の定義を参照
+        /// 詳細はクラス<see cref="Wave.Header">Wave.Header</see>の定義を参照
         /// </remarks>
         public Header GetHeader() => header;
         /// <summary>
