@@ -1,7 +1,7 @@
 ﻿using System;
 //音階情報を扱うためのクラスです．
 //詳細はmode2PitchTest.csを参照
-namespace utauPlugin
+namespace UtauPlugin
 {
     public partial class Note
     {
