@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using UtauWave;
 
 namespace UtauVoiceBank
 {
@@ -396,7 +397,7 @@ namespace UtauVoiceBank
         {
             if (!hasWavLength)
             {
-                Wave.Wave wav = new Wave.Wave(Path.Combine(dirPath, fileName));
+                Wave wav = new Wave(Path.Combine(dirPath, fileName));
                 wav.Read();
                 WavLength = wav.PlayTime;
                 hasWavLength = true;

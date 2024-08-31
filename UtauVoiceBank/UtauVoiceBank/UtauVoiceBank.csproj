@@ -48,10 +48,13 @@
     <Compile Include="VoiceBank.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Wave\Wave\Wave.csproj">
+    <ProjectReference Include="..\..\Wave\Wave\UtauWave.csproj">
       <Project>{c0cc431f-2a53-4ccb-9026-451570c7ace8}</Project>
-      <Name>Wave</Name>
+      <Name>UtauWave</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UtauVoiceBank.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
