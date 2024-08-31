@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>UtauWave</title>
+		<authors>delta_kimigatame</authors>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<license type="expression">MIT</license>
+		<!-- <icon>icon.png</icon> -->
+		<projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+		<description>Input Wave for Utau</description>
+		<releaseNotes>First Release.</releaseNotes>
+		<copyright>$copyright$</copyright>
+		<tags>UTAU,wave</tags>
+	</metadata>
+</package>

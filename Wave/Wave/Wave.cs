@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Wave
+namespace UtauWave
 {
     /// <summary>
     /// Waveファイルの読込に関する機能を扱います。

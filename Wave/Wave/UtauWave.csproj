@@ -7,8 +7,8 @@
     <ProjectGuid>{C0CC431F-2A53-4CCB-9026-451570C7ACE8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wave</RootNamespace>
-    <AssemblyName>Wave</AssemblyName>
+    <RootNamespace>UtauWave</RootNamespace>
+    <AssemblyName>UtauWave</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -44,6 +44,9 @@
   <ItemGroup>
     <Compile Include="Wave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UtauWave.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
