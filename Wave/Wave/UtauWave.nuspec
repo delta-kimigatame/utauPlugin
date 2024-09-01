@@ -8,10 +8,14 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<license type="expression">MIT</license>
 		<!-- <icon>icon.png</icon> -->
-		<projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+		<projectUrl>https://github.com/delta-kimigatame/utauPlugin</projectUrl>
 		<description>Input Wave for Utau</description>
 		<releaseNotes>First Release.</releaseNotes>
 		<copyright>$copyright$</copyright>
 		<tags>UTAU,wave</tags>
+		<readme>docs\README.md</readme>
 	</metadata>
+	<files>
+		<file src=".\README.md" target="docs\" />
+	</files>
 </package>
