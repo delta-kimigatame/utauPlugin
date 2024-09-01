@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UtauPlugin</RootNamespace>
+    <AssemblyName>UtauPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\ConvertPitch.cs" />
+    <Compile Include="src\InitEntries.cs" />
+    <Compile Include="src\Note\Alias.cs" />
+    <Compile Include="src\Note\AtAlias.cs" />
+    <Compile Include="src\Note\AtFileName.cs" />
+    <Compile Include="src\Note\AtOve.cs" />
+    <Compile Include="src\Note\AtPre.cs" />
+    <Compile Include="src\Note\AtStp.cs" />
+    <Compile Include="src\Note\Direct.cs" />
+    <Compile Include="src\Note\Entry.cs" />
+    <Compile Include="src\Note\Envelope.cs" />
+    <Compile Include="src\Note\Label.cs" />
+    <Compile Include="src\Note\Mode2Pitch.cs" />
+    <Compile Include="src\Note.cs" />
+    <Compile Include="src\Note\Flags.cs" />
+    <Compile Include="src\Note\Intensity.cs" />
+    <Compile Include="src\Note\Mod.cs" />
+    <Compile Include="src\Note\NoteNum.cs" />
+    <Compile Include="src\Note\Length.cs" />
+    <Compile Include="src\Note\Lyric.cs" />
+    <Compile Include="src\Note\Num.cs" />
+    <Compile Include="src\Note\Ove.cs" />
+    <Compile Include="src\Note\Pbs.cs" />
+    <Compile Include="src\Note\PbStart.cs" />
+    <Compile Include="src\Note\PbType.cs" />
+    <Compile Include="src\Note\Pbw.cs" />
+    <Compile Include="src\Note\Pby.cs" />
+    <Compile Include="src\Note\Pbm.cs" />
+    <Compile Include="src\Note\Region.cs" />
+    <Compile Include="src\Note\RegionEnd.cs" />
+    <Compile Include="src\Note\Stp.cs" />
+    <Compile Include="src\Note\Tempo.cs" />
+    <Compile Include="src\Note\Pre.cs" />
+    <Compile Include="src\Note\Velocity.cs" />
+    <Compile Include="src\Note\Pitches.cs" />
+    <Compile Include="src\Ust.cs" />
+    <Compile Include="src\UtauPlugin.cs" />
+    <Compile Include="src\Note\Vibrato.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtauVoiceBank\UtauVoiceBank\UtauVoiceBank.csproj">
+      <Project>{3cd4045e-4d2d-4fbe-b3eb-a950efc15309}</Project>
+      <Name>UtauVoiceBank</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

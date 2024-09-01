@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>UtauVoiceBank</title>
+		<authors>delta_kimigatame</authors>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<license type="expression">MIT</license>
+		<!-- <icon>icon.png</icon> -->
+		<projectUrl>https://github.com/delta-kimigatame/utauPlugin</projectUrl>
+		<description>Class library for Utau VoiceBank.</description>
+		<releaseNotes>First Release.</releaseNotes>
+		<copyright>$copyright$</copyright>
+		<tags>UTAU,VoiceBank</tags>
+		<readme>docs\README.md</readme>
+	</metadata>
+	<files>
+		<file src=".\README.md" target="docs\" />
+	</files>
+</package>
