@@ -1,43 +1,195 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UtauPlugin
 {
     public partial class UtauPlugin : Ust
     {
+        /// <summary>
+        /// ノート長をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseLength(int index, string key) { note[index].InitLength(UstData[i].Replace(key+"=", "")); }
+        /// <summary>
+        /// 歌詞をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseLyric(int index, string key) { note[index].InitLyric(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 音高番号をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseNoteNum(int index, string key) { note[index].InitNoteNum(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// テンポをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseTempo(int index, string key) { note[index].InitTempo(UstData[i].Replace(key + "=", "")); nowTempo = note[index].GetTempo(); }
+        /// <summary>
+        /// 先行発声をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePre(int index, string key) { note[index].InitPre(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// @Preをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseAtPre(int index, string key) { note[index].InitAtPre(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// オーバーラップをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseOve(int index, string key) { note[index].InitOve(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// @oveをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseAtOve(int index, string key) { note[index].InitAtOve(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// stpをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseStp(int index, string key) { note[index].InitStp(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// @stpをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseAtStp(int index, string key) { note[index].InitAtStp(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// @filenameをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseAtFileName(int index, string key) { note[index].InitAtFileName(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// @aliasをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseAtAlias(int index, string key) { note[index].InitAtAlias(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 子音速度をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseVelocity(int index, string key) { note[index].InitVelocity(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 音量をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseIntensity(int index, string key) { note[index].InitIntensity(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// モジュレーションをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseMod(int index, string key) { note[index].InitMod(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// mode1ピッチ列をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePitches(int index, string key) { note[index].InitPitches(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbstartをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePbStart(int index, string key) { note[index].InitPbStart(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbtypeをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePbType(int index, string key) { note[index].InitPbType(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbsをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePbs(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbs(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbwをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePbw(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbw(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbyをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePby(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPby(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// pbmをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParsePbm(int index, string key) { if (!note[index].HasMode2Pitch()) { note[index].InitMode2Pitch(); } note[index].InitPbm(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// フラグをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseFlags(int index, string key) { note[index].InitFlags(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// ビブラートをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseVibrato(int index, string key) { note[index].InitVibrato(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// エンベロープをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseEnvelope(int index, string key) { note[index].InitEnvelope(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// ラベルをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseLabel(int index, string key) { note[index].InitLabel(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// $Directをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseDirect(int index, string key) { note[index].InitDirect(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 選択範囲に名前を付けるの始点をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseRegion(int index, string key) { note[index].InitRegion(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 選択範囲に名前を付けるの終点をパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseRegionEnd(int index, string key) { note[index].InitRegionEnd(UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// 独自エントリをパースして初期化する
+        /// </summary>
+        /// <param name="index">noteのインデックス</param>
+        /// <param name="key"></param>
         private void ParseOriginalEntry(int index, string key) { note[index].InitOriginalEntry(key,UstData[i].Replace(key + "=", "")); }
+        /// <summary>
+        /// ノート長の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteLength(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.LengthIsChanged())
@@ -46,6 +198,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 歌詞の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteLyric(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.LyricIsChanged())
@@ -54,6 +211,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 音高番号の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteNoteNum(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.NoteNumIsChanged())
@@ -62,6 +224,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// BPMの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteTempo(Note note, string key)
         {
             if (note.TempoIsChanged())
@@ -70,6 +237,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 先行発声の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePre(Note note, string key)
         {
             if (note.GetNum() == "INSERT" || note.PreIsChanged())
@@ -79,8 +251,13 @@ namespace UtauPlugin
 
             }
         }
-        
 
+
+        /// <summary>
+        /// オーバーラップの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteOve(Note note, string key)
         {
             if (note.HasOve() && (note.GetNum() == "INSERT" || note.OveIsChanged()))
@@ -88,8 +265,13 @@ namespace UtauPlugin
                 writeData.Add("VoiceOverlap=" + note.GetOve().ToString());
             }
         }
-        
 
+
+        /// <summary>
+        /// STPの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteStp(Note note, string key)
         {
             if (note.HasStp() && (note.GetNum() == "INSERT" || note.StpIsChanged()))
@@ -97,7 +279,12 @@ namespace UtauPlugin
                 writeData.Add("StartPoint=" + note.GetStp().ToString());
             }
         }
-                
+
+        /// <summary>
+        /// 子音速度の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteVelocity(Note note, string key)
         {
             if (note.HasVelocity() && (note.GetNum() == "INSERT" || note.VelocityIsChanged()))
@@ -106,6 +293,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 音量の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteIntensity(Note note, string key)
         {
             if (note.HasIntensity() && (note.GetNum() == "INSERT" || note.IntensityIsChanged()))
@@ -114,15 +306,25 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// モジュレーションの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteMod(Note note, string key)
         {
             if (note.HasMod() && (note.GetNum() == "INSERT" || note.ModIsChanged()))
             {
                 if (Version == "1.0" || Version == "1.01" || Version == "1.11" || Version == "1.19") { writeData.Add("Moduration=" + note.GetMod().ToString()); }
                 if (Version == "1.19" || Version == "1.20") { writeData.Add("Modulation=" + note.GetMod().ToString()); }
-
             }
         }
+
+        /// <summary>
+        /// mode1ピッチの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
 
         private void WritePitches(Note note, string key)
         {
@@ -134,6 +336,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// PBStartの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePbStart(Note note, string key)
         {
             if (note.HasPbStart() && (note.GetNum() == "INSERT" || note.PbStartIsChanged()))
@@ -142,6 +349,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// PBTypeの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePbType(Note note, string key)
         {
             if (note.HasPbType() && (note.GetNum() == "INSERT" || note.PbTypeIsChanged()))
@@ -149,6 +361,11 @@ namespace UtauPlugin
                 writeData.Add("PBType=" + note.GetPbType().ToString());
             }
         }
+        /// <summary>
+        /// pbsの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
 
         private void WritePbs(Note note, string key)
         {
@@ -158,6 +375,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// pbwの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePbw(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbwIsChanged()))
@@ -166,6 +388,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// pbyの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePby(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbyIsChanged()))
@@ -181,6 +408,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// pbmの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WritePbm(Note note, string key)
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbmIsChanged()))
@@ -189,6 +421,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// フラグの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteFlags(Note note, string key)
         {
             if (note.HasFlags() && (note.GetNum() == "INSERT" || note.FlagsIsChanged()))
@@ -197,6 +434,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// ビブラートの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteVibrato(Note note, string key)
         {
             if (note.HasVibrato() && (note.GetNum() == "INSERT" || note.VibratoIsChanged()))
@@ -205,6 +447,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// エンベロープの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteEnvelope(Note note, string key)
         {
             if (note.HasEnvelope() && (note.GetNum() == "INSERT" || note.EnvelopeIsChanged()))
@@ -213,6 +460,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// ラベルの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteLabel(Note note, string key)
         {
             if (note.HasLabel() && (note.GetNum() == "INSERT" || note.LabelIsChanged()))
@@ -221,6 +473,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// $Directの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteDirect(Note note, string key)
         {
             if (note.HasDirect() && (note.GetNum() == "INSERT" || note.DirectIsChanged()) && note.GetDirect())
@@ -229,6 +486,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 選択範囲に名前を付けるの始点の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteRegion(Note note, string key)
         {
             if (note.HasRegion() && (note.GetNum() == "INSERT" || note.RegionIsChanged()))
@@ -237,6 +499,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// 選択範囲に名前を付けるの終点の書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key"></param>
         private void WriteRegionEnd(Note note, string key)
         {
             if (note.HasRegionEnd() && (note.GetNum() == "INSERT" || note.RegionEndIsChanged()))
@@ -244,6 +511,11 @@ namespace UtauPlugin
                 writeData.Add("$region_end=" + note.GetRegionEnd());
             }
         }
+        /// <summary>
+        /// 独自エントリの書き出し要否を判定し、書き出し形式で<c>writeData</c>に追加する。
+        /// </summary>
+        /// <param name="note">対象ノート</param>
+        /// <param name="key">独自エントリのエントリ名</param>
         private void WriteOriginalEntry(Note note, string key)
         {
             if (note.HasOriginalEntry(key) && (note.GetNum() == "INSERT" || note.OriginalEntryIsChanged(key)))
@@ -252,8 +524,14 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// エントリーの辞書
+        /// </summary>
         private Dictionary<string, EntryMethods> entries;
 
+        /// <summary>
+        /// エントリーの辞書の初期化
+        /// </summary>
         private void InitEntries()
         {
             entries = new Dictionary<string, EntryMethods>();
@@ -356,6 +634,11 @@ namespace UtauPlugin
 
         }
         public List<string> debug;
+        /// <summary>
+        /// 独自エントリーをエントリー辞書に追加する
+        /// </summary>
+        /// <param name="entryName">独自エントリの名前</param>
+        /// <param name="defaultValue">独自エントリの初期値</param>
         public void InitOriginalEntry(string entryName,Object defaultValue)
         {
             debug = new List<string>();
@@ -366,6 +649,9 @@ namespace UtauPlugin
             entries[entryName].Output = WriteOriginalEntry;
         }
 
+        /// <summary>
+        /// エントリーの読み書きに関する処理を扱う
+        /// </summary>
         public class EntryMethods
         {
             public delegate void InputDelegate(int index, string key);
@@ -376,6 +662,9 @@ namespace UtauPlugin
             public InputDelegate Input { get => input; set => input = value; }
             public OutputDelegate Output { get => output; set => output = value; }
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             public EntryMethods()
             {
             }
