@@ -13,6 +13,8 @@ UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 ## 導入方法
 NugetからKimigatame.UtauPluginをインストールしてください。
 
+画像付きチュートリアルはこちら(https://delta-kimigatame.hatenablog.jp/entry/2024/09/01/165041)
+
 ## 使い方
 ```CSharp
 using UtauPlugin;
