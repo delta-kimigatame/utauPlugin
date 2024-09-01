@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauPlugin", "utauPlugin\Ut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauVoiceBank", "UtauVoiceBank\UtauVoiceBank\UtauVoiceBank.csproj", "{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave", "Wave\Wave\Wave.csproj", "{C0CC431F-2A53-4CCB-9026-451570C7ACE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauWave", "Wave\Wave\UtauWave.csproj", "{C0CC431F-2A53-4CCB-9026-451570C7ACE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,95 +1,95 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using utauPlugin;
+using UtauPlugin;
 
 namespace outputUstTest.cs
 {
     [TestClass]
     public class outputUstTest
     {
-        UtauPlugin utauPlugin;
+        UtauPlugin.UtauPlugin UtauPlugin;
 
         [TestInitialize()]
         public void testInitialize()
         {
-            utauPlugin = new UtauPlugin();
+            UtauPlugin = new UtauPlugin.UtauPlugin();
 
         }
         [TestMethod]
         public void testv119()
         {
-            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
-            utauPlugin.Input();
-            utauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
+            UtauPlugin.Input();
+            UtauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119.tmp";
+            UtauPlugin.Output();
         }
         [TestMethod]
         public void testv119Insert()
         {
-            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
-            utauPlugin.Input();
-            for(int i = 0; i < utauPlugin.note.Count; i++)
+            UtauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
+            UtauPlugin.Input();
+            for(int i = 0; i < UtauPlugin.note.Count; i++)
             {
-                utauPlugin.note[i].SetNum("INSERT");
+                UtauPlugin.note[i].SetNum("INSERT");
             }
-            utauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119Insert.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119Insert.tmp";
+            UtauPlugin.Output();
         }
         [TestMethod]
         public void testv119_SetLength()
         {
-            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
-            utauPlugin.Input();
-            utauPlugin.note[2].SetLength(120);
-            utauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119_Length.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
+            UtauPlugin.Input();
+            UtauPlugin.note[2].SetLength(120);
+            UtauPlugin.FilePath ="..\\..\\..\\test\\outputData\\out119_Length.tmp";
+            UtauPlugin.Output();
         }
         [TestMethod]
         public void testv119_SetDirect()
         {
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\test119.tmp";
-            utauPlugin.Input();
-            utauPlugin.note[2].SetDirect(false);
-            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\out119_Direct.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\inputData\\test119.tmp";
+            UtauPlugin.Input();
+            UtauPlugin.note[2].SetDirect(false);
+            UtauPlugin.FilePath = "..\\..\\..\\test\\outputData\\out119_Direct.tmp";
+            UtauPlugin.Output();
         }
         [TestMethod()]
         public void InitOriginalEntryOutputTest()
         {
-            utauPlugin = new UtauPlugin();
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
-            utauPlugin.InitOriginalEntry("myEntry", "ccc");
-            utauPlugin.InitOriginalEntry("myEntry2", "");
-            utauPlugin.Input();
-            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\original.tmp";
-            utauPlugin.note[1].SetOriginalEntry("myEntry","ddd");
+            UtauPlugin = new UtauPlugin.UtauPlugin();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
+            UtauPlugin.InitOriginalEntry("myEntry", "ccc");
+            UtauPlugin.InitOriginalEntry("myEntry2", "");
+            UtauPlugin.Input();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\outputData\\original.tmp";
+            UtauPlugin.note[1].SetOriginalEntry("myEntry","ddd");
 
-            utauPlugin.Output();
+            UtauPlugin.Output();
 
         }
         [TestMethod()]
         public void InitOriginalEntryInsertTest()
         {
-            utauPlugin = new UtauPlugin();
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
-            utauPlugin.InitOriginalEntry("myEntry", "ccc");
-            utauPlugin.InitOriginalEntry("myEntry2", "");
-            utauPlugin.Input();
-            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\originalInsert.tmp";
-            for (int i = 0; i < utauPlugin.note.Count; i++)
+            UtauPlugin = new UtauPlugin.UtauPlugin();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\inputData\\originalEntry.tmp";
+            UtauPlugin.InitOriginalEntry("myEntry", "ccc");
+            UtauPlugin.InitOriginalEntry("myEntry2", "");
+            UtauPlugin.Input();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\outputData\\originalInsert.tmp";
+            for (int i = 0; i < UtauPlugin.note.Count; i++)
             {
-                utauPlugin.note[i].SetNum("INSERT");
+                UtauPlugin.note[i].SetNum("INSERT");
             }
 
-            utauPlugin.Output();
+            UtauPlugin.Output();
 
         }
         [TestMethod]
         public void testNoBody()
         {
-            utauPlugin.FilePath = "..\\..\\..\\test\\inputData\\nobody.tmp";
-            utauPlugin.Input();
-            utauPlugin.FilePath = "..\\..\\..\\test\\outputData\\nobody.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\inputData\\nobody.tmp";
+            UtauPlugin.Input();
+            UtauPlugin.FilePath = "..\\..\\..\\test\\outputData\\nobody.tmp";
+            UtauPlugin.Output();
         }
     }
 }

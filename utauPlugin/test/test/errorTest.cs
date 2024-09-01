@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using utauPlugin;
+using UtauPlugin;
 using System.Collections.Generic;
 
 namespace errorTest.cs
@@ -7,20 +7,20 @@ namespace errorTest.cs
     [TestClass]
     public class errorTest
     {
-        UtauPlugin utauPlugin;
+        UtauPlugin.UtauPlugin UtauPlugin;
 
         [TestInitialize()]
         public void testInitialize()
         {
-            utauPlugin = new UtauPlugin();
+            UtauPlugin = new UtauPlugin.UtauPlugin();
 
         }
         [TestMethod]
         public void testMode2AddPitch()
         {
-            utauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
-            utauPlugin.Input();
-            Note note = utauPlugin.note[2];
+            UtauPlugin.FilePath ="..\\..\\..\\test\\inputData\\test119.tmp";
+            UtauPlugin.Input();
+            Note note = UtauPlugin.note[2];
             List<float> pbw = note.GetPbw();
             List<float> pby = note.GetPby();
             List<string> pbm = note.GetPbm();
@@ -44,8 +44,8 @@ namespace errorTest.cs
             //Assert.IsTrue(pby[3] == 0f);
             //Assert.IsTrue(4 == pby.Count);
             Assert.IsTrue(6 == pbw.Count);
-            utauPlugin.FilePath ="..\\..\\..\\test\\outputData\\Mode2AddPitch.tmp";
-            utauPlugin.Output();
+            UtauPlugin.FilePath ="..\\..\\..\\test\\outputData\\Mode2AddPitch.tmp";
+            UtauPlugin.Output();
         }
     }
 }
