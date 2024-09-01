@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using utauPlugin;
+using UtauPlugin;
 
 namespace noteNumTest
 {
