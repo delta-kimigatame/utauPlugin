@@ -1,6 +1,6 @@
-# utauPlugin
+# UtauPlugin
 飴屋／菖蒲氏によって公開されている，Windows向けに作成された歌声合成ソフトウェア「UTAU」の，
-プラグイン作成のためのC#(.Net Framework 4.5)クラスライブラリです．
+プラグイン作成のためのC#(.Net Framework 4.8)クラスライブラリです．
 visual studioでの使用を想定しています．
 
 UTAU公式サイト(http://utau2008.web.fc2.com/)
@@ -11,16 +11,11 @@ UTAUプラグインの仕様(https://www20.atwiki.jp/utaou/pages/64.html)
 本家がutf-8になりそうなので，当面様子見の予定です．
 
 ## 導入方法
-画像付きチュートリアルはコチラ(https://ch.nicovideo.jp/delta_kimigatame/blomaga/ar1716787)
-1. Clone or downloadからzipをダウンロードし，適当な場所に解凍する．
-1. [ファイル]-[新規作成]-[プロジェクト]より.Net Frameworkのプロジェクトを作成する．
-1. [ファイル]-[追加]-[既存のプロジェクト]より，utauPlugin-master\utauPlugin\utauPlugin.slnを開く．
-1. [ソリューションエクスプローラー]-[参照]を右クリックし、[参照の追加]を選ぶ．
-1. [プロジェクト]-[ソリューション]よりutauPluginにチェックする．
+NugetからKimigatame.UtauPluginをインストールしてください。
 
 ## 使い方
 ```CSharp
-using utauPlugin;
+using UtauPlugin;
 
 namespace sample1
 {
@@ -28,7 +23,7 @@ namespace sample1
     {
         static void Main(string[] args)
         {
-            UtauPlugin utauPlugin = new UtauPlugin(args[0]);
+            UtauPlugin.UtauPlugin utauPlugin = new UtauPlugin.UtauPlugin(args[0]);
             utauPlugin.Input();
             //
             //具体的な処理
@@ -41,7 +36,7 @@ namespace sample1
 ## 具体的な使用例
 UTAU界隈おなじみの半音上げプラグイン(コンソール)の場合
 ```CSharp
-using utauPlugin;
+using UtauPlugin;
 
 namespace sample1
 {
@@ -49,7 +44,7 @@ namespace sample1
     {
         static void Main(string[] args)
         {
-            UtauPlugin utauPlugin = new UtauPlugin(args[0]);
+            UtauPlugin.UtauPlugin utauPlugin = new UtauPlugin.UtauPlugin(args[0]);
             utauPlugin.Input();
             foreach(Note note in utauPlugin.note)
             {
