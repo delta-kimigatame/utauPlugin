@@ -8,19 +8,46 @@ using UtauVoiceBank;
 
 namespace UtauPlugin
 {
+    /// <summary>
+    /// UtauPluginの読み書きを扱う
+    /// </summary>
     public partial class UtauPlugin : Ust
     {
-
+        /// <summary>
+        /// 行毎に読み込んだ入力データ
+        /// </summary>
         public List<String> UstData { get; private set; }
+        /// <summary>
+        /// UTAU音源
+        /// </summary>
         public VoiceBank vb;
+        /// <summary>
+        /// 出力データを行毎に格納する
+        /// </summary>
         private List<String> writeData;
+        /// <summary>
+        /// ループカウンタ
+        /// </summary>
         private int i;
+        /// <summary>
+        /// 現在のBPM
+        /// </summary>
         private float nowTempo;
 
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public UtauPlugin() { InitEntries(); }
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="filePath">Utauプラグインのtmpファイルのパス</param>
         public UtauPlugin(string filePath) : base(filePath) { InitEntries(); }
 
+        /// <summary>
+        /// Utauプラグインのtmpファイルを読み込む。
+        /// </summary>
+        /// <param name="autoLogOutputAndExit">読み込みエラー時の挙動。trueの場合ログファイルを出力し、falseの場合エラーを送出する。</param>
         public void Input(bool autoLogOutputAndExit = true)
         {
             try
@@ -59,6 +86,12 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// Utauプラグイン用tmpファイル読込における、実際のファイル読込部分。
+        /// </summary>
+        /// <remarks>
+        /// ヘッダ部分はANSI、body部分はShift_JISで読み込む。
+        /// </remarks>
         private void GetUstData()
         {
             string line;
@@ -88,7 +121,11 @@ namespace UtauPlugin
             }
             file2.Close();
         }
-
+        /// <summary>
+        /// 読み込んだデータがustのヘッダ部分か否かを判定する。
+        /// </summary>
+        /// <param name="value">読み込んだファイルの1行分のデータ</param>
+        /// <returns>ヘッダであればtrue</returns>
         private Boolean IsHeader(string value)
         {
             if (value == null)
@@ -100,7 +137,15 @@ namespace UtauPlugin
                 return (!(Regex.IsMatch(value, @"\[#([0-9]+|PREV|NEXT)\]$")));
             }
         }
+        /// <summary>
+        /// 読み込んだデータがノートの始点行か否かを判定する。
+        /// </summary>
+        /// <param name="value">読み込んだファイルの1行分のデータ</param>
+        /// <returns>ノートの開始行であればtrue</returns>
         private Boolean IsNote(string value) => Regex.IsMatch(value, @"\[#([0-9]+|PREV|NEXT)\]$");
+        /// <summary>
+        /// ヘッダ部分をパースし、値を格納する。
+        /// </summary>
         private void AnalyzeHeader()
         {
             i = 0;
@@ -158,6 +203,9 @@ namespace UtauPlugin
             }
 
         }
+        /// <summary>
+        /// ノート部分をパースし、値を格納する。
+        /// </summary>
         private void AnalyzeNotes()
         {
             nowTempo = Tempo;
@@ -185,7 +233,9 @@ namespace UtauPlugin
                 i++;
             }
         }
-
+        /// <summary>
+        /// ノート部分を出力する。
+        /// </summary>
         private void OutputHelper()
         {
             foreach (Note note in this.note)
@@ -216,6 +266,9 @@ namespace UtauPlugin
                 }
             }
         }
+        /// <summary>
+        /// プラグイン実行結果を出力する。
+        /// </summary>
         public void Output()
         {
             try
@@ -231,7 +284,10 @@ namespace UtauPlugin
                 Environment.Exit(0);
             }
         }
-
+        /// <summary>
+        /// ノートを追加する。
+        /// </summary>
+        /// <param name="index">ノートを追加する位置</param>
         public void InsertNote(int index)
         {
             note.Insert(index, new Note());
@@ -268,6 +324,10 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// ノートを削除する
+        /// </summary>
+        /// <param name="index">削除するノートのインデックス</param>
         public void DeleteNote(int index)
         {
             note[index].SetNum("DELETE");
@@ -281,6 +341,11 @@ namespace UtauPlugin
             }
         }
 
+        /// <summary>
+        /// DELETEしたノートを無視し、1つ前のノートを取得する
+        /// </summary>
+        /// <param name="index">基準となるノートのインデックス</param>
+        /// <returns>1つ前のノートへの参照</returns>
         private Note GetPrevNote(int index)
         {
             while (index >= 0)
@@ -293,6 +358,11 @@ namespace UtauPlugin
             }
             return null;
         }
+        /// <summary>
+        /// DELETEしたノートを無視し、1つ次のノートを取得する
+        /// </summary>
+        /// <param name="index">基準となるノートのインデックス</param>
+        /// <returns>1つ次のノートへの参照</returns>
         private Note GetNextNote(int index)
         {
             while (index < note.Count)
@@ -305,6 +375,10 @@ namespace UtauPlugin
             }
             return null;
         }
+        /// <summary>
+        /// UTAU音源を読み込む
+        /// </summary>
+        /// <param name="recursive">再帰的にフォルダを読み込むか否か。通常のUTAUではfalse</param>
 
         public void InputVoiceBank(bool recursive = false)
         {
@@ -313,8 +387,9 @@ namespace UtauPlugin
             vb.InputOtoAll(recursive);
         }
 
-        //先行発声やオーバーラップ値が与えられていないノートに原音設定値を設定する．
-        //書き出しには影響しない
+        /// <summary>
+        /// 先行発声・オーバーラップが空欄のノートを原音設定値で補完する。書き出しには影響しない。
+        /// </summary>
         public void ApplyOto()
         {
             for (int i = 0; i < note.Count; i++)
@@ -322,7 +397,9 @@ namespace UtauPlugin
                 note[i].ApplyOto(vb.prefixMap, vb.oto);
             }
         }
-        //@パラメータが存在しないノートの原音設定値から初期化する．
+        /// <summary>
+        /// @パラメータが存在しないノートを自動調整で補完する。書き出しには影響しない。
+        /// </summary>
         public void InitAtParam()
         {
             for (int i = 0; i < note.Count; i++)
