@@ -13,5 +13,9 @@
 		<releaseNotes>First Release.</releaseNotes>
 		<copyright>$copyright$</copyright>
 		<tags>UTAU,VoiceBank</tags>
+		<readme>docs\README.md</readme>
 	</metadata>
+	<files>
+		<file src=".\README.md" target="docs\" />
+	</files>
 </package>
