@@ -16,7 +16,7 @@ namespace UtauPlugin
         /// <summary>
         /// 行毎に読み込んだ入力データ
         /// </summary>
-        public List<String> UstData { get; private set; }
+        public List<string> UstData { get; private set; }
         /// <summary>
         /// UTAU音源
         /// </summary>
@@ -24,7 +24,7 @@ namespace UtauPlugin
         /// <summary>
         /// 出力データを行毎に格納する
         /// </summary>
-        private List<String> writeData;
+        public List<string> WriteData { get; private set; }
         /// <summary>
         /// ループカウンタ
         /// </summary>
@@ -247,18 +247,18 @@ namespace UtauPlugin
                 }
                 else if (note.GetNum() == "DELETE")
                 {
-                    writeData.Add("[#" + note.GetNum() + "]");
+                    WriteData.Add("[#" + note.GetNum() + "]");
                     continue;
                 }
                 else if (note.GetDirect() == false && note.DirectIsChanged())
                 {
-                    writeData.Add("[#DELETE]");
+                    WriteData.Add("[#DELETE]");
                     note.SetNum("INSERT");
-                    writeData.Add("[#" + note.GetNum() + "]");
+                    WriteData.Add("[#" + note.GetNum() + "]");
                 }
                 else
                 {
-                    writeData.Add("[#" + note.GetNum() + "]");
+                    WriteData.Add("[#" + note.GetNum() + "]");
                 }
                 foreach (string key in entries.Keys)
                 {
@@ -273,9 +273,9 @@ namespace UtauPlugin
         {
             try
             {
-                writeData = new List<String>();
+                WriteData = new List<String>();
                 OutputHelper();
-                File.WriteAllLines(FilePath, writeData, Encoding.GetEncoding("Shift_JIS"));
+                File.WriteAllLines(FilePath, WriteData, Encoding.GetEncoding("Shift_JIS"));
             }
             catch (Exception ex)
             {

@@ -194,7 +194,7 @@ namespace UtauPlugin
         {
             if (note.GetNum() == "INSERT" || note.LengthIsChanged())
             {
-                writeData.Add("Length=" + note.GetLength().ToString());
+                WriteData.Add("Length=" + note.GetLength().ToString());
             }
         }
 
@@ -207,7 +207,7 @@ namespace UtauPlugin
         {
             if (note.GetNum() == "INSERT" || note.LyricIsChanged())
             {
-                writeData.Add("Lyric=" + note.GetLyric());
+                WriteData.Add("Lyric=" + note.GetLyric());
             }
         }
 
@@ -220,7 +220,7 @@ namespace UtauPlugin
         {
             if (note.GetNum() == "INSERT" || note.NoteNumIsChanged())
             {
-                writeData.Add("NoteNum=" + note.GetNoteNum().ToString());
+                WriteData.Add("NoteNum=" + note.GetNoteNum().ToString());
             }
         }
 
@@ -233,7 +233,7 @@ namespace UtauPlugin
         {
             if (note.TempoIsChanged())
             {
-                writeData.Add("Tempo=" + note.GetTempo().ToString());
+                WriteData.Add("Tempo=" + note.GetTempo().ToString());
             }
         }
 
@@ -246,8 +246,8 @@ namespace UtauPlugin
         {
             if (note.GetNum() == "INSERT" || note.PreIsChanged())
             {
-                if (note.PreHasValue()) { writeData.Add("PreUtterance=" + note.GetPre().ToString()); }
-                else { writeData.Add("PreUtterance="); }
+                if (note.PreHasValue()) { WriteData.Add("PreUtterance=" + note.GetPre().ToString()); }
+                else { WriteData.Add("PreUtterance="); }
 
             }
         }
@@ -262,7 +262,7 @@ namespace UtauPlugin
         {
             if (note.HasOve() && (note.GetNum() == "INSERT" || note.OveIsChanged()))
             {
-                writeData.Add("VoiceOverlap=" + note.GetOve().ToString());
+                WriteData.Add("VoiceOverlap=" + note.GetOve().ToString());
             }
         }
 
@@ -276,7 +276,7 @@ namespace UtauPlugin
         {
             if (note.HasStp() && (note.GetNum() == "INSERT" || note.StpIsChanged()))
             {
-                writeData.Add("StartPoint=" + note.GetStp().ToString());
+                WriteData.Add("StartPoint=" + note.GetStp().ToString());
             }
         }
 
@@ -289,7 +289,7 @@ namespace UtauPlugin
         {
             if (note.HasVelocity() && (note.GetNum() == "INSERT" || note.VelocityIsChanged()))
             {
-                writeData.Add("Velocity=" + note.GetVelocity().ToString());
+                WriteData.Add("Velocity=" + note.GetVelocity().ToString());
             }
         }
 
@@ -302,7 +302,7 @@ namespace UtauPlugin
         {
             if (note.HasIntensity() && (note.GetNum() == "INSERT" || note.IntensityIsChanged()))
             {
-                writeData.Add("Intensity=" + note.GetIntensity().ToString());
+                WriteData.Add("Intensity=" + note.GetIntensity().ToString());
             }
         }
 
@@ -315,8 +315,8 @@ namespace UtauPlugin
         {
             if (note.HasMod() && (note.GetNum() == "INSERT" || note.ModIsChanged()))
             {
-                if (Version == "1.0" || Version == "1.01" || Version == "1.11" || Version == "1.19") { writeData.Add("Moduration=" + note.GetMod().ToString()); }
-                if (Version == "1.19" || Version == "1.20") { writeData.Add("Modulation=" + note.GetMod().ToString()); }
+                if (Version == "1.0" || Version == "1.01" || Version == "1.11" || Version == "1.19") { WriteData.Add("Moduration=" + note.GetMod().ToString()); }
+                if (Version == "1.19" || Version == "1.20") { WriteData.Add("Modulation=" + note.GetMod().ToString()); }
             }
         }
 
@@ -330,9 +330,9 @@ namespace UtauPlugin
         {
             if (note.HasPitches() && (note.GetNum() == "INSERT" || note.PitchesIsChanged()))
             {
-                if (Version == "1.0" || Version == "1.01" || Version == "1.19") { writeData.Add("Piches=" + string.Join(",", note.GetPitches())); }
-                if (Version == "1.11" || Version == "1.19") { writeData.Add("Pitches=" + string.Join(",", note.GetPitches())); }
-                if (Version == "1.01" || Version == "1.11" || Version == "1.19" || Version == "1.20") { writeData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
+                if (Version == "1.0" || Version == "1.01" || Version == "1.19") { WriteData.Add("Piches=" + string.Join(",", note.GetPitches())); }
+                if (Version == "1.11" || Version == "1.19") { WriteData.Add("Pitches=" + string.Join(",", note.GetPitches())); }
+                if (Version == "1.01" || Version == "1.11" || Version == "1.19" || Version == "1.20") { WriteData.Add("PitchBend=" + string.Join(",", note.GetPitches())); }
             }
         }
 
@@ -345,7 +345,7 @@ namespace UtauPlugin
         {
             if (note.HasPbStart() && (note.GetNum() == "INSERT" || note.PbStartIsChanged()))
             {
-                writeData.Add("PBStart=" + note.GetPbStart().ToString());
+                WriteData.Add("PBStart=" + note.GetPbStart().ToString());
             }
         }
 
@@ -358,7 +358,7 @@ namespace UtauPlugin
         {
             if (note.HasPbType() && (note.GetNum() == "INSERT" || note.PbTypeIsChanged()))
             {
-                writeData.Add("PBType=" + note.GetPbType().ToString());
+                WriteData.Add("PBType=" + note.GetPbType().ToString());
             }
         }
         /// <summary>
@@ -371,7 +371,7 @@ namespace UtauPlugin
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbsIsChanged()))
             {
-                writeData.Add("PBS=" + note.GetPbs());
+                WriteData.Add("PBS=" + note.GetPbs());
             }
         }
 
@@ -384,7 +384,7 @@ namespace UtauPlugin
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbwIsChanged()))
             {
-                writeData.Add("PBW=" + string.Join(",", note.GetPbw()));
+                WriteData.Add("PBW=" + string.Join(",", note.GetPbw()));
             }
         }
 
@@ -404,7 +404,7 @@ namespace UtauPlugin
                     //if (f == 0.0f) { pbyTmp.Add(""); }
                     //else { pbyTmp.Add(f.ToString()); }
                 }
-                writeData.Add("PBY=" + string.Join(",", pbyTmp));
+                WriteData.Add("PBY=" + string.Join(",", pbyTmp));
             }
         }
 
@@ -417,7 +417,7 @@ namespace UtauPlugin
         {
             if (note.HasMode2Pitch() && (note.GetNum() == "INSERT" || note.PbmIsChanged()))
             {
-                writeData.Add("PBM=" + string.Join(",", note.GetPbm()));
+                WriteData.Add("PBM=" + string.Join(",", note.GetPbm()));
             }
         }
 
@@ -430,7 +430,7 @@ namespace UtauPlugin
         {
             if (note.HasFlags() && (note.GetNum() == "INSERT" || note.FlagsIsChanged()))
             {
-                writeData.Add("Flags=" + note.GetFlags());
+                WriteData.Add("Flags=" + note.GetFlags());
             }
         }
 
@@ -443,7 +443,7 @@ namespace UtauPlugin
         {
             if (note.HasVibrato() && (note.GetNum() == "INSERT" || note.VibratoIsChanged()))
             {
-                writeData.Add("VBR=" + note.GetVibrato());
+                WriteData.Add("VBR=" + note.GetVibrato());
             }
         }
 
@@ -456,7 +456,7 @@ namespace UtauPlugin
         {
             if (note.HasEnvelope() && (note.GetNum() == "INSERT" || note.EnvelopeIsChanged()))
             {
-                writeData.Add("Envelope=" + note.GetEnvelope());
+                WriteData.Add("Envelope=" + note.GetEnvelope());
             }
         }
 
@@ -469,7 +469,7 @@ namespace UtauPlugin
         {
             if (note.HasLabel() && (note.GetNum() == "INSERT" || note.LabelIsChanged()))
             {
-                writeData.Add("Label=" + note.GetLabel());
+                WriteData.Add("Label=" + note.GetLabel());
             }
         }
 
@@ -482,7 +482,7 @@ namespace UtauPlugin
         {
             if (note.HasDirect() && (note.GetNum() == "INSERT" || note.DirectIsChanged()) && note.GetDirect())
             {
-                writeData.Add("$direct=" + note.GetDirect().ToString());
+                WriteData.Add("$direct=" + note.GetDirect().ToString());
             }
         }
 
@@ -495,7 +495,7 @@ namespace UtauPlugin
         {
             if (note.HasRegion() && (note.GetNum() == "INSERT" || note.RegionIsChanged()))
             {
-                writeData.Add("$region=" + note.GetRegion());
+                WriteData.Add("$region=" + note.GetRegion());
             }
         }
 
@@ -508,7 +508,7 @@ namespace UtauPlugin
         {
             if (note.HasRegionEnd() && (note.GetNum() == "INSERT" || note.RegionEndIsChanged()))
             {
-                writeData.Add("$region_end=" + note.GetRegionEnd());
+                WriteData.Add("$region_end=" + note.GetRegionEnd());
             }
         }
         /// <summary>
@@ -520,7 +520,7 @@ namespace UtauPlugin
         {
             if (note.HasOriginalEntry(key) && (note.GetNum() == "INSERT" || note.OriginalEntryIsChanged(key)))
             {
-                writeData.Add(key +"="+ note.GetOriginalEntry(key).ToString());
+                WriteData.Add(key +"="+ note.GetOriginalEntry(key).ToString());
             }
         }
 
