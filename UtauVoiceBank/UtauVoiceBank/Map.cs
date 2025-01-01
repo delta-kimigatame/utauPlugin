@@ -110,6 +110,11 @@ namespace UtauVoiceBank
         /// エイリアスの後方に補完する値。suffix
         /// </summary>
         public string Su { get => su; set => su = value; }
+
+        public override string ToString()
+        {
+            return $"Pre:{Pre}, Su:{Su}";
+        }
     }
 
 }

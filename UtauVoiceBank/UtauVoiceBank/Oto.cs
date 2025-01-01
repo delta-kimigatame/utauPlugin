@@ -422,5 +422,10 @@ namespace UtauVoiceBank
             if(Blank<0) { return GetWavLength() - Offset + Blank; }
             else { return Blank - GetWavLength() + Offset; }
         }
+
+        public override string ToString()
+        {
+            return $"Alias:{Alias}, FileName:{FileName}, Offset:{Offset}, Pre:{Pre}, Ove:{Ove}, Vel:{Vel}, Blank:{Blank}";
+        }
     }
 }

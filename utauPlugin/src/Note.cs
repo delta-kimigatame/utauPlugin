@@ -313,5 +313,10 @@ namespace UtauPlugin
         {
             return (int)(60 / GetTempo() * GetLength() / 480 * 1000);
         }
+
+        public override string ToString()
+        {
+            return $"[#{GetNum()}] Lyric:{GetLyric()}, NoteNum:{GetNoteNum()}, Length:{GetLength()}";
+        }
     }
 }

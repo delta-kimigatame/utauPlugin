@@ -57,5 +57,10 @@ namespace UtauVoiceBank
             prefixMap = new Dictionary<string, MapValue>();
             prefixMaps = new Dictionary<string, Dictionary<string, MapValue>>();
         }
+
+        public override string ToString()
+        {
+            return DirPath;
+        }
     }
 }
