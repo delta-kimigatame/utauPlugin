@@ -2,7 +2,6 @@
 
 namespace UtauPlugin
 {
-
     public partial class Note
     {
         /// <summary>
@@ -29,6 +28,11 @@ namespace UtauPlugin
         /// </summary>
         /// <param name="pre"></param>
         public void SetPre(float pre) => this.pre.Set(pre);
+        /// <summary>
+        /// 先行発声の削除
+        /// </summary>
+        /// <param name="pre"></param>
+        public void DeletePre() { this.pre.Delete(); DeleteParam = true; }
         /// <summary>
         /// 先行発声値の取得
         /// </summary>
@@ -116,6 +120,11 @@ namespace UtauPlugin
             /// </summary>
             /// <param name="pre"></param>
             public void Set(float pre) { this.pre = pre; isChanged = true; hasValue = true; }
+            /// <summary>
+            /// 先行発声値の削除
+            /// </summary>
+            /// <param name="pre"></param>
+            public void Delete() { this.pre = DEFAULT_PRE; isChanged = true; hasValue = false; }
             /// <summary>
             /// 先行発声値の取得
             /// </summary>

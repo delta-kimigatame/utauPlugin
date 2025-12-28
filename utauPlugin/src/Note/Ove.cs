@@ -45,6 +45,11 @@ namespace UtauPlugin
             }
         }
         /// <summary>
+        /// オーバーラップの削除
+        /// </summary>
+        /// <param name="ove"></param>
+        public void DeleteOve() { this.ove = null; DeleteParam = true; }
+        /// <summary>
         /// オーバーラップの取得
         /// </summary>
         /// <returns></returns>

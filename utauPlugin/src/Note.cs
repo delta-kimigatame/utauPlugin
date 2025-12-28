@@ -153,6 +153,11 @@ namespace UtauPlugin
         /// </summary>
         public Note Next { get => next; set => next = value; }
 
+        /// <summary>
+        /// いずれかのパラメータを空欄にする
+        /// </summary>
+        internal bool DeleteParam { get; set; } = false;
+
         //各エントリのデフォルト値，メソッドはNoteフォルダ内の各csファイルに記述されています．
 
 

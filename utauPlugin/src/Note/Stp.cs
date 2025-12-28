@@ -45,6 +45,11 @@ namespace UtauPlugin
             }
         }
         /// <summary>
+        /// stpの削除
+        /// </summary>
+        /// <param name="stp"></param>
+        public void DeleteStp() { this.stp = null; DeleteParam = true; }
+        /// <summary>
         /// stpの取得
         /// </summary>
         /// <returns></returns>

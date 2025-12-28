@@ -250,7 +250,7 @@ namespace UtauPlugin
                     writeData.Add("[#" + note.GetNum() + "]");
                     continue;
                 }
-                else if (note.GetDirect() == false && note.DirectIsChanged())
+                else if (note.DeleteParam || (note.GetDirect() == false && note.DirectIsChanged()))
                 {
                     writeData.Add("[#DELETE]");
                     note.SetNum("INSERT");
