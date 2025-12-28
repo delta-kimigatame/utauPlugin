@@ -68,7 +68,7 @@ namespace UtauPlugin
             /// <param name="pre">floatに変更可能な文字列。""の場合0として扱う</param>
             public Pre(string pre)
             {
-                if (pre == "")
+                if (string.IsNullOrWhiteSpace(pre))
                 {
                     this.pre = 0.0f;
                     isChanged = false;
@@ -105,7 +105,20 @@ namespace UtauPlugin
             /// 先行発声値の変更
             /// </summary>
             /// <param name="pre">floatに変更可能な文字列。""の場合0として扱う</param>
-            public void Set(string pre) { this.pre = float.Parse(pre); isChanged = true; hasValue = true; }
+            public void Set(string pre) {
+                if (string.IsNullOrWhiteSpace(pre))
+                {
+                    this.pre = 0.0f;
+                    isChanged = true;
+                    hasValue = false;
+                }
+                else
+                {
+                    this.pre = float.Parse(pre);
+                    isChanged = true;
+                    hasValue = true;
+                }
+            }
             /// <summary>
             /// 先行発声値の変更
             /// </summary>
